@@ -10,17 +10,10 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  registerForm!: FormGroup;
+  registrationForm!: FormGroup;
 
-  currency_list: Array<any> = this._constants.currency;
-  datesList: Array<any> = this._constants.datesList;
-  monthsList: Array<any> = this._constants.monthsList;
-  yearsList: Array<any> = this._constants.yearsList;
-  pagetab: number = 1;
-  countryCodeList: Array<any> = [];
-  countryName: string = '';
   formSubmitted: Boolean = false;
-  registerFormSubmitted: Boolean = false;
+  registrationFormSubmitted: Boolean = false;
   phoneCheckValid: Boolean = false;
   emailCheckValid: Boolean = false;
   existingEmail: string = '';
@@ -40,15 +33,15 @@ export class RegisterComponent implements OnInit {
   }
 
   get f() {
-    return this.registerForm.controls;
+    return this.registrationForm.controls;
   }
 
   buildloginform() {
-    this.registerForm = this.builder.group({
+    this.registrationForm = this.builder.group({
       email: ['', Validators.required],
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      login: ['', Validators.required],
+      username: ['', Validators.required],
       password: ['', Validators.required],
       birthDate: ['', Validators.required],
       phone: ['', Validators.required]
@@ -57,15 +50,16 @@ export class RegisterComponent implements OnInit {
 
   /**
    * check register email exist
+   * use this when need to verify email for existing or not
    * @returns 
    */
   registerEmailCheck() {
-    if (this.registerForm.value?.email !== '' && this.existingEmail !== this.registerForm.value?.email) {
-      this.existingEmail = this.registerForm.value?.email;
+    if (this.registrationForm.value?.email !== '' && this.existingEmail !== this.registrationForm.value?.email) {
+      this.existingEmail = this.registrationForm.value?.email;
     } else {
       return;
     }
-    this.auth.registerEmailCheck(this.registerForm.value?.email).subscribe((res: any) => {
+    this.auth.registerEmailCheck(this.registrationForm.value?.email).subscribe((res: any) => {
       if (res.status == 200) {
         this.emailCheckValid = res.data?.result;
       }
@@ -74,15 +68,16 @@ export class RegisterComponent implements OnInit {
 
   /**
    * check register phone exist
+   * use this when need to verify phone for existing or not
    * @returns 
    */
   registerPhoneCheck() {
-    if (this.registerForm.value?.phone !== '' && this.existingPhone !== this.registerForm.value?.phone) {
-      this.existingPhone = this.registerForm.value?.phone;
+    if (this.registrationForm.value?.phone !== '' && this.existingPhone !== this.registrationForm.value?.phone) {
+      this.existingPhone = this.registrationForm.value?.phone;
     } else {
       return;
     }
-    this.auth.registerEmailCheck(this.registerForm.value?.phone).subscribe((res: any) => {
+    this.auth.registerEmailCheck(this.registrationForm.value?.phone).subscribe((res: any) => {
       if (res.status == 200) {
         this.phoneCheckValid = res.data?.result;
       }
@@ -90,13 +85,13 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  register() {
-    this.registerFormSubmitted = true;
-    if (this.registerForm.invalid) {
+  submitRegistrationData() {
+    this.registrationFormSubmitted = true;
+    if (this.registrationForm.invalid) {
       return;
     }
 
-    this.auth.admin_Register(this.registerForm.value).subscribe((res: any) => {
+    this.auth.admin_Register(this.registrationForm.value).subscribe((res: any) => {
       if (res.code == 200) {
         console.log("succesfully Added user");
       }

@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Constants } from './API-URL/contants';
 import { SharedModule } from './shared/shared.module';
+import { Globals } from './globals';
 
 
 
@@ -31,7 +32,10 @@ import { SharedModule } from './shared/shared.module';
   exports: [
 
   ],
-  providers: [Constants],
+  providers: [
+    Constants,
+    Globals
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

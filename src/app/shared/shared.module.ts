@@ -9,9 +9,6 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { LayoutComponent } from './layout/layout.component';
 import { SharedComponent } from './shared.component';
-import { TopSliderComponent } from './top-slider/top-slider.component';
-import { TopMenuComponent } from './top-menu/top-menu.component';
-import { HomeGameSlidersComponent } from './home-game-sliders/home-game-sliders.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +16,7 @@ import { HomeGameSlidersComponent } from './home-game-sliders/home-game-sliders.
     FooterComponent,
     HeaderComponent,
     LayoutComponent,
-    SharedComponent,
-    TopSliderComponent,
-    TopMenuComponent,
-    HomeGameSlidersComponent
+    SharedComponent
   ],
   imports: [
     CommonModule,
@@ -36,10 +30,7 @@ import { HomeGameSlidersComponent } from './home-game-sliders/home-game-sliders.
     FormsModule,
     ReactiveFormsModule,
     HeaderComponent,
-    FooterComponent,
-    TopSliderComponent,
-    TopMenuComponent,
-    HomeGameSlidersComponent
+    FooterComponent
   ]
 })
 export class SharedModule { }
