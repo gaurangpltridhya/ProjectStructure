@@ -1,0 +1,60 @@
+body.white-bg {
+    background: #2c2c2c !important;
+}
+
+.panel-success > .panel-heading {
+    background: #36145e;
+}
+
+.panel-heading .select2-container--default .select2-selection--single {
+    background-image: linear-gradient(
+            76deg,#ffb400,#ff0);
+    border-radius: 4px;
+    color: #0f1116 !important;
+    border: none !important;
+}
+
+#SignUpButton {
+    font-weight: bold;
+    background-image: linear-gradient(
+            76deg,#ffb400,#ff0);
+    color: #0f1116;
+    border: none;
+}
+
+button#SignUpButton:disabled {
+    background-image: linear-gradient(
+            76deg,#ffb400,#ff0);
+    color: #0f1116;
+    border: none;
+}
+
+#SignUpButton:hover {
+    background: #e6bb77;
+    color: #2c2c2c;
+    border: 2px solid #e6bb77;
+}
+
+a#LoginButton {
+    font-weight: bold !important;
+    background: #f20f00;
+    border: 2px solid #f20f00;
+    color: #fff;
+}
+
+a#LoginButton:hover {
+    color: #ef3a33;
+    background: #fff;
+}
+
+#LoginForm .btn-success {
+    font-weight: bold !important;
+    background: #f20f00;
+    border: 2px solid #f20f00;
+    color: #fff;
+}
+
+#LoginForm .btn-success:hover {
+    color: #ef3a33;
+    background: #fff;
+}

@@ -1,0 +1,118 @@
+{
+    "siteconfig": {
+        "swiper": {
+            "any": {
+                "slidesPerView": 1,
+                "slidesPerColumn": 1,
+                "spaceBetween": 0,
+                "paginationIsActive": true,
+                "paginationClickable": false,
+                "showNavButtons": false,
+                "loop": true,
+                "autoplay": {
+                    "enabled": true,
+                    "delay": 5000
+                },
+                "initialSlide": 0,
+                "direction": "horizontal",
+                "threshold": 30
+            },
+            "catalog": {
+                "slidesPerView": 1,
+                "slidesPerColumn": 1,
+                "spaceBetween": 0,
+                "paginationIsActive": false,
+                "paginationClickable": false,
+                "showNavButtons": true,
+                "loop": true,
+                "initialSlide": 1,
+                "direction": "horizontal",
+                "threshold": 20,
+                "breakpoints": {
+                    "600": {
+                    }
+                }
+            },
+            "home": {
+                "slidesPerView": "auto",
+                "slidesPerGroupSkip": 1,
+                "spaceBetween": 0,
+                "slidesPerColumn": 2,
+                "paginationIsActive": true,
+                "paginationClickable": true,
+                "showNavButtons": true,
+                "loop": false,
+                "autoplay": false,
+                "initialSlide": 0,
+                "direction": "horizontal",
+                "uniqueNavElements": true,
+                "threshold": 30
+            },
+            "casino": {
+                "slidesPerView": "auto",
+                "slidesPerGroupSkip": 1,
+                "spaceBetween": 0,
+                "slidesPerColumn": 1,
+                "paginationIsActive": true,
+                "paginationClickable": true,
+                "showNavButtons": true,
+                "loop": false,
+                "autoplay": false,
+                "initialSlide": 0,
+                "direction": "horizontal",
+                "uniqueNavElements": true,
+                "threshold": 30
+            }
+        },
+        "gameSliders": {
+            "new": {
+                "name": {
+                    "ru": "Новое",
+                    "en": "New!"
+                },
+                "filter": {
+                    "categories": ["new"]
+                },
+                "limit": 20,
+                "link": "app.catalog.casino({category: 'new'})"
+            },
+            "popular": {
+                "name": {
+                    "ru": "Популярное",
+                    "en": "Trending now"
+                },
+                "filter": {
+                    "categories": ["popular"]
+                },
+                "limit": 20,
+                "link": "app.catalog.casino({category: 'popular'})"
+            },
+            "live": {
+                "name": {
+                    "ru": "Лайв казино",
+                    "en": "Live casino"
+                },
+                "filter": {
+                    "categories": ["livecasino"]
+                },
+                "limit": 20,
+                "link": "app.catalog.live",
+                "color": "purple",
+                "icon": "live-casino-big"
+            },
+            "gameshows": {
+                "name": {
+                    "ru": "Ежедневные джекпоты",
+                    "en": "Daily drop jackpots"
+                },
+                "filter": {
+                    "categories": ["gameshows"]
+                },
+                "limit": 20,
+                "link": "app.catalog.casino({category: 'gameshows'})",
+                "color": "light-blue",
+                "icon": "jackpots-big"
+            }
+        }
+    }
+}

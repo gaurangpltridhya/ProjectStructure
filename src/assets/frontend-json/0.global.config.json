@@ -1,0 +1,155 @@
+{
+    "siteconfig": {
+        "validationRules": {
+            "phoneNumber": ["numberOnlyOrEmpty", "phoneCodeNotEmpty", "phoneUnique"],
+            "phoneCode": ["phoneCode"]
+        },
+        "validationOptions": {
+            "phoneNumber": {
+                "preventInvalid": false
+            }
+        },
+        "agreements": {
+            "paymentRules": true
+        },
+        "checkPassOnUpdate": true,
+        "checkRequiredFields": true,
+        "useLogin": true,
+        "siteName": {
+            "en": "Mad Money Casino",
+            "ru": "Mad Money Casino"
+        },
+        "hideSoftgamings": true,
+        "tournaments": {
+            "use": true,
+            "onPage": 6
+        },
+        "modal": {
+            "login": true,
+            "signup": true
+        },
+        "game": {
+            "skipCheckBalanceBeforeGame": true
+        },
+        "redirects": {
+            "registration": {
+                "state": "app.profile.deposit"
+            },
+            "zeroBalanceRedirect": {
+                "state": "app.profile.deposit"
+            },
+            "deposit": {
+                "success": {
+                    "state": "app.home"
+                },
+                "failed": {
+                    "state": "app.profile.deposit"
+                }
+            }
+        },
+        "favourites": true,
+        "affiliates": {
+            "position": "footer_about_us",
+            "link": "https://partners.madmoneycasino.com"
+        },
+        "license": {
+            "antillephone": {
+                "domain": "www.madmoneycasino.com",
+                "seal_id": "a01bd371-75dc-43ef-b1f3-391c815c0e85"
+            }
+        },
+        "googleAnalytics": [
+            {
+                "name": "developer",
+                "code": ""
+            },
+            {
+                "name": "owner",
+                "code": ""
+            }
+        ],
+        "countryIso": {
+            "+7": "ru",
+            "+1": "ca",
+            "+44": "im",
+            "+61": "au",
+            "+212": "ma"
+        },
+        "useCustomLogo": "<img src=\"/static/images/logo.png\">",
+        "bannerOnCatalog": true,
+        "loginSignup": {
+            "type": "single",
+            "signUpSteps": [
+                "signUpBonuses",
+                "signUpSetup",
+                "signUpPhone",
+                "signUpDone"
+            ],
+            "promo": {
+                "skipInvalidOnSignup": true
+            }
+        },
+        "profileAdditionalsFields": [
+            "address",
+            "city",
+            "postalCode"
+        ],
+        "loyaltyLevel": {
+            "use": true,
+            "showProgressBar": true,
+            "showHeader": true
+        },
+        "store": {
+            "use": true,
+            "onPage": {
+                "storeItems": 9
+            }
+        },
+        "verification": {
+            "use": true,
+            "useDescriptions": true,
+            "descriptions": {
+                "Doc1": "Please upload a clear picture of your ID, Passport or Country Identification card. The image must be clear and legible.",
+                "Doc13": "Please upload a document to verify your address. This must be a document that has your name on it and can be a Utility Bill or Paystub.",
+                "Doc15": "Please upload a clear photo of you holding your ID, Passport or Country Identification Card next to your face. This must be a clear photo and the ID must be legible to read."
+            }
+        },
+        "livechat": {
+            "type": "livechatinc",
+            "code": "11807208"
+        },
+        "bonuses": {
+            "useInventory": false,
+            "checkDepositBonusesOnSubscribe": false,
+            "filters": {
+                "registration": {
+                    "Event": [
+                        "deposit first",
+                        "registration",
+                        "deposit"
+                    ],
+                    "Status": "1",
+                    "PromoCode": 0
+                }
+            }
+        },
+        "wordpress": {
+            "pagesOnly": [
+                "terms-and-conditions",
+                "privacy-policy",
+                "responsible-game",
+                "fair-play",
+                "games-rules"
+            ]
+        },
+        "autoSelectCountry": true,
+        "countriesByMerchantFilter": {
+            "992": [
+                "aia", "atg", "blz", "bmu", "vgb", "gib",
+                "msr", "imn", "cym", "tca", "pcn", "shn",
+                "vct", "kna", "lca", "slb", "tuv", "flk",
+                "iot", "ggy", "jey"
+            ]
+        }
+    }
+}

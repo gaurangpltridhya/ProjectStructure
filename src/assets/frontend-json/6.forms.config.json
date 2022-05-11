@@ -1,0 +1,132 @@
+{
+    "siteconfig": {
+        "formsDescribe": {
+            "signUpSetup": {
+                "class": "wlc-signup-form",
+                "data": {
+                    "wlc-form": "register",
+                    "ng-submit": "errorsForm = setUp.$invalid ? true : false; reg.check(setUp, steps.next, [], !steps.hasNext())",
+                    "wlc-css-style": "wlc-signup-form",
+                    "wlc-element": "signup-form-setup"
+                },
+                "name": "setUp",
+                "attrs": {
+                    "novalidate": null
+                },
+                "sections": [
+                    {
+                        "elements": [
+                            {
+                                "type": "block",
+                                "elements": [
+                                    "emailUnique"
+                                ]
+                            },
+                            {
+                                "type": "block",
+                                "class": "wlc-signup-form__section-block wlc-signup-form__user-info",
+                                "elements": [
+                                    "firstName",
+                                    "lastName"
+                                ]
+                            },
+                            {
+                                "type": "block",
+                                "elements": [
+                                    "login",
+                                    "currency"
+                                ]
+                            },
+                            {
+                                "type": "block",
+                                "elements": [
+                                    "password",
+                                    "birthdate"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "class": "wlc-form-block_submit",
+                        "elements": [
+                            "setUpError",
+                            "setUpButton"
+                        ]
+                    }
+                ]
+            },
+            "signUpPhone": {
+                "sectionElement": "div",
+                "name": "enterPhone",
+                "data": {
+                    "wlc-form": "register",
+                    "ng-submit": "reg.check(enterPhone, steps.next, [], !steps.hasNext())",
+                    "wlc-css-style": "wlc-signup-form",
+                    "wlc-element": "signup-form-enter-phone"
+                },
+                "attrs": {
+                    "novalidate": true
+                },
+                "class": "wlc-signup-form",
+                "sections": [
+                    {
+                        "class": "wlc-signup-register__wrapper",
+                        "elements": [
+                            {
+                                "type": "block",
+                                "class": "wlc-content-row",
+                                "elements": [
+                                    "phoneCodeWithFlag"
+                                ]
+                            },
+                            {
+                                "type": "block",
+                                "class": "wlc-content-row",
+                                "elements": [
+                                    "phoneNumber"
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "class": "wlc-content-row",
+                        "elements": [
+                            "doneButton"
+                        ]
+                    }
+                ]
+            },
+            "signUpDone": {
+                "class": "wlc-signup-form",
+                "data": {
+                    "wlc-form": "register",
+                    "ng-submit": "errorsForm = setUp.$invalid ? true : false; reg.check(setUp, steps.next, [], !steps.hasNext())",
+                    "wlc-css-style": "wlc-signup-form",
+                    "wlc-element": "signup-form-done"
+                },
+                "name": "setUp",
+                "attrs": {
+                    "novalidate": null
+                },
+                "sections": [
+                    {
+                        "elements": [
+                            {
+                                "type": "custom",
+                                "templateUrl": "/static/js/templates/modules/login-signup/register-steps/partial/terms.html",
+                                "class": "col-12"
+                            }
+                        ]
+                    },
+                    {
+                        "class": "wlc-form-block_submit",
+                        "elements": [
+                            "setUpError",
+                            "setUpButton"
+                        ]
+                    }
+                ]
+            }
+        }
+    }
+}

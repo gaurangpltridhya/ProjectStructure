@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="33px" viewBox="0 0 30 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>providers-big</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="providers-big" fill="#237BFF" fill-rule="nonzero">
+            <polygon id="Path" points="9.97501184 6.77737549 10.1726157 0.96597956 23.8225127 1.45217879 23.4312463 12.8510983 21.4414356 12.5703086 21.755 3.379 12.103 3.036 11.9831782 6.56843289"></polygon>
+            <polygon id="Path" points="0.90341291 7.75003726 16.4190546 6.08342771 17.0197133 11.9279002 14.9795762 11.6395617 14.635 8.286 3.096 9.526 4.313 21.364 9.98193264 20.752389 9.70204812 22.7960178 2.5300249 23.5677522"></polygon>
+            <path d="M29.6420732,13.7435318 L11.3073685,11.1090741 L8.73592676,29.8104682 L27.0706315,32.4449259 L29.6420732,13.7435318 Z M13.014,13.374 L27.39,15.44 L25.363,30.179 L10.987,28.113 L13.014,13.374 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

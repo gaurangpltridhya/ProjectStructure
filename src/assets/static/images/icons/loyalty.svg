@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="17px" viewBox="0 0 16 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>loyalty</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="loyalty" fill="#FFFFFF">
+            <path d="M11.025,6.025 L8.01150264,0.574226555 L4.881,6.024 L0.0831062026,2.19882723 L1.55196805,13.518 L14.4480319,13.518 L15.9128921,2.22966451 L11.025,6.025 Z M5.28409465,8.13553201 L7.988,3.425 L10.59228,8.13464346 L14.086,5.42 L13.217,12.118 L2.782,12.118 L1.917,5.451 L5.28409465,8.13553201 Z" id="Path" fill-rule="nonzero"></path>
+            <rect id="Rectangle" x="2" y="15" width="12" height="1.4"></rect>
+        </g>
+    </g>
+</svg>

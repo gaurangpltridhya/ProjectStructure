@@ -1,0 +1,226 @@
+{
+    "siteconfig": {
+        "games": {
+            "onPage": {
+                "onResult": 60
+            },
+            "checkActiveBonusRestriction": true
+        },
+        "gamesCatalog": {          
+            "sortInCategory": true,
+            "sortInCategoryDirection": "asc",
+            "pagination": [
+                {
+                    "state": "app.catalog.live",
+                    "countDefault": "30",
+                    "grid": [
+                        {
+                            "width": "1200",
+                            "count": "24"
+                        }
+                    ]
+                },
+                {
+                    "state": "app.catalog.casino",
+                    "countDefault": "30",
+                    "grid": [
+                        {
+                            "width": "1200",
+                            "count": "24"
+                        }
+                    ]
+                },
+                {
+                    "state": "app.catalog.table",
+                    "countDefault": "30",
+                    "grid": [
+                        {
+                            "width": "1200",
+                            "count": "24"
+                        }
+                    ]
+                }
+            ]
+        },
+        "gameCategoriesInfo": {
+            "excludeCategories": [
+                "rest"
+            ],
+            "menu": [
+                "casino:favourites",
+                "casino:last",
+                {
+                    "parent":"casino"
+                },
+                "table:all",
+                "live:all"
+            ]
+        },
+        "mainMenu": [
+            {
+                "id": "Home",
+                "name": {
+                    "en": "Home",
+                    "ru": "Главная"
+                }
+            },
+            "PromotionsCategory",
+            "Casino",
+            {
+                "id": "LiveCasino",
+                "name": {
+                    "en": "Live bets",
+                    "ru": "Казино Live",
+                    "es": "Apuesta en vivo"
+                }
+            }
+        ],
+        "mobileMenu": [
+            {
+                "name": "gameCategories",
+                "items": [
+                    {
+                        "type": "category",
+                        "items": [
+                            "casino:favourites",
+                            "casino:last",
+                            "live:all",
+                            {
+                                "parent":"casino"
+                            },
+                            "table:all"
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "promotions",
+                "type": "sref",
+                "sref": "app.pages({rootCategory: 'promotions'})",
+                "srefOpts": {
+                    "inherit": false
+                },
+                "name": {
+                    "en": "Promotions",
+                    "ru": "Акции"
+                }
+            },
+            {
+                "name": "info",
+                "items": [
+                    "contacts",
+                    "termsAndConditions",
+                    "privacyPolicy",
+                    "responsibleGame",
+                    "fairPlay"
+                ]
+            }
+        ],
+        "profileMenu": [
+            {
+                "name": "myAccount",
+                "items": [
+                    "editProfile",
+                    "verification"
+                ]
+            },
+            {
+                "name": "bonuses",
+                "items": [
+                    "offers",
+                    "active",
+                    "inventory",
+                    "history",
+                    "voucher",
+                    "bonuseSystem"
+                ]
+            },
+            {
+                "name": "tournaments",
+                "items": [
+                    "tournamentsCurrent",
+                    "tournamentsActive",
+                    "tournamentsHistory"
+                ]
+            },
+            {
+                "name": "cash",
+                "items": [
+                    "deposit",
+                    "withdrawal",
+                    "wallet",
+                    "transactionHistory"
+                ]
+            },
+            {
+                "name": "gamblings",
+                "items": [
+                    "betsHistory"
+                ]
+            },
+            {
+                "name": "market",
+                "items": [
+                    "store",
+                    "loyaltyLevel"
+                ]
+            }
+        ],
+        "mobileProfileMenu": [
+            {
+                "name": "deposit",
+                "items": []
+            },
+            {
+                "name": "tournaments",
+                "items": [
+                    "tournamentsCurrent",
+                    "tournamentsActive",
+                    "tournamentsHistory"
+                ]
+            },
+            {
+                "name": "bonuses",
+                "items": [
+                    "offers",
+                    "active",
+                    "history"
+                ]
+            },
+            {
+                "name": "voucher",
+                "items": []
+            },
+            {
+                "name": "store",
+                "items": []
+            },
+            {
+                "name": "transactionHistory",
+                "items": []
+            },
+            {
+                "name": "myAccount",
+                "items": [
+                    "editProfile",
+                    "verification"
+                ]
+            },
+            {
+                "name": "withdrawal",
+                "items": []
+            },
+            {
+                "name": "FAQ",
+                "type": "sref",
+                "icon": "icon-faq",
+                "sref": "app.staticTexts({'slug': 'cash-faq'})",
+                "wlcElement": "profile-menu-faq",
+                "items": []
+            },
+            {
+                "name": "logout"
+            }
+        ]
+    }
+}

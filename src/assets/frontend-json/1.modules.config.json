@@ -1,0 +1,174 @@
+ {
+    "siteconfig": {
+        "finances": {
+            "depositInIframe": true
+        },
+        "modules": {
+            "header-logo": {
+                "logo": {},
+                "freespins-notifier": {"hide": 1024}
+            },
+            "header-left": {
+                "main-menu": {},
+                "language-selector": {},
+                "show": 901
+            },
+            "header-right": {
+                "freespins-notifier": {},
+                "login-button": {},
+                "user-stat-block-dropdown": {},
+                "show": 901
+            },
+            "profile-top": {
+                "profile-user-info": {
+                    "show": 901
+                },
+                "profile-menu-dropdown": {
+                    "show": 901
+                }
+            },
+            "top-promo-content": [
+
+                {
+                    "name": "promo-steps",
+                    "include": [
+                        "app.home"
+                    ]
+                }
+
+
+            ],
+            "after-games-content": [
+                {
+                    "module": "promo",
+                    "component": "last-wins",
+                    "params": {
+                        "containerFluid": false,
+                        "hideFlag": true,
+                        "hideTitle": false,
+                        "swiper": {
+                            "direction": "horizontal",
+                            "slidesPerView": 3,
+                            "spaceBetween": 0,
+                            "breakpoints": {
+                                "1200": {
+                                    "slidesPerView": 2
+                                }
+                            }
+                        }
+                    },
+                    "include": [
+                        "app.home"
+                    ]
+                }
+            ],
+            "signup-bonuses": [
+                {
+                    "module": "loyalty",
+                    "component": "bonuses-slider",
+                    "params": {
+                        "bonusesFilter": {
+                            "events": [
+                                "deposit first",
+                                "registration",
+                                "deposit"
+                            ]
+                        },
+                        "itemTemplate": "/static/js/templates/modules/login-signup/register-steps/bonus-item.html"
+                    }
+                }
+            ],
+            "sidebar": {
+                "game-categories": {
+                    "include": [
+                        "app.catalog"
+                    ]
+                }
+            },
+            "content-top": {
+                "search-and-filter": {
+                    "include": [
+                        "app.home",
+                        "app.catalog"
+                    ]
+                },
+                "search-and-filter-results": {
+                    "include": [
+                        "app.home",
+                        "app.catalog"
+                    ]
+                }
+            },
+            "footer-upper-top": [
+                {
+                    "module": "games",
+                    "component": "total-jackpot",
+                    "include": [
+                        "app.home"
+                    ],
+                    "title": {
+                        "en": "Jackpot",
+                        "ru": "Джекпот"
+                    }
+                }
+            ],
+            "footer-top": [
+                {
+                    "name": "footer-payments"
+                }
+            ],
+            "footer-middle-top": {
+                "footer-info": {}
+            },
+            "footer-middle-right": {},
+            "footer-middle-bottom": {
+                "listing/current-merchants": {}
+            },
+            "footer-bottom": {
+                "footer-disclaimer-text": {},
+                "footer-copyright": {},
+                "license": {}
+            },
+            "footer-payments": {
+                "skrill": {},
+                "visa": {
+                    "excludeCountry": ["deu"]
+                },
+                "mastercard": {},
+                "neteller": {},
+                "yandexmoney": {},
+                "bitcoin": {},
+                "litecoin": {},
+                "ethereum": {},
+                "trustly": {},
+                "verified-visa": {},
+                "mastercard-secure": {},
+                "interac": {}
+            },
+            "footer-merchants": {
+                "evolution": {},
+                "betsoft": {},
+                "microgaming": {},
+                "netent": {}
+            },
+            "footer-right-license": {},
+            "profile-social-link": {
+            },
+            "error-page-top": {
+                "header": {}
+            },
+            "error-page-content": {
+                "error-page-box": {}
+            },
+            "error-page-bottom": {
+                "footer": {}
+            },
+            "games-play-top": {
+                "header": {}
+            },
+            "games-play-bottom": {
+                "footer": {}
+            }
+        }
+    }
+}

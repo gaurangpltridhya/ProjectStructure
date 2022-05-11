@@ -1,0 +1,95 @@
+- On main page load API calls
+  - GET: https://test-madmoney.egamings.com/api/v1/bootstrap - 200 ok
+  - GET: https://test-madmoney.egamings.com/api/v1/games?lang=en&slim=true - 200 ok
+  - POST: https://event.iconvert.network/com.snowplowanalytics.snowplow/tp2 - 200 ok - calls in interval - pending for add
+  - GET: https://wlc_madmoney.wlc.localhost/static/languages/en.json - 200 ok
+  - GET: https://wlc_madmoney.wlc.localhost/api/v1/loyalty/levels?lang=en - 200 ok
+  - GET: https://wlc_madmoney.wlc.localhost/api/v1/wins?lang=en&limit=20&min=1 - 200 ok - this calls 2 times on main page
+  - GET: https://wlc_madmoney.wlc.localhost/api/v1/jackpots?currency=EUR&lang=en - 200 ok
+
+- Registration page
+  - On click register btn
+    - GET: https://test-madmoney.egamings.com/api/v1/countries?lang=en
+    - GET: https://test-madmoney.egamings.com/api/v1/bonuses?lang=en
+    - GET: https://test-madmoney.egamings.com/api/v1/jackpots?currency=EUR&lang=en
+  - On Email add and on blur
+    - PUT: https://test-madmoney.egamings.com/api/v1/profiles/email?lang=en
+  - first form click continue
+    - POST: https://wlc_madmoney.wlc.localhost/api/v1/validate/user-register?lang=en - sends all fields blank
+  - second form click continue
+    - POST: https://wlc_madmoney.wlc.localhost/api/v1/validate/user-register?lang=en - sends all fields added vals of reg page
+  - third form click continue
+    - POST: https://wlc_madmoney.wlc.localhost/api/v1/validate/user-register?lang=en
+    - POST: https://wlc_madmoney.wlc.localhost/api/v1/profiles?lang=en
+    
+- After login API calls (dashboard)
+  - GET: https://wlc_madmoney.wlc.localhost/api/v1/userInfo?lang=en
+  - GET: https://wlc_madmoney.wlc.localhost/api/v1/profiles?lang=en
+  - GET: https://wlc_madmoney.wlc.localhost/api/v1/loyalty/levels?lang=en
+  - GET: https://wlc_madmoney.wlc.localhost/api/v1/wins?lang=en&limit=20&min=1
+  - GET: https://wlc_madmoney.wlc.localhost/api/v1/favorites?lang=en
+  - GET: https://wlc_madmoney.wlc.localhost/api/v1/wins?lang=en&limit=20&min=1
+  - PUT: https://wlc_madmoney.wlc.localhost/api/v1/profiles/activity?page=en&lang=en - resp failed
+  - GET: https://wlc_madmoney.wlc.localhost/api/v1/games?lang=en&lastGames=1
+
+
+  --  Before login API load for games
+
+-- Before login if we click on play button 
+-login popup open,s and API calls
+https://wlc_madmoney.wlc.localhost/api/v1/loyalty/levels?lang=en
+- if we click on free trial button in login popup API  calls
+https://wlc_madmoney.wlc.localhost/api/v1/games?demo=1&gameId=none&lang=&launchCode=volatileSlotDesktop&merchantId=997
+https://wlc_madmoney.wlc.localhost/api/v1/bonuses?lang=en&type=active
+
+--  Before login if we click on Demo button API load for games
+https://wlc_madmoney.wlc.localhost/api/v1/bonuses?lang=en
+https://wlc_madmoney.wlc.localhost/api/v1/games demo=1&gameId=none&lang=&launchCode=905994&merchantId=963
+https://wlc_madmoney.wlc.localhost/api/v1/bonuses?lang=en&type=active
+
+- for game load API calls
+GET :https://test-madmoney.egamings.com/api/v1/bonuses?lang=en
+GET :https://test-madmoney.egamings.com/api/v1/bonuses?lang=en&type=active
+GET :https://test-madmoney.egamings.com/api/v1/profiles?lang=en
+GET :https://test-madmoney.egamings.com/api/v1/games?demo=0&gameId=none&lang=&launchCode=ETI--23237--hacksaw-1127-desktop--50300--59&merchantId=997
+PUT :https://test-madmoney.egamings.com/api/v1/profiles/activity?page=enGamesPlay997Eti23237Hacksaw1127Desktop5030059&lang=en
+GET :https://test-madmoney.egamings.com/api/v1/favorites?lang=en
+
+
+--for clicking for favourties
+POST :https://test-madmoney.egamings.com/api/v1/favorites/2150704?lang=en
+
+--After clicking on cross button to close game
+GET :https://test-madmoney.egamings.com/api/v1/wins?lang=en&limit=20&min=1
+GET :https://test-madmoney.egamings.com/api/v1/favorites?lang=en
+GET : https://test-madmoney.egamings.com/api/v1/games?lang=en&lastGames=1
+
+
+-- On every games types(Slots, casino, Drops & wins, Promotions)
+GET:  https://test-madmoney.egamings.com/api/v1/favorites?lang=en
+PUT: https://test-madmoney.egamings.com/api/v1/profiles/activity?page=enCasino&lang=en
+GET: https://test-madmoney.egamings.com/api/v1/games?lang=en&lastGames=1
+
+-- On click on Deposit button
+GET :https://test-madmoney.egamings.com/api/v1/loyalty/levels?lang=en
+GET : https://test-madmoney.egamings.com/api/v1/paymentSystems?lang=en
+GET :https://test-madmoney.egamings.com/api/v1/withdrawals?lang=en&type=queries
+
+--Clicking on My Account on balance drop down
+GET :https://test-madmoney.egamings.com/api/v1/withdrawals?lang=en&type=queries
+GET :https://test-madmoney.egamings.com/api/v1/profiles?lang=en
+PUT :https://test-madmoney.egamings.com/api/v1/profiles/activity?page=enProfile&lang=en
+ --My Profile (verfication)
+GET :https://test-madmoney.egamings.com/api/v1/docs?lang=en
+
+--Click on live casino play button and then click to deposit
+-- On Quick Deposit
+GET :https://test-madmoney.egamings.com/api/v1/docs?lang=en
+GET : https://test-madmoney.egamings.com/api/v1/paymentSystems?lang=en
+GET :https://test-madmoney.egamings.com/api/v1/withdrawals?lang=en&type=queries
+ 
+--Clicking on Tournement on balance drop down
+GET :https://test-madmoney.egamings.com/api/v1/withdrawals?lang=en&type=queries
+PUT : https://test-madmoney.egamings.com/api/v1/profiles/activity?page=enProfileLoyaltyTournaments&lang=en
+GET: https://test-madmoney.egamings.com/api/v1/tournaments/235208/top?lang=en&limit=10&start=0
+

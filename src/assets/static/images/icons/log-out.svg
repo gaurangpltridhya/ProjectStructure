@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="22px" viewBox="0 0 23 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>log-out</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="log-out" fill="#4A4857" fill-rule="nonzero">
+            <polygon id="Path" transform="translate(7.500000, 11.000000) rotate(-180.000000) translate(-7.500000, -11.000000) " points="15 0 15 22 3.55271368e-15 22 3.55271368e-15 20 13 20 13 2 3.55271368e-15 2 3.55271368e-15 0"></polygon>
+            <polygon id="Path" transform="translate(17.500000, 11.100000) rotate(-45.000000) translate(-17.500000, -11.100000) " points="21.0000005 7.60000047 21.0000005 14.6000005 14.0000005 14.6000005 14.0000005 12.6000005 19.0000005 12.6000005 19.0000005 7.60000047"></polygon>
+            <polygon id="Path" transform="translate(16.000000, 11.000000) rotate(-180.000000) translate(-16.000000, -11.000000) " points="21 10 21 12 11 12 11 10"></polygon>
+        </g>
+    </g>
+</svg>

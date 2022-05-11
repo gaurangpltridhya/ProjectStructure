@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="250" height="208" viewBox="0 0 250 208">
+    <defs>
+        <linearGradient id="r7wunwqc9b" x1="50%" x2="50%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#6D6B7F" stop-opacity="0"/>
+            <stop offset="100%" stop-color="#6D6B7F"/>
+        </linearGradient>
+        <rect id="9fmv8170ya" width="250" height="208" x="0" y="0" rx="10"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g transform="translate(-230 -1406) translate(230 1180) translate(0 216) translate(0 10)">
+                        <mask id="jb59ivf4xc" fill="#fff">
+                            <use xlink:href="#9fmv8170ya"/>
+                        </mask>
+                        <rect width="246" height="204" x="2" y="2" stroke="#6D6B7F" stroke-opacity=".1" stroke-width="4" rx="10"/>
+                        <path fill="url(#r7wunwqc9b)" fill-opacity=".1" fill-rule="nonzero" d="M104.733-19l6.818 4.186-144.186 234.817-6.818-4.186L104.733-19zm-29.547 0l6.817 4.186-144.186 234.817-6.817-4.186L75.186-19zm-30 0l6.817 4.186-144.186 234.817-6.817-4.186L45.186-19zm-30 0l6.817 4.186-144.186 234.817-6.817-4.186L15.186-19zm120 0l6.817 4.186L-2.183 220.003-9 215.817 135.186-19zm90 0l6.817 4.186L87.817 220.003 81 215.817 225.186-19zm90 0l6.817 4.186-144.186 234.817-6.817-4.186L315.186-19zm30 0l6.817 4.186-144.186 234.817-6.817-4.186L345.186-19zm30 0l6.817 4.186-144.186 234.817-6.817-4.186L375.186-19zm-120 0l6.817 4.186-144.186 234.817-6.817-4.186L255.186-19zm30 0l6.817 4.186-144.186 234.817-6.817-4.186L285.186-19zm-120 0l6.817 4.186L27.817 220.003 21 215.817 165.186-19zm30 0l6.817 4.186L57.817 220.003 51 215.817 195.186-19z" mask="url(#jb59ivf4xc)"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
