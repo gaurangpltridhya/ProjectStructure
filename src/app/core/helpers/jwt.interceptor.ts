@@ -22,7 +22,6 @@ export class JwtInterceptor implements HttpInterceptor {
     const loginCode = localStorage.getItem('loginCode');
     if (token != undefined) {
       const headers: any = { 'Authorization': `${localStorage.getItem('token')}` };
-      headers['logincode'] = loginCode;
       // If request has FormData object Angular will automatically identify content type
       if (request.body instanceof FormData === false) {
         // body object is not FormData then force to set json content type

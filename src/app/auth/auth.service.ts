@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { LOGIN_URL, REGISTER_EMAIL_CHECK, REGISTER_URL } from '../API-URL/contants';
+import { LOGIN_URL, OTP_VERIFY_RESET_PASSWORD, REGISTER_EMAIL_CHECK, REGISTER_URL, VERIFY_EMAIL_FORGOT_PASSWORD } from '../API-URL/contants';
 import { Globals } from '../globals';
 import { User } from '../shared/user.model';
 
@@ -108,10 +108,13 @@ export class AuthService {
     )
   }
 
-
-  createUserProfile(data: any): Observable<any> {
-    let userDataKeys = Object.keys(data);
-    return this._httpClient.post(REGISTER_URL, { data }).pipe(
+  /**
+   * 
+   * @param data verify email and send opt feature API
+   * @returns 
+   */
+  verifyEmailForForgotPassword(data: any): Observable<any> {
+    return this._httpClient.put(VERIFY_EMAIL_FORGOT_PASSWORD, data).pipe(
       map((res: any) => {
         return res;
 
@@ -121,7 +124,28 @@ export class AuthService {
         return throwError(error)
       })
     )
+
+
   }
 
 
+  /**
+   * 
+   * @param data reset password with otp
+   * @returns 
+   */
+  resetPasswordWithOTP(data: any): Observable<any> {
+    return this._httpClient.put(OTP_VERIFY_RESET_PASSWORD, data).pipe(
+      map((res: any) => {
+        return res;
+
+      }),
+      catchError((error: any) => {
+        // this.commonErrorHandler(error.error.status);
+        return throwError(error)
+      })
+    )
+
+
+  }
 }

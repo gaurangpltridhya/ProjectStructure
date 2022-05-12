@@ -21,8 +21,8 @@
                                 [formGroup]="registrationForm" (ngSubmit)="submitRegistrationData()" novalidate>
                                 <div class="col-6">
                                     <label for="firstName" class="form-label">First Name</label>
-                                    <input type="text" formControlName="firstName" name="name" class="form-control"
-                                        id="firstName"
+                                    <input type="text" formControlName="firstName" placeholder="First Name" name="name"
+                                        class="form-control" id="firstName"
                                         [ngClass]="{ 'is-invalid':registrationFormSubmitted && form['firstName']?.errors }">
                                     <div class="invalid-feedback" *ngIf="registrationFormSubmitted">
                                         <div *ngIf="registrationForm?.get('firstName')?.hasError('required')">
@@ -32,8 +32,8 @@
                                 </div>
                                 <div class="col-6">
                                     <label for="lastName" class="form-label">Last Name</label>
-                                    <input type="text" formControlName="lastName" name="name" class="form-control"
-                                        id="lastName"
+                                    <input type="text" formControlName="lastName" placeholder="Last Name" name="name"
+                                        class="form-control" id="lastName"
                                         [ngClass]="{ 'is-invalid':registrationFormSubmitted && form['lastName']?.errors }">
                                     <div class="invalid-feedback" *ngIf="registrationFormSubmitted">
                                         <div *ngIf="registrationForm?.get('lastName')?.hasError('required')">
@@ -42,9 +42,9 @@
                                     </div>
                                 </div>
                                 <div class="col-6">
-                                    <label for="emailId" class="form-label">Your Email</label>
-                                    <input type="email" formControlName="email" name="emailId" class="form-control"
-                                        id="emailId"
+                                    <label for="emailId" class="form-label">Email</label>
+                                    <input type="email" formControlName="email" placeholder="Email" name="emailId"
+                                        class="form-control" id="emailId"
                                         [ngClass]="{ 'is-invalid':registrationFormSubmitted && form['email']?.errors }">
                                     <div class="invalid-feedback" *ngIf="registrationFormSubmitted">
                                         <div *ngIf="registrationForm?.get('email')?.hasError('required')">
@@ -58,8 +58,8 @@
                                 </div>
                                 <div class="col-6">
                                     <label for="phoneNo" class="form-label">Phone Number</label>
-                                    <input type="text" maxlength="11" formControlName="phone" name="phoneNo"
-                                        class="form-control" id="phoneNo"
+                                    <input type="text" maxlength="11" formControlName="phone" placeholder="Phone Number"
+                                        name="phoneNo" class="form-control" id="phoneNo"
                                         [ngClass]="{ 'is-invalid':registrationFormSubmitted && form['phone']?.errors }">
                                     <div class="invalid-feedback" *ngIf="registrationFormSubmitted">
                                         <div *ngIf="registrationForm?.get('phone')?.hasError('required')">
@@ -88,7 +88,7 @@
                                 <div class="col-6">
                                     <label for="password" class="form-label">Password</label>
                                     <input type="password" formControlName="password" name="password"
-                                        class="form-control" id="password"
+                                        placeholder="Password" class="form-control" id="password"
                                         [ngClass]="{ 'is-invalid':registrationFormSubmitted && form['password']?.errors }">
                                     <div class="invalid-feedback" *ngIf="registrationFormSubmitted">
                                         <div *ngIf="registrationForm?.get('password')?.hasError('required')">
@@ -103,7 +103,7 @@
                                 <div class="col-6">
                                     <label for="confPassword" class="form-label">Confirm Password</label>
                                     <input type="password" formControlName="confirmPassword" name="confPassword"
-                                        class="form-control" id="confPassword"
+                                        class="form-control" id="confPassword" placeholder="Confirm Password"
                                         [ngClass]="{ 'is-invalid':registrationFormSubmitted && form['confirmPassword']?.errors }">
                                     <div class="invalid-feedback" *ngIf="registrationFormSubmitted">
                                         <div *ngIf="registrationForm?.get('confirmPassword')?.hasError('required')">

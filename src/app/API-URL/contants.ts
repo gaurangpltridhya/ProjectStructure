@@ -11,11 +11,11 @@ export const COMMON = '/index';
 export const ADMIN_MODULE = API_LINK + COMMON;
 
 // authntication APIS
-export const REGISTER_URL = API_LINK + '/' + API_VERSION + '/validate/user-register?lang=en';  // register url
-export const LOGIN_URL = API_LINK + '/' + API_VERSION + '/auth?lang=en'; // login url
+export const REGISTER_URL = API_LINK + '/' + API_VERSION + '/validate/user-register';  // register url
+export const LOGIN_URL = API_LINK + '/' + API_VERSION + '/auth'; // login url
 export const REGISTER_EMAIL_CHECK = API_LINK + '/' + API_VERSION + '/verify/email'; //email verify
-
-
+export const VERIFY_EMAIL_FORGOT_PASSWORD = API_LINK + '/' + API_VERSION + '/verify/email'; //email verify
+export const OTP_VERIFY_RESET_PASSWORD = API_LINK + '/' + API_VERSION + '/otp/reset-password'; //email verify
 
 @Injectable()
 export class Constants {

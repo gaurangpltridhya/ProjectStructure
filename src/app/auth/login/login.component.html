@@ -26,9 +26,10 @@
                                 <div class="col-12">
                                     <label for="username" class="form-label">Username</label>
                                     <div class="input-group has-validation">
-                                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                        <input type="text" name="username" #username formControlName="username"
-                                            class="form-control" id="username"
+                                        <span class="input-group-text" id="inputGroupPrepend"><i
+                                                class="fas fa-at"></i></span>
+                                        <input type="text" name="username" placeholder="Username" #username
+                                            formControlName="username" class="form-control" id="username"
                                             [ngClass]="{ 'is-invalid':loginFormSubmitted && form['username']?.errors }">
                                         <div class="invalid-feedback" *ngIf="loginFormSubmitted">
                                             <div *ngIf="loginForm?.get('username')?.hasError('required')">
@@ -44,12 +45,20 @@
 
                                 <div class="col-12">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" #password formControlName="password" name="password"
-                                        class="form-control" id="password"
-                                        [ngClass]="{ 'is-invalid':loginFormSubmitted && form['password']?.errors }">
-                                    <div class="invalid-feedback" *ngIf="loginFormSubmitted">
-                                        <div *ngIf="loginForm?.get('password')?.hasError('required')">
-                                            Password is required!
+                                    <a routerLink="/auth/forgot-password"
+                                        class="float-right text-muted text-unline-dashed ml-1">Forgot your
+                                        password?</a>
+                                    <div class="input-group has-validation">
+                                        <span class="input-group-text" id="inputGroupPrepend"><i
+                                                class="fas fa-eye"></i></span>
+                                        <input type="password" placeholder="Password" #password
+                                            formControlName="password" name="password" class="form-control"
+                                            id="password"
+                                            [ngClass]="{ 'is-invalid':loginFormSubmitted && form['password']?.errors }">
+                                        <div class="invalid-feedback" *ngIf="loginFormSubmitted">
+                                            <div *ngIf="loginForm?.get('password')?.hasError('required')">
+                                                Password is required!
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
