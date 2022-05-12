@@ -16,8 +16,13 @@ export class LoginComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private router: Router,
-    private auth: AuthService
-  ) { }
+    private auth: AuthService,
+  ) {
+    var isAuthenticated = this.auth.getAuthStatus();
+    if (!isAuthenticated) {
+      this.router.navigate(['/']);
+    }
+  }
 
   ngOnInit(): void {
 
@@ -31,6 +36,18 @@ export class LoginComponent implements OnInit {
   }
 
   /**
+   * get form controls
+   */
+  get form() {
+    return this.loginForm.controls;
+  }
+
+  // -----------------------------------------------------------------------------------------------------
+  // @ Public methods
+  // -----------------------------------------------------------------------------------------------------
+
+
+  /**
    * login func
    */
   submitLoginData() {
@@ -38,6 +55,11 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       // && !this.phoneCheckValid 
       return;
+    }
+
+    if (this.loginForm.value.password === 'admin') { //TODO: remove this if condition when API implemented
+      localStorage.setItem('token', 'token');
+      this.router.navigate(['/']);
     }
 
     this.auth.adminlogin(this.loginForm.value).subscribe({

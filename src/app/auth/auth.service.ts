@@ -41,8 +41,8 @@ export class AuthService {
 
   getAuthStatus(): any {
     if (localStorage.getItem('token')) {
-      let login: any = localStorage.getItem('token');
-      if (login == 1) {
+      let token: any = localStorage.getItem('token');
+      if (token) {
         return true;
       }
       else {

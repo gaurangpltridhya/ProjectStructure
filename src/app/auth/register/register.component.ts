@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Constants } from 'src/app/API-URL/contants';
 import { AuthService } from '../auth.service';
@@ -29,24 +29,36 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.registrationForm = this.builder.group({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$")]],
+      phone: ['', [Validators.required, Validators.pattern('[- +()0-9]+'), Validators.minLength(10)]],
+      // username: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required, confirmPasswordValidator]]
+    });
 
+    // Update the validity of the 'confirmPassword' field
+    // when the 'password' field changes
+    this.registrationForm.get('password')?.valueChanges
+      .pipe()
+      .subscribe(() => {
+        this.registrationForm.get('confirmPassword')?.updateValueAndValidity();
+      });
   }
 
-  get f() {
+  /**
+   * get form controls
+   */
+  get form() {
     return this.registrationForm.controls;
   }
 
-  buildloginform() {
-    this.registrationForm = this.builder.group({
-      email: ['', Validators.required],
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      birthDate: ['', Validators.required],
-      phone: ['', Validators.required]
-    });
-  }
+  // -----------------------------------------------------------------------------------------------------
+  // @ Public methods
+  // -----------------------------------------------------------------------------------------------------
+
 
   /**
    * check register email exist
@@ -100,3 +112,33 @@ export class RegisterComponent implements OnInit {
 
 }
 
+
+/**
+ * Confirm password validator
+ *
+ * @param {AbstractControl} control
+ * @returns {ValidationErrors | null}
+ */
+export const confirmPasswordValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+
+  if (!control.parent || !control) {
+    return null;
+  }
+
+  const password = control.parent.get('password');
+  const confirmPassword = control.parent.get('confirmPassword');
+
+  if (!password || !confirmPassword) {
+    return null;
+  }
+
+  if (confirmPassword.value === '') {
+    return null;
+  }
+
+  if (password.value === confirmPassword.value) {
+    return null;
+  }
+
+  return { passwordsNotMatching: true };
+};
