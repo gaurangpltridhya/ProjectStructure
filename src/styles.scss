@@ -46,6 +46,7 @@ h6 {
     margin-top: 60px;
     padding: 20px 30px;
     transition: all 0.3s;
+    min-height: calc(100vh - 180px);
 }
 
 @media (max-width: 1199px) {
@@ -634,6 +635,10 @@ h6 {
 
 .sidebar::-webkit-scrollbar-thumb {
     background-color: #aab7cf;
+}
+
+#footer {
+    height: 120px;
 }
 
 @media (min-width: 1200px) {
@@ -1254,6 +1259,10 @@ h6 {
 /******************************************************************* below are custom css start  ******************************************************************/
 .invalid-feedback {
     display: block;
+}
+
+.content-page {
+    margin-top: 60px;
 }
 
 

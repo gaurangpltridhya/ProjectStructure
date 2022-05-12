@@ -4,19 +4,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 // components
-import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { LayoutComponent } from './layout/layout.component';
-import { SharedComponent } from './shared.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
-    NavbarComponent,
     FooterComponent,
     HeaderComponent,
     LayoutComponent,
-    SharedComponent
+    SidebarComponent
   ],
   imports: [
     CommonModule,
@@ -25,12 +23,11 @@ import { SharedComponent } from './shared.component';
     RouterModule
   ],
   exports: [
-    NavbarComponent,
-    SharedComponent,
     FormsModule,
     ReactiveFormsModule,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarComponent
   ]
 })
 export class SharedModule { }

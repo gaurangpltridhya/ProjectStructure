@@ -3,16 +3,42 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { LOGIN_URL, REGISTER_EMAIL_CHECK, REGISTER_URL } from '../API-URL/contants';
 import { Globals } from '../globals';
+import { User } from '../shared/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  user!: User;
+  access: Array<any> = [];
+
   constructor(
     private _httpClient: HttpClient,
     private globals: Globals
   ) { }
+
+
+  /**
+ * Returns the current user
+ */
+  public getUserAccess() {
+    if (this.access.length == 0) {
+      this.access = JSON.parse(localStorage.getItem('access') || '[]');
+    }
+    return this.access;
+  }
+
+  /**
+   * Returns the current user
+   */
+  public currentUser(): User {
+    if (!this.user) {
+      this.user = JSON.parse(localStorage.getItem('currentUser') || '{}');
+    }
+    return this.user;
+  }
+
 
   adminlogin(data: any): Observable<any> {
 

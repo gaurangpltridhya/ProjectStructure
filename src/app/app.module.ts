@@ -7,10 +7,12 @@ import { AppComponent } from './app.component';
 // import { NavbarComponent } from './shared/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Constants } from './API-URL/contants';
 import { SharedModule } from './shared/shared.module';
 import { Globals } from './globals';
+import { RoleAccessControl } from './common/role-access-control/role-access-control.service';
+import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 
 
 
@@ -33,8 +35,14 @@ import { Globals } from './globals';
 
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
     Constants,
-    Globals
+    Globals,
+    RoleAccessControl
   ],
   bootstrap: [AppComponent]
 })
