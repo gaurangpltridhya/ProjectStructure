@@ -681,6 +681,7 @@ h6 {
 
 .sidebar-nav .nav-item {
     margin-bottom: 5px;
+    cursor: pointer;
 }
 
 .sidebar-nav .nav-heading {
@@ -698,9 +699,19 @@ h6 {
     font-weight: 600;
     color: #4154f1;
     transition: 0.3;
-    background: #f6f9ff;
+    // background: #f6f9ff;
     padding: 10px 15px;
     border-radius: 4px;
+}
+
+.sidebar-nav .nav-link {
+    &.active {
+        background: #cedeff;
+
+        &:hover {
+            background: #cedeff;
+        }
+    }
 }
 
 .sidebar-nav .nav-link i {
@@ -727,13 +738,17 @@ h6 {
     color: #4154f1;
 }
 
-.sidebar-nav .nav-link .bi-chevron-down {
+.active-parent {
+    background: #cedeff;
+}
+
+.sidebar-nav .nav-link .fas.fa-angle-right {
     margin-right: 0;
     transition: transform 0.2s ease-in-out;
 }
 
-.sidebar-nav .nav-link:not(.collapsed) .bi-chevron-down {
-    transform: rotate(180deg);
+.sidebar-nav .nav-link:not(.collapsed) .fas.fa-angle-right {
+    transform: rotate(90deg);
 }
 
 .sidebar-nav .nav-content {
@@ -1267,6 +1282,25 @@ h6 {
 
 .float-right {
     float: right;
+}
+
+.w-100-p {
+    width: 100% !important;
+}
+
+.nav-arrow {
+    position: absolute;
+    right: 0px;
+    top: 15px;
+}
+
+.chart-div-height {
+    height: 300px;
+
+    .chart-container {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 /******************************************************************* below are custom css end  ******************************************************************/

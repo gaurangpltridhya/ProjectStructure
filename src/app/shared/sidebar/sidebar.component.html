@@ -1,15 +1,39 @@
 <!-- ======= Sidebar ======= -->
 <aside id="sidebar" class="sidebar">
-
     <ul class="sidebar-nav" id="sidebar-nav">
+        <ng-container *ngFor="let item of menuItems; let i = index;">
+            <li class="nav-item collaps-main-{{i}}">
+                <!-- without sub menu -->
+                <a *ngIf="!item?.subItems" class="nav-link w-100-p" style="position: relative;"
+                    [routerLinkActive]="['active']" [routerLink]="item?.link" (click)="hideSubItems()">
+                    <i class="bi bi-grid"></i>
+                    <span>{{item?.label}}</span>
+                </a>
+                <!-- with submenu -->
+                <!-- <a *ngIf="item?.subItems" class="nav-link w-100-p" style="position: relative;"
+                    (click)="showHideChild(i)" [routerLinkActive]="['active']" [routerLink]="item?.link">
+                    <i class="bi bi-grid"></i>
+                    <span>{{item?.label}}</span>
+                    <i class="fas fa-angle-right float-right nav-arrow" *ngIf="item?.subItems"></i>
+                </a>
+                <ng-container *ngIf="item?.subItems">
+                    <ul *ngFor="let item of item?.subItems; let in = index" id="components-nav-{{in}}"
+                        class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a class="nav-link" [routerLinkActive]="['active']" (click)="manageParent($event,in)"
+                                [routerLink]="item?.link">
+                                <i class="bi bi-grid"></i>
+                                <span>{{item?.label}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </ng-container> -->
+            </li>
+        </ng-container>
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" [routerLink]="[ '/dashboard' ]">
-                <i class="bi bi-grid"></i>
-                <span>Dashboard</span>
-            </a>
-        </li><!-- End Dashboard Nav -->
 
     </ul>
+
+
 
 </aside><!-- End Sidebar-->

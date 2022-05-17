@@ -1,0 +1,119 @@
+<div class="pagetitle">
+    <h1>Ngx Charts</h1>
+</div><!-- End Page Title -->
+
+
+<section class="section">
+    <div class="row">
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="card-title">Line Chart</h5>
+                        </div>
+                        <div class="col-md-12 chart-div-height">
+                            <!-- Line Chart -->
+                            <ngx-charts-line-chart [scheme]="colorScheme" [legend]="showLegend"
+                                [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxis]="showXAxis"
+                                [yAxis]="showYAxis" [xAxisLabel]="xAxisLabelLineChart"
+                                [yAxisLabel]="yAxisLabelLineChart" [timeline]="timeline" [results]="multi">
+                            </ngx-charts-line-chart>
+                            <!-- End Line CHart -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="card-title">Bar CHart</h5>
+                        </div>
+                        <div class="col-md-12 chart-div-height">
+                            <!-- Bar Chart -->
+                            <div class="chart-container">
+                                <ngx-charts-bar-vertical [scheme]="colorScheme" [results]="single" [gradient]="gradient"
+                                    [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
+                                    [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel"
+                                    [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel">
+                                </ngx-charts-bar-vertical>
+                            </div>
+                            <!-- End Bar CHart -->
+                        </div>
+                    </div>
+                    <!-- https://stackblitz.com/edit/angular-mqcn7n?file=app%2Ftable%2Ftable.component.ts,app%2Ftable%2Ftable.component.html responsive chart example -->
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="card-title">Pie Chart</h5>
+                        </div>
+                        <div class="col-md-12 chart-div-height">
+                            <!-- Pie Chart -->
+                            <ngx-charts-pie-chart [scheme]="colorScheme" [results]="single" [gradient]="gradient"
+                                [legend]="false" [legendPosition]="legendPosition" [labels]="showLabels"
+                                [doughnut]="isDoughnut">
+                            </ngx-charts-pie-chart>
+                            <!-- End Pie CHart -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="card-title">Doughnut Chart</h5>
+                        </div>
+                        <div class="col-md-12 chart-div-height">
+                            <!-- Doughnut Chart -->
+                            <ngx-charts-pie-chart [scheme]="colorScheme" [results]="single" [gradient]="gradient"
+                                [legend]="false" [legendPosition]="legendPosition" [labels]="showLabels"
+                                [doughnut]="doughnutChart">
+                            </ngx-charts-pie-chart>
+                            <!-- Doughnut Pie CHart -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="card-title">Bubble Chart</h5>
+                        </div>
+                        <div class="col-md-12 chart-div-height">
+                            <!-- Bubble Chart -->
+                            <ngx-charts-bubble-chart [scheme]="colorScheme" [results]="bubbleData" [xAxis]="showXAxis"
+                                [yAxis]="showYAxis" [legend]="showLegend" [showXAxisLabel]="showXAxisLabel"
+                                [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel" [yAxisLabel]="yAxisLabel"
+                                [minRadius]="minRadius" [maxRadius]="maxRadius">
+                            </ngx-charts-bubble-chart>
+                            <!-- Bubble Pie CHart -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

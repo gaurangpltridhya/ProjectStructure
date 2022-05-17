@@ -1,0 +1,89 @@
+<!-- sarch bar start -->
+<app-add-edit-sidebar [openAddEditBar]="uiSearchBoxHide" (closeBar)="uiSearchBoxHide = false" [width]="'500px'">
+    <div class="add-edit-bar-content container-fluid">
+
+    </div>
+</app-add-edit-sidebar>
+<!-- sarch bar end -->
+<section class="section">
+    <div class="row mb-5">
+        <div class="col-12">
+            <span class="float-right">{{address | addressFormat}}</span>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <form class="row g-3 needs-validation" name="loginFormReactive" [formGroup]="loginFormReactive"
+                            (ngSubmit)="submitUserName()" novalidate>
+                            <div class="col-12 mb-3 f-18">
+                                Reactive Form
+                                <button class="btn btn-primary float-right" type="button"
+                                    (click)="uiSearchBoxHide = true">Show
+                                    Side Bar</button>
+                            </div>
+                            <div class="col-12">
+                                <label for="username" class="form-label">Username</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i
+                                            class="fas fa-at"></i></span>
+                                    <input type="text" name="username" placeholder="Username" #username
+                                        formControlName="username" class="form-control" id="username"
+                                        [ngClass]="{ 'is-invalid':loginFormSubmitted && form['username']?.errors }">
+                                    <div class="invalid-feedback" *ngIf="loginFormSubmitted">
+                                        <div *ngIf="loginFormReactive?.get('username')?.hasError('required')">
+                                            Username is required!
+                                        </div>
+                                        <div
+                                            *ngIf="!loginFormReactive.get('username').hasError('required') && loginFormReactive.get('username').hasError('pattern')">
+                                            Please enter a valid email!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <form id="loginFormTemplateDriven" name="form" class="row g-3 needs-validation"
+                            (ngSubmit)="submitUnameTemplateDriven(loginFormTemplateDriven.form.valid)"
+                            #loginFormTemplateDriven="ngForm" novalidate>
+                            <div class="col-12 mb-3 f-18">
+                                Template Driven Form
+                            </div>
+                            <div class="col-12">
+                                <label for="uname" class="form-label">Username</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputGroupPrepend"><i
+                                            class="fas fa-at"></i></span>
+                                    <input class="form-control" name="name" [(ngModel)]="uNameTemplateDriven"
+                                        #name="ngModel" placeholder="Name"
+                                        [ngClass]="{ 'is-invalid': loginFormTemplateDriven?.submitted && name?.invalid }"
+                                        required pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$">
+                                    <div *ngIf="loginFormTemplateDriven?.submitted && name?.invalid"
+                                        class="invalid-feedback">
+                                        <div *ngIf="name?.errors['required']">Username is required!</div>
+                                        <div *ngIf="name?.errors['pattern']">
+                                            Please enter a valid email!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button class="btn btn-primary w-100" type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

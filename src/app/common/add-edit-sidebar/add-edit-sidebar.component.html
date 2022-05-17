@@ -1,0 +1,10 @@
+<div *ngIf="openAddEditBar" class="add-edit-side-bar-back p-3" (click)="closeLeftMenu()">
+  <div class="bar-close-btn" (click)="closeSideBar()" [ngStyle]="{'right': closeButtonRightPosition}">
+    <i class="fas fa-times fa-lg cursor-pointer"></i>
+  </div>
+  <div class="bar-content" [ngStyle]="{'width': sideBarWidth}">
+    <!-- <i class="fas fa-times fa-lg close-btn cursor-pointer" (click)="showSideBar=false"></i> -->
+    <ng-content select=".add-edit-bar-header"></ng-content>
+    <ng-content select=".add-edit-bar-content"></ng-content>
+  </div>
+</div>
