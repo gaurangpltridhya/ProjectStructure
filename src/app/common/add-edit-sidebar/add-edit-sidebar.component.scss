@@ -1,0 +1,111 @@
+/*side-window*/
+div.add-edit-side-bar-back {
+  position: fixed;
+  top: 50px;
+  width: calc(100% - 250px);
+  //   background-color: #0000000a;
+  background-color: rgba(244, 245, 247, 0.6);
+  right: 0;
+  z-index: 9;
+  bottom: 0px;
+  //   padding: 1.25rem;
+
+  .bar-content {
+    position: absolute;
+    top: 15px;
+    // width: 80%;
+    background-color: white;
+    right: 0;
+    //   box-shadow: 5px 0px 20px 0px #888888;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    bottom: 5px;
+    // overflow: auto;
+    border-radius: 5px;
+    border-bottom-right-radius: 0px;
+  }
+
+  .bar-close-btn {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    z-index: 99;
+    overflow: hidden;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: #fff;
+    /* left: 100%; */
+    top: 25px;
+    // right: 81%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    i {
+      margin-top: 14px;
+    }
+  }
+
+  /* width */
+  &::-webkit-scrollbar {
+    background: rgb(158, 165, 171);
+    width: 6px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  // /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+  .row {
+    margin-bottom: 12px;
+  }
+
+  .mute-label {
+    color: #777777;
+    margin-bottom: 0px;
+    font-size: 0.9em;
+  }
+
+  .close-btn {
+    position: fixed;
+    top: 75px;
+    right: 15px;
+    z-index: 99;
+  }
+}
+
+body.left-side-menu-condensed {
+  div.add-edit-side-bar-back {
+    width: calc(100% - 70px);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  div.add-edit-side-bar-back {
+    width: 100% !important;
+
+    .bar-content {
+      // width: 90% !important;
+      width: 99% !important;
+    }
+
+    .bar-close-btn {
+      // right: 91% !important;
+      right: 2% !important;
+      background-color: unset;
+      top: 19px;
+      box-shadow: unset;
+    }
+  }
+
+
+}

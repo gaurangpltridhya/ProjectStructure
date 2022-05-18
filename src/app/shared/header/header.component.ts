@@ -18,46 +18,9 @@ export class HeaderComponent implements OnInit {
     public dialog: MatDialog,
     private auth: AuthService,
   ) {
-    this.isUserAuthnticated = this.auth.getAuthStatus();
   }
 
   ngOnInit(): void {
-    if (this.isUserAuthnticated) {
-      this.getuserInfoData();
-    }
   }
 
-
-  openLoginPopup(): void {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-
-    this.dialog.open(LoginComponent, dialogConfig);
-  }
-
-  openRegisterPopup(): void {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-
-    this.dialog.open(RegisterComponent, dialogConfig);
-  }
-
-  getuserInfoData() {
-    this.auth.userInfoData().subscribe((res: any) => {
-      if (res.code == 200) {
-        console.log(res.data);
-
-        this.UserBalance = res.data;
-      }
-    })
-  }
-
-  /**
-   * on change language from language selector
-   */
-  OnChangeLanguage() {
-
-  }
 }

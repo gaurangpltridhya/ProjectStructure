@@ -4,42 +4,53 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 // components
-import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { LayoutComponent } from './layout/layout.component';
-import { SharedComponent } from './shared.component';
-import { TopSliderComponent } from './top-slider/top-slider.component';
-import { TopMenuComponent } from './top-menu/top-menu.component';
-import { HomeGameSlidersComponent } from './home-game-sliders/home-game-sliders.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { AddEditSidebarComponent } from '../common/add-edit-sidebar/add-edit-sidebar.component';
+import { AddressFormatPipe } from '../common/pipes/address-format.pipe';
+import { MinutesToHoursPipe } from '../common/pipes/minutes-to-hours.pipe';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { FlatpickrModule } from 'angularx-flatpickr';
 
 @NgModule({
   declarations: [
-    NavbarComponent,
     FooterComponent,
     HeaderComponent,
     LayoutComponent,
-    SharedComponent,
-    TopSliderComponent,
-    TopMenuComponent,
-    HomeGameSlidersComponent
+    SidebarComponent,
+    AddEditSidebarComponent,
+    AddressFormatPipe,
+    MinutesToHoursPipe
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    NgxChartsModule,
+    NgbModule,
+    FlatpickrModule
   ],
   exports: [
-    NavbarComponent,
-    SharedComponent,
     FormsModule,
     ReactiveFormsModule,
+    NgxChartsModule,
+    NgbModule,
+    FlatpickrModule,
+
     HeaderComponent,
     FooterComponent,
-    TopSliderComponent,
-    TopMenuComponent,
-    HomeGameSlidersComponent
+    SidebarComponent,
+    AddEditSidebarComponent,
+
+    AddressFormatPipe,
+    MinutesToHoursPipe
+  ],
+  providers: [
+    NgbActiveModal
   ]
 })
 export class SharedModule { }
