@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { Constants } from './API-URL/contants';
 import { SharedModule } from './shared/shared.module';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 
 
@@ -26,7 +27,8 @@ import { SharedModule } from './shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    OAuthModule.forRoot()
   ],
   exports: [
 
