@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-angular-forms',
@@ -30,8 +31,12 @@ export class AngularFormsComponent implements OnInit {
     postalCode: '380060'
   }
 
+  // ngb date picker
+  singleDate = new Date();
+  dateRange = {}
   constructor(
     private _formBuilder: FormBuilder,
+    private calendar: NgbCalendar // ngb ref
   ) { }
 
   ngOnInit(): void {
@@ -65,6 +70,38 @@ export class AngularFormsComponent implements OnInit {
       console.log('Template driven form submitted successfully');
 
     }
+  }
+
+
+  /**
+   * on switch toggle
+   * @param event 
+   */
+  onswitchToggle(event: any) {
+    console.log(event.target.checked);
+
+  }
+
+  /**
+   * on change range
+   * @param event 
+   */
+  onChangeRange(event: any) {
+    console.log(event.target.value);
+
+  }
+
+  /**
+   * on change ngb datepicker value
+   * @param event 
+   */
+  onSelectDate(event: any) {
+    console.log(event);
+
+  }
+
+  flatpickrChange(event: any) {
+    debugger
   }
 
 }

@@ -4,7 +4,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// import { NavbarComponent } from './shared/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -13,13 +12,12 @@ import { SharedModule } from './shared/shared.module';
 import { Globals } from './globals';
 import { RoleAccessControl } from './common/role-access-control/role-access-control.service';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
-
+import { FlatpickrModule } from 'angularx-flatpickr';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    // NavbarComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +27,8 @@ import { JwtInterceptor } from './core/helpers/jwt.interceptor';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    SharedModule
+    SharedModule,
+    FlatpickrModule.forRoot()
   ],
   exports: [
 

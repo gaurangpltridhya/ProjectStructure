@@ -29,7 +29,7 @@ export class SidebarComponent implements OnInit {
         // access: (this.access.includes('dashboard') // used for role access control
       },
       {
-        label: 'Forms',
+        label: 'Forms/Elements',
         icon: '',
         link: 'forms',
         // access: (this.access.includes('forms')

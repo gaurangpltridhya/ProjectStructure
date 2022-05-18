@@ -12,6 +12,8 @@ import { AddEditSidebarComponent } from '../common/add-edit-sidebar/add-edit-sid
 import { AddressFormatPipe } from '../common/pipes/address-format.pipe';
 import { MinutesToHoursPipe } from '../common/pipes/minutes-to-hours.pipe';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { FlatpickrModule } from 'angularx-flatpickr';
 
 @NgModule({
   declarations: [
@@ -28,18 +30,27 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    NgxChartsModule
+    NgxChartsModule,
+    NgbModule,
+    FlatpickrModule
   ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
+    NgxChartsModule,
+    NgbModule,
+    FlatpickrModule,
+
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
     AddEditSidebarComponent,
+
     AddressFormatPipe,
-    MinutesToHoursPipe,
-    NgxChartsModule
+    MinutesToHoursPipe
+  ],
+  providers: [
+    NgbActiveModal
   ]
 })
 export class SharedModule { }

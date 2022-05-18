@@ -7,6 +7,9 @@
 * License: https://bootstrapmade.com/license/
 */
 
+/** angularx-flatpickr **/
+@import 'flatpickr/dist/flatpickr.css';
+
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -1301,6 +1304,22 @@ h6 {
         width: 100%;
         height: 100%;
     }
+}
+
+.dt-picker {
+    position: relative;
+
+    .flatpickr-input[readonly=readonly] {
+        background-color: #ffff
+    }
+
+    .merge-cal-ico {
+        position: absolute;
+        position: absolute;
+        top: 30%;
+        right: 20px;
+    }
+
 }
 
 /******************************************************************* below are custom css end  ******************************************************************/
