@@ -12,4 +12,12 @@ export class TablesComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+  /**
+   * on page change event
+   * @param event 
+   */
+  onPageChange(event: any) {
+
+  }
 }

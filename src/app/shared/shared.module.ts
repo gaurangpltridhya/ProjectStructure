@@ -15,7 +15,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { AutoCompleteModule } from 'primeng/autocomplete';
-
+import { InputMaskModule } from 'primeng/inputmask';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     NgxChartsModule,
     NgbModule,
     FlatpickrModule,
-    AutoCompleteModule
+    AutoCompleteModule,
+    InputMaskModule,
+    PaginatorModule
   ],
   exports: [
     FormsModule,
@@ -44,6 +47,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     NgbModule,
     FlatpickrModule,
     AutoCompleteModule,
+    InputMaskModule,
+    PaginatorModule,
 
     HeaderComponent,
     FooterComponent,

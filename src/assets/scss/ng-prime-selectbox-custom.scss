@@ -238,3 +238,12 @@ p-chips.p-chips .ui-chips>ul.ui-inputtext {
 body .ui-autocomplete.ui-autocomplete-multiple .ui-autocomplete-multiple-container:not(.ui-state-disabled).ui-state-focus {
   box-shadow: 0 0 0 0.1em #5369f8;
 }
+
+input.p-inputtext {
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  width: 100%;
+  border: 1px solid #e2e7f1;
+  border-radius: 0.25rem;
+  color: #495057;
+}

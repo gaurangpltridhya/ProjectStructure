@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary mr-1">Submit</button>
+                            <button type="submit" class="btn btn-primary m-r-10">Submit</button>
                             <button type="reset" class="btn btn-secondary">Reset</button>
                         </div>
                     </form><!-- End Horizontal Form -->
@@ -122,7 +122,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary m-r-10">Submit</button>
                             <button type="reset" class="btn btn-secondary">Reset</button>
                         </div>
                     </form><!-- End Multi Columns Form -->
@@ -157,7 +157,7 @@
                             <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary m-r-10">Submit</button>
                             <button type="reset" class="btn btn-secondary">Reset</button>
                         </div>
                     </form><!-- Vertical Form -->
@@ -196,7 +196,7 @@
                             <input type="text" class="form-control" placeholder="Zip">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary m-r-10">Submit</button>
                             <button type="reset" class="btn btn-secondary">Reset</button>
                         </div>
                     </form><!-- End No Labels Form -->
@@ -261,7 +261,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary m-r-10">Submit</button>
                             <button type="reset" class="btn btn-secondary">Reset</button>
                         </div>
                     </form><!-- End floating Labels Form -->
@@ -269,6 +269,49 @@
                 </div>
             </div>
 
+
+
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Input Mask</h5>
+
+                    <form class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label">Basic</label>
+                            <p-inputMask mask="99-999999" placeholder="99-999999"></p-inputMask>
+                        </div>
+
+                        <div class="col-12">
+                            <label>SSN</label>
+                            <p-inputMask mask="999-99-9999" placeholder="999-99-9999"></p-inputMask>
+                        </div>
+
+                        <div class="col-12">
+                            <label>Date</label>
+                            <p-inputMask mask="99/99/9999" placeholder="99/99/9999" slotChar="mm/dd/yyyy"></p-inputMask>
+                        </div>
+
+                        <div class="col-12">
+                            <label>Phone</label>
+                            <p-inputMask mask="(999) 999-9999" placeholder="(999) 999-9999">
+                            </p-inputMask>
+                        </div>
+
+                        <div class="col-12">
+                            <label>Phone Ext</label>
+                            <p-inputMask mask="(999) 999-9999? x99999" placeholder="(999) 999-9999? x99999">
+                            </p-inputMask>
+                        </div>
+
+                        <div class="col-12">
+                            <label>Serial Number</label>
+                            <p-inputMask mask="a*-999-a999" placeholder="a*-999-a999"></p-inputMask>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </section>
