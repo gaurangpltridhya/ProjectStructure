@@ -7,8 +7,6 @@ export type Methods = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
 
 @Injectable({ providedIn: 'root' })
 export class BaseApiService {
-    baseUrl = environment.baseApiURL;
-    apiEndpoint!: string;
     headers = new HttpHeaders({
         'Content-Type': 'application/json'
     });
@@ -16,7 +14,7 @@ export class BaseApiService {
 
     protected makeRequest<T>(method: Methods, endpoint: any, params: any, responseType?: 'json', headers?: HttpHeaders): Observable<T> {
         const urlParams = this.getUrlParams(params, method);
-        const url = `${this.baseUrl}/${this.apiEndpoint}/${endpoint}${urlParams}`;
+        const url = `${endpoint}${urlParams}`;
 
         const options = {
             body: params,
