@@ -9,6 +9,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Constants } from './API-URL/contants';
 import { SharedModule } from './shared/shared.module';
+import { OAuthModule } from 'angular-oauth2-oidc';
+
 import { Globals } from './globals';
 import { RoleAccessControl } from './common/role-access-control/role-access-control.service';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
@@ -28,17 +30,13 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
+    OAuthModule.forRoot(),
     FlatpickrModule.forRoot()
   ],
   exports: [
 
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor,
-      multi: true
-    },
     Constants,
     Globals,
     RoleAccessControl

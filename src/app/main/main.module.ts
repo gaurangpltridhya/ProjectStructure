@@ -8,6 +8,7 @@ import { AngularFormsComponent } from './angular-forms/angular-forms.component';
 import { TablesComponent } from './tables/tables.component';
 import { ChartsComponent } from './charts/charts.component';
 import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
     AngularFormsComponent,
     TablesComponent,
     ChartsComponent,
-    FormLayoutsComponent
+    FormLayoutsComponent,
+    UserComponent
   ],
   imports: [
     CommonModule,
