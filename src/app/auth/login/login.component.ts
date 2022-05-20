@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
     }
 
     if (this.loginForm.value.password === 'admin') { //TODO: remove this if condition when API implemented
-      localStorage.setItem('token', 'token');
+      localStorage.setItem('access_token', 'token');
       this.router.navigate(['/']);
     }
 

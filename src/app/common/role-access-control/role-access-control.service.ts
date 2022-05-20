@@ -12,7 +12,7 @@ export class RoleAccessControl implements CanActivate {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot) {
-    if (localStorage.getItem('token') == undefined || localStorage.getItem('token') === '') {
+    if (localStorage.getItem('access_token') == undefined || localStorage.getItem('access_token') === '') {
       this.router.navigate(['login']);
     }
     this.access = this.auth.getUserAccess();

@@ -47,7 +47,7 @@ export class AuthService {
     return this._httpClient.put(LOGIN_URL, data).pipe(
       map((res: any) => {
         if (res?.data && res?.data?.result?.loggedIn) {
-          localStorage.setItem('token', res?.data?.result?.loggedIn);
+          localStorage.setItem('access_token', res?.data?.result?.loggedIn);
           localStorage.setItem('currentUser', JSON.stringify(res.data.user));
 
           this.globals.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
