@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularFormsComponent } from './angular-forms/angular-forms.component';
 import { TablesComponent } from './tables/tables.component';
 import { ChartsComponent } from './charts/charts.component';
+import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,14 @@ const routes: Routes = [
     component: AngularFormsComponent,
     data: {
       module: 'forms'
+    },
+    // canActivate: [RoleAccessControl],
+  },
+  {
+    path: 'form-layouts',
+    component: FormLayoutsComponent,
+    data: {
+      module: 'forms_layout'
     },
     // canActivate: [RoleAccessControl],
   },

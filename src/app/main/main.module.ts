@@ -7,6 +7,7 @@ import { SharedModule } from '../shared/shared.module';
 import { AngularFormsComponent } from './angular-forms/angular-forms.component';
 import { TablesComponent } from './tables/tables.component';
 import { ChartsComponent } from './charts/charts.component';
+import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ChartsComponent } from './charts/charts.component';
     DashboardComponent,
     AngularFormsComponent,
     TablesComponent,
-    ChartsComponent
+    ChartsComponent,
+    FormLayoutsComponent
   ],
   imports: [
     CommonModule,

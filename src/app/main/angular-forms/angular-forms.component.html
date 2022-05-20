@@ -187,7 +187,40 @@
                                 <input type="time" class="form-control">
                             </div>
                         </div>
-
+                        <div class="row mb-3">
+                            <label for="inputTime" class="col-sm-2 col-form-label">Autocomplete(<a target="_blank"
+                                    href="https://www.primefaces.org/primeng/">Ex</a>)</label>
+                            <div class="col-sm-10">
+                                <p-autoComplete #autoCompleteCustomer class="single" name="referred"
+                                    [(ngModel)]="customerName" [suggestions]="customerList" [forceSelection]="true"
+                                    [completeOnFocus]="true" [autoHighlight]="true"
+                                    (onClear)="clearItem(autoCompleteCustomer);"
+                                    (completeMethod)="getCustomerSortList($event)" field="name"
+                                    placeholder="Customer Name">
+                                    <ng-template let-referred pTemplate="item">
+                                        <div class="ui-helper-clearfix p-b-5">
+                                            <div class="f-12 font-weight-bold">{{referred?.name}}</div>
+                                        </div>
+                                    </ng-template>
+                                </p-autoComplete>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="inputTime" class="col-sm-2 col-form-label">Autocomplete Multiselect(<a
+                                    target="_blank" href="https://www.primefaces.org/primeng/">Ex</a>)</label>
+                            <div class="col-sm-10">
+                                <p-autoComplete #autoCompleteTeamMember class="multiple" name="teamMemberAuto"
+                                    #teamMemberAuto="ngModel" [(ngModel)]="selectedCustomers"
+                                    [suggestions]="customerList" [forceSelection]="true" [completeOnFocus]="true"
+                                    [autoHighlight]="true" placeholder="Team Members" field="name" [multiple]="true">
+                                    <ng-template let-referred pTemplate="item">
+                                        <div class="ui-helper-clearfix p-b-5">
+                                            <div class="f-12 font-weight-bold">{{referred?.name}}</div>
+                                        </div>
+                                    </ng-template>
+                                </p-autoComplete>
+                            </div>
+                        </div>
                         <div class="row mb-3">
                             <label for="inputColor" class="col-sm-2 col-form-label">Color Picker</label>
                             <div class="col-sm-10">
