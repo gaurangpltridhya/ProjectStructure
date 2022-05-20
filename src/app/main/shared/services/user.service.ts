@@ -17,7 +17,6 @@ export class UserService extends BaseApiService {
 
   constructor(http: HttpClient) { 
     super(http);
-    this.apiEndpoint = 'user';
   }
 
   loadUserProfile(): Observable<ResponseBeanModel> {
