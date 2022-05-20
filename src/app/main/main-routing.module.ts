@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularFormsComponent } from './angular-forms/angular-forms.component';
 import { TablesComponent } from './tables/tables.component';
 import { ChartsComponent } from './charts/charts.component';
+import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { UserComponent } from './user/user.component';
 import { UserResolver } from './shared/resolvers/user.resolver';
 
@@ -32,6 +33,14 @@ const routes: Routes = [
     // canActivate: [RoleAccessControl],
   },
   {
+    path: 'form-layouts',
+    component: FormLayoutsComponent,
+    data: {
+      module: 'forms_layout'
+    },
+    // canActivate: [RoleAccessControl],
+  },
+  {
     path: 'charts',
     component: ChartsComponent,
     data: {
@@ -49,7 +58,7 @@ const routes: Routes = [
   },
   {
     path: 'user',
-    resolve:{
+    resolve: {
       user: UserResolver
     },
     component: UserComponent

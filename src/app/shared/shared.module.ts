@@ -14,6 +14,8 @@ import { MinutesToHoursPipe } from '../common/pipes/minutes-to-hours.pipe';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     RouterModule,
     NgxChartsModule,
     NgbModule,
-    FlatpickrModule
+    FlatpickrModule,
+    AutoCompleteModule
   ],
   exports: [
     FormsModule,
@@ -40,6 +43,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     NgxChartsModule,
     NgbModule,
     FlatpickrModule,
+    AutoCompleteModule,
 
     HeaderComponent,
     FooterComponent,

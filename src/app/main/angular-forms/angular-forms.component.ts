@@ -34,6 +34,20 @@ export class AngularFormsComponent implements OnInit {
   // ngb date picker
   singleDate = new Date();
   dateRange = {}
+
+  // p-autocomplete
+  customerName: any = {};
+  customerList: Array<any> = [
+    { name: 'Ved', _id: 1 },
+    { name: 'Emma', _id: 2 },
+    { name: 'Jorden', _id: 3 },
+    { name: 'Josef', _id: 4 },
+    { name: 'Vyom', _id: 5 },
+  ]
+  // p-autocomplete multiselect
+  selectedCustomers: Array<any> = [];
+
+
   constructor(
     private _formBuilder: FormBuilder,
     private calendar: NgbCalendar // ngb ref
@@ -100,8 +114,36 @@ export class AngularFormsComponent implements OnInit {
 
   }
 
+  /**
+   * flat picker change event
+   * @param event 
+   */
   flatpickrChange(event: any) {
     debugger
+  }
+
+  /**
+   * autocomplete on value clear
+   * @param autocomplete 
+   */
+  clearItem(autocomplete: any) {
+    autocomplete.value = '';
+    autocomplete.show();
+  }
+  /**
+   * om type get data reg search
+   * @param event 
+   */
+  getCustomerSortList(event: any) {
+    let filtered: any[] = [];
+    let query = event.query;
+    for (let i = 0; i < this.customerList.length; i++) {
+      let customer = this.customerList[i];
+      if (customer.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+        filtered.push(customer);
+      }
+    }
+    this.customerList = filtered;
   }
 
 }

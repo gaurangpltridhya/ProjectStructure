@@ -35,6 +35,12 @@ export class SidebarComponent implements OnInit {
         // access: (this.access.includes('forms')
       },
       {
+        label: 'Form Layouts',
+        icon: '',
+        link: 'form-layouts',
+        // access: (this.access.includes('forms')
+      },
+      {
         label: 'Charts',
         icon: '',
         link: 'charts',
