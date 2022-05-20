@@ -4,6 +4,7 @@ import { catchError, map, Observable, throwError } from 'rxjs';
 import { LOGIN_URL, OTP_VERIFY_RESET_PASSWORD, REGISTER_EMAIL_CHECK, REGISTER_URL, VERIFY_EMAIL_FORGOT_PASSWORD } from '../API-URL/contants';
 import { Globals } from '../globals';
 import { User } from '../shared/user.model';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class AuthService {
 
   constructor(
     private _httpClient: HttpClient,
-    private globals: Globals
+    private globals: Globals,
+    private router: Router
   ) { }
 
 
@@ -66,8 +68,8 @@ export class AuthService {
   }
 
   getAuthStatus(): any {
-    if (localStorage.getItem('token')) {
-      let token: any = localStorage.getItem('token');
+    if (localStorage.getItem('access_token')) {
+      let token: any = localStorage.getItem('access_token');
       if (token) {
         return true;
       }
@@ -147,5 +149,14 @@ export class AuthService {
     )
 
 
+  }
+
+  /**
+   * logout 
+   * @returns 
+   */
+  logout(): void{
+    localStorage.removeItem('access_token');
+    this.router.navigate(['/auth/login'])
   }
 }

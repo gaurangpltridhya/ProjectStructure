@@ -37,11 +37,6 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor,
-      multi: true
-    },
     Constants,
     Globals,
     RoleAccessControl

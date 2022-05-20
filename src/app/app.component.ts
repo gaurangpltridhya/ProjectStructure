@@ -26,18 +26,6 @@ export class AppComponent {
     ) { }
   ngOnInit(): void {
     this.oauthService.configure(this.authCodeFlowConfig);
-    // this.oauthService.tokenValidationHandler = new JwksValidationHandler();
-    this.oauthService.loadDiscoveryDocument().then(() => {
-      this.oauthService.tryLoginImplicitFlow(). then(() => {
-        if(this.oauthService.hasValidAccessToken()){
-          console.log('28 access token', this.oauthService.getAccessToken());
-          localStorage.setItem('token', this.oauthService.getAccessToken());
-        } else {
-          localStorage.removeItem('token');
-          this.router.navigate(['/auth']);
-        }
-      })
-    });
   }
   openDialog() {
     this.dialog.open(LoginComponent);

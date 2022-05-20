@@ -5,11 +5,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularFormsComponent } from './angular-forms/angular-forms.component';
 import { TablesComponent } from './tables/tables.component';
 import { ChartsComponent } from './charts/charts.component';
+import { UserComponent } from './user/user.component';
+import { UserResolver } from './shared/resolvers/user.resolver';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'user',
     pathMatch: 'full',
   },
   {
@@ -44,7 +46,15 @@ const routes: Routes = [
       module: 'tables'
     },
     // canActivate: [RoleAccessControl],
-  }
+  },
+  {
+    path: 'user',
+    resolve:{
+      user: UserResolver
+    },
+    component: UserComponent
+    // canActivate: [RoleAccessControl],
+  },
 ];
 
 @NgModule({
