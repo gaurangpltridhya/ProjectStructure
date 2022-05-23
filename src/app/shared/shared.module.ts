@@ -17,6 +17,7 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { InputMaskModule } from 'primeng/inputmask';
 import { PaginatorModule } from 'primeng/paginator';
+import { CustomTooltipDirective } from '../common/custom-tooltip/custom-tooltip.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { PaginatorModule } from 'primeng/paginator';
     SidebarComponent,
     AddEditSidebarComponent,
     AddressFormatPipe,
-    MinutesToHoursPipe
+    MinutesToHoursPipe,
+    CustomTooltipDirective
   ],
   imports: [
     CommonModule,
@@ -54,6 +56,7 @@ import { PaginatorModule } from 'primeng/paginator';
     FooterComponent,
     SidebarComponent,
     AddEditSidebarComponent,
+    CustomTooltipDirective,
 
     AddressFormatPipe,
     MinutesToHoursPipe
