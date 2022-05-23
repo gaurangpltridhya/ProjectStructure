@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { CommonService } from 'src/app/common/common.service';
 
 @Component({
   selector: 'app-angular-forms',
@@ -50,7 +51,8 @@ export class AngularFormsComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private calendar: NgbCalendar // ngb ref
+    private calendar: NgbCalendar, // ngb ref,
+    public _commonService: CommonService
   ) { }
 
   ngOnInit(): void {
@@ -144,6 +146,15 @@ export class AngularFormsComponent implements OnInit {
       }
     }
     this.customerList = filtered;
+  }
+
+
+  /**
+   * update count of notification using observable
+   * manage notification update on btn click
+   */
+  pushNotification() {
+    this._commonService.updateNotification(true);
   }
 
 }
