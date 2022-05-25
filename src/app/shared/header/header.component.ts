@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { LoginComponent } from 'src/app/auth/login/login.component';
 import { RegisterComponent } from 'src/app/auth/register/register.component';
@@ -16,6 +17,8 @@ export class HeaderComponent implements OnInit {
   userSelectedLauguage: string = '';
   notificationCount: number = 1;
 
+  private subscriptions: Subscription[] = [];
+
   constructor(
     public dialog: MatDialog,
     private auth: AuthService,
@@ -24,9 +27,19 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this._commonService.pushNotification.subscribe((res: any) => {
+    const subject = this._commonService.pushNotification.subscribe((res: any) => {
       this.notificationCount++;
-    })
+    });
+    this.subscriptions.push(subject);
+  }
+
+
+  ngOnDestroy(): void {
+    if (this.subscriptions.length > 0) { // unsubscribe all subscription
+      this.subscriptions.forEach(sub => {
+        sub.unsubscribe();
+      });
+    }
   }
 
 }
