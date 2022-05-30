@@ -130,17 +130,17 @@ p-calendar .p-calendar.ui-calendar {
 
 // input tag chips
 
-p-chips .ui-chips>ul.ui-inputtext {
-  display: block;
-}
+// p-chips .ui-chips>ul.ui-inputtext {
+//   display: block;
+// }
 
-p-chips .ui-inputtext {
-  border: 1px solid #cccccc;
-}
+// p-chips .ui-inputtext {
+//   border: 1px solid #cccccc;
+// }
 
-p-chips .ui-chips>ul.ui-inputtext:not(.ui-state-disabled):hover {
-  border: 1px solid #cccccc;
-}
+// p-chips .ui-chips>ul.ui-inputtext:not(.ui-state-disabled):hover {
+//   border: 1px solid #cccccc;
+// }
 
 
 /* ng prime auto complete start */
@@ -221,18 +221,18 @@ p-fileUpload .ui-button {
 
 
 // ng chips design
-p-chips.p-chips .ui-chips>ul.ui-inputtext {
-  // padding: unset;
-  min-height: calc(1.5em + 0.75rem + 2px);
+// p-chips.p-chips .ui-chips>ul.ui-inputtext {
+//   // padding: unset;
+//   min-height: calc(1.5em + 0.75rem + 2px);
 
-  .ui-chips-input-token {
+//   .ui-chips-input-token {
 
-    // padding: unset;
-    .form-control {
-      height: unset;
-    }
-  }
-}
+//     // padding: unset;
+//     .form-control {
+//       height: unset;
+//     }
+//   }
+// }
 
 
 body .ui-autocomplete.ui-autocomplete-multiple .ui-autocomplete-multiple-container:not(.ui-state-disabled).ui-state-focus {
@@ -246,4 +246,23 @@ input.p-inputtext {
   border: 1px solid #e2e7f1;
   border-radius: 0.25rem;
   color: #495057;
+}
+
+// p-chpis css
+.p-chips {
+  width: 100%;
+
+  .p-chips-multiple-container {
+    width: 100%;
+
+
+    .p-chips-input-token {
+      padding: 0px;
+    }
+
+    .p-chips-token {
+      margin: 5px 10px;
+      padding: 0rem 0.75rem;
+    }
+  }
 }

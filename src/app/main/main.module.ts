@@ -9,6 +9,7 @@ import { TablesComponent } from './tables/tables.component';
 import { ChartsComponent } from './charts/charts.component';
 import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { UserComponent } from './user/user.component';
+import { CommonElementsComponent } from './common-elements/common-elements.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { UserComponent } from './user/user.component';
     TablesComponent,
     ChartsComponent,
     FormLayoutsComponent,
-    UserComponent
+    UserComponent,
+    CommonElementsComponent
   ],
   imports: [
     CommonModule,

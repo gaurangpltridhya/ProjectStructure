@@ -1,0 +1,62 @@
+<section class="section">
+    <div class="row mb-3">
+        <!-- sliders for price range -->
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mt-4">
+                        <div class="col-12 mb-3 f-18">
+                            Range Sliders
+                        </div>
+                        <div class="col-12 mb-3">
+                            Input: {{basicSliderVal}}
+                            <p-slider [(ngModel)]="basicSliderVal"></p-slider>
+                        </div>
+                        <div class="col-12 mb-3">
+                            Step: {{basicSliderValStep}}
+                            <p-slider [(ngModel)]="basicSliderValStep" [step]="20"></p-slider>
+                        </div>
+                        <div class="col-12 mb-3">
+                            Range: {{basicSliderValRange}}
+                            <p-slider [(ngModel)]="basicSliderValRange" [range]="true"></p-slider>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- select btns -->
+        <div class="col-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mt-4">
+                        <div class="col-12 mb-3 f-18">
+                            Select Button
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label>Single Selection</label>
+                            <p-selectButton [options]="stateOptions" [(ngModel)]="singleSelectionbtn"
+                                optionLabel="label" optionValue="value"></p-selectButton>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label>Multi Selection</label>
+                            <p-selectButton [options]="paymentOptions" [(ngModel)]="multipleselectionBtn"
+                                [multiple]="true" optionLabel="name" optionValue="value"></p-selectButton>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label>Custom Template</label>
+                            <p-selectButton [options]="justifyOptions" [(ngModel)]="customTemplateBtns"
+                                optionLabel="icon">
+                                <ng-template let-item>
+                                    {{item.icon}}
+                                </ng-template>
+                            </p-selectButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>

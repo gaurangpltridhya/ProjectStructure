@@ -8,6 +8,7 @@ import { ChartsComponent } from './charts/charts.component';
 import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { UserComponent } from './user/user.component';
 import { UserResolver } from './shared/resolvers/user.resolver';
+import { CommonElementsComponent } from './common-elements/common-elements.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,14 @@ const routes: Routes = [
     //TODO: use below code when project have multiple roles
     data: {
       module: 'dashboard'
+    },
+    // canActivate: [RoleAccessControl],
+  },
+  {
+    path: 'common-elements',
+    component: CommonElementsComponent,
+    data: {
+      module: 'common-elements'
     },
     // canActivate: [RoleAccessControl],
   },

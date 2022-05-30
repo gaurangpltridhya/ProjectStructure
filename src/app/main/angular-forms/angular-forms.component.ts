@@ -48,6 +48,12 @@ export class AngularFormsComponent implements OnInit {
   // p-autocomplete multiselect
   selectedCustomers: Array<any> = [];
 
+  // p-chips
+  chipList: Array<any> = [];
+
+  // ng select
+  ngSelectedCustomer: string = '';
+  ngSelectedCustomerList: Array<any> = [];
 
   constructor(
     private _formBuilder: FormBuilder,

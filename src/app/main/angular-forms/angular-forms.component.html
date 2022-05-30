@@ -224,6 +224,13 @@
                             </div>
                         </div>
                         <div class="row mb-3">
+                            <label for="inputTime" class="col-sm-2 col-form-label">Chips(<a target="_blank"
+                                    href="https://www.primefaces.org/primeng/chips">Ex</a>)</label>
+                            <div class="col-sm-10">
+                                <p-chips [(ngModel)]="chipList" name="chips" placeholder="Chips"></p-chips>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
                             <label for="inputColor" class="col-sm-2 col-form-label">Color Picker</label>
                             <div class="col-sm-10">
                                 <input type="color" class="form-control form-control-color" id="exampleColorInput"
@@ -302,6 +309,23 @@
                             </div>
                         </div>
 
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label">NG Select (<a target="_blank"
+                                    href="https://www.npmjs.com/package/%40ng-select/ng-select">Ex</a>)</label>
+                            <div class="col-sm-10">
+                                <ng-select [items]="customerList" bindLabel="name" bindValue="_id" name="positions"
+                                    #positions="ngModel" [(ngModel)]="ngSelectedCustomer" placeholder="Select Customer"
+                                    notFoundText="No Customer found."></ng-select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label">NG Multi Select</label>
+                            <div class="col-sm-10">
+                                <ng-select [items]="customerList" bindLabel="name" bindValue="_id" [multiple]="true"
+                                    name="positions" #positions="ngModel" [(ngModel)]="ngSelectedCustomerList"
+                                    placeholder="Select Customer" notFoundText="No Customer found."></ng-select>
+                            </div>
+                        </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">Multi Select</label>
                             <div class="col-sm-10">
