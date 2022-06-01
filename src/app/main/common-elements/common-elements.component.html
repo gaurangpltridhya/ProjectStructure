@@ -58,5 +58,33 @@
         </div>
     </div>
 
+    <div class="row mb-3">
+        <!-- ngx drag and drop -->
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mt-4">
+                        <div class="col-12 mb-3 f-18">
+                            Drag and Drop Feature
+                        </div>
+                        <div class="col-6 border" dndDropzone (dndDrop)="onDropAllDT($event)">
+                            <div class="drag-data" *ngFor="let data of dragDropDataList" [dndDraggable]="data"
+                                [dndEffectAllowed]="draggable.effectAllowed" [dndDisableIf]="draggable.disable"
+                                (dndStart)="onDragStart($event)">
+                                {{data}}
+                            </div>
+                        </div>
+                        <div class="col-6 border" dndDropzone (dndDrop)="onDropBlnkDT($event)">
+                            <div class="drag-data" *ngFor="let data of droppedData" [dndDraggable]="data"
+                                [dndEffectAllowed]="draggable.effectAllowed" [dndDisableIf]="draggable.disable"
+                                (dndStart)="onDragStart($event)">
+                                {{data}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </section>

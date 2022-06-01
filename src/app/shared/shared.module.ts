@@ -21,6 +21,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { RatingModule } from 'primeng/rating';
 import { RippleModule } from 'primeng/ripple';
 import { AgmCoreModule } from '@agm/core';
+import { DndModule } from 'ngx-drag-drop';
+
 // components
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -70,7 +72,8 @@ import { CustomTooltipDirective } from '../common/custom-tooltip/custom-tooltip.
     DropdownModule,
     DialogModule,
     InputTextModule,
-    AgmCoreModule
+    AgmCoreModule,
+    DndModule
   ],
   exports: [
     FormsModule,
@@ -94,6 +97,7 @@ import { CustomTooltipDirective } from '../common/custom-tooltip/custom-tooltip.
     DialogModule,
     InputTextModule,
     AgmCoreModule,
+    DndModule,
 
     HeaderComponent,
     FooterComponent,

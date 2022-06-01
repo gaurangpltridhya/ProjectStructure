@@ -33,9 +33,46 @@ export class CommonElementsComponent implements OnInit {
     { icon: 'align-justify', justify: 'Justify' }
   ];
 
+  // drag and drop feature
+  draggable: any = {
+    // note that data is handled with JSON.stringify/JSON.parse
+    // only set simple data or POJO's as methods will be lost 
+    // data: "myDragData",
+    effectAllowed: "copyMove",
+    disable: false,
+    handle: false
+  };
+
+  dragDropDataList: Array<any> = ['Football', 'Cricket', 'Hockey', 'Baseball'];
+  droppedData: Array<any> = [];
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  /**
+   * on drag start call
+   * @param event 
+   */
+  onDragStart(event: any) {
+
+  }
+
+  /**
+   * push data to all data available for drag
+   * @param event 
+   */
+  onDropAllDT(event: any) {
+    this.dragDropDataList.push(event.data);
+  }
+
+  /**
+   * on drop call
+   * @param event 
+   */
+  onDropBlnkDT(event: any) {
+    this.droppedData.push(event.data);
   }
 
 }
