@@ -9,6 +9,7 @@ import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { UserComponent } from './user/user.component';
 import { UserResolver } from './shared/resolvers/user.resolver';
 import { CommonElementsComponent } from './common-elements/common-elements.component';
+import { DataViewComponent } from './data-view/data-view.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,14 @@ const routes: Routes = [
     component: FormLayoutsComponent,
     data: {
       module: 'forms_layout'
+    },
+    // canActivate: [RoleAccessControl],
+  },
+  {
+    path: 'data-view',
+    component: DataViewComponent,
+    data: {
+      module: 'data-view'
     },
     // canActivate: [RoleAccessControl],
   },

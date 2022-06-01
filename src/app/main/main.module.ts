@@ -10,6 +10,7 @@ import { ChartsComponent } from './charts/charts.component';
 import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { UserComponent } from './user/user.component';
 import { CommonElementsComponent } from './common-elements/common-elements.component';
+import { DataViewComponent } from './data-view/data-view.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { CommonElementsComponent } from './common-elements/common-elements.compo
     ChartsComponent,
     FormLayoutsComponent,
     UserComponent,
-    CommonElementsComponent
+    CommonElementsComponent,
+    DataViewComponent
   ],
   imports: [
     CommonModule,

@@ -12,6 +12,14 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { InputMaskModule } from 'primeng/inputmask';
 import { SliderModule } from 'primeng/slider';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { DataViewModule } from 'primeng/dataview';
+import { ButtonModule } from 'primeng/button';
+import { PanelModule } from 'primeng/panel';
+import { DropdownModule } from 'primeng/dropdown';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { RatingModule } from 'primeng/rating';
+import { RippleModule } from 'primeng/ripple';
 
 // components
 import { FooterComponent } from './footer/footer.component';
@@ -53,7 +61,15 @@ import { CustomTooltipDirective } from '../common/custom-tooltip/custom-tooltip.
     ChipsModule,
     NgSelectModule,
     SliderModule,
-    SelectButtonModule
+    SelectButtonModule,
+    DataViewModule,
+    RatingModule,
+    RippleModule,
+    ButtonModule,
+    PanelModule,
+    DropdownModule,
+    DialogModule,
+    InputTextModule
   ],
   exports: [
     FormsModule,
@@ -68,6 +84,15 @@ import { CustomTooltipDirective } from '../common/custom-tooltip/custom-tooltip.
     NgSelectModule,
     SliderModule,
     SelectButtonModule,
+    DataViewModule,
+    RatingModule,
+    RippleModule,
+    ButtonModule,
+    PanelModule,
+    DropdownModule,
+    DialogModule,
+    InputTextModule,
+
 
     HeaderComponent,
     FooterComponent,
