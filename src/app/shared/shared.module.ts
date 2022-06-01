@@ -20,7 +20,7 @@ import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { RatingModule } from 'primeng/rating';
 import { RippleModule } from 'primeng/ripple';
-
+import { AgmCoreModule } from '@agm/core';
 // components
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -69,7 +69,8 @@ import { CustomTooltipDirective } from '../common/custom-tooltip/custom-tooltip.
     PanelModule,
     DropdownModule,
     DialogModule,
-    InputTextModule
+    InputTextModule,
+    AgmCoreModule
   ],
   exports: [
     FormsModule,
@@ -92,7 +93,7 @@ import { CustomTooltipDirective } from '../common/custom-tooltip/custom-tooltip.
     DropdownModule,
     DialogModule,
     InputTextModule,
-
+    AgmCoreModule,
 
     HeaderComponent,
     FooterComponent,

@@ -11,6 +11,7 @@ import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { UserComponent } from './user/user.component';
 import { CommonElementsComponent } from './common-elements/common-elements.component';
 import { DataViewComponent } from './data-view/data-view.component';
+import { AgmMapComponent } from './agm-map/agm-map.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { DataViewComponent } from './data-view/data-view.component';
     FormLayoutsComponent,
     UserComponent,
     CommonElementsComponent,
-    DataViewComponent
+    DataViewComponent,
+    AgmMapComponent
   ],
   imports: [
     CommonModule,

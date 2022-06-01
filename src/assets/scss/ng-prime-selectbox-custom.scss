@@ -266,3 +266,13 @@ input.p-inputtext {
     }
   }
 }
+
+// data view css
+
+app-data-view .p-grid.grid {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 0;
+  margin-left: 0;
+  margin-top: 0;
+}

@@ -1,0 +1,40 @@
+<section class="section">
+    <div class="row mb-3">
+        <!-- sliders for price range -->
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row mt-4">
+                        <div class="col-12 mb-3 f-18">
+                            AGM Map
+                        </div>
+                        <div class="col-12 mb-3">
+                            <agm-map #AgmMap class="h-100-p" [latitude]="mapDefaultCenterCoordinates[0]"
+                                [longitude]="mapDefaultCenterCoordinates[1]" [zoom]="8" [fullscreenControl]="true"
+                                [rotateControl]="true" [zoomControl]="true" [scaleControl]="true"
+                                [streetViewControl]="true" [scrollwheel]="true" (mapReady)="mapReady($event)"
+                                [styles]="customStyle">
+                                <!-- marker -->
+                                <agm-marker [agmFitBounds]="true" [latitude]="mapDefaultCenterCoordinates[0]"
+                                    [longitude]="mapDefaultCenterCoordinates[1]">
+                                    <agm-info-window #iw>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                Info Window
+                                            </div>
+                                        </div>
+                                    </agm-info-window>
+                                </agm-marker>
+                                <!-- circle -->
+                                <agm-circle [latitude]="mapDefaultCenterCoordinates[0]"
+                                    [longitude]="mapDefaultCenterCoordinates[1]" [radius]="50000"
+                                    [fillColor]="circleColor ">
+                                </agm-circle>
+                            </agm-map>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

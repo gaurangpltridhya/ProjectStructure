@@ -10,6 +10,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Constants } from './API-URL/contants';
 import { SharedModule } from './shared/shared.module';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { AgmCoreModule } from '@agm/core';
 
 import { Globals } from './globals';
 import { RoleAccessControl } from './common/role-access-control/role-access-control.service';
@@ -31,7 +32,10 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     HttpClientModule,
     SharedModule,
     OAuthModule.forRoot(),
-    FlatpickrModule.forRoot()
+    FlatpickrModule.forRoot(),
+    AgmCoreModule.forRoot({
+      // apiKey: GOOGLE_API_KEY
+    })
   ],
   exports: [
 

@@ -10,6 +10,7 @@ import { UserComponent } from './user/user.component';
 import { UserResolver } from './shared/resolvers/user.resolver';
 import { CommonElementsComponent } from './common-elements/common-elements.component';
 import { DataViewComponent } from './data-view/data-view.component';
+import { AgmMapComponent } from './agm-map/agm-map.component';
 
 const routes: Routes = [
   {
@@ -55,6 +56,14 @@ const routes: Routes = [
     component: DataViewComponent,
     data: {
       module: 'data-view'
+    },
+    // canActivate: [RoleAccessControl],
+  },
+  {
+    path: 'agm-map',
+    component: AgmMapComponent,
+    data: {
+      module: 'agm-map'
     },
     // canActivate: [RoleAccessControl],
   },

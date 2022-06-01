@@ -53,6 +53,12 @@ export class SidebarComponent implements OnInit {
         // access: (this.access.includes('forms')
       },
       {
+        label: 'AGM Map',
+        icon: '',
+        link: 'agm-map',
+        // access: (this.access.includes('forms')
+      },
+      {
         label: 'Charts',
         icon: '',
         link: 'charts',
