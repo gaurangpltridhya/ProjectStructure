@@ -5,34 +5,54 @@
             <li class="nav-item collaps-main-{{i}}">
                 <!-- without sub menu -->
                 <a *ngIf="!item?.subItems" class="nav-link w-100-p" style="position: relative;"
-                    [routerLinkActive]="['active']" [routerLink]="item?.link" (click)="hideSubItems()">
+                    [routerLinkActive]="['active']" [routerLink]="item?.link">
                     <i class="bi bi-grid"></i>
                     <span>{{item?.label}}</span>
                 </a>
                 <!-- with submenu -->
-                <!-- <a *ngIf="item?.subItems" class="nav-link w-100-p" style="position: relative;"
-                    (click)="showHideChild(i)" [routerLinkActive]="['active']" [routerLink]="item?.link">
+                <a *ngIf="item?.childAvailable" class="nav-link collapsed w-100-p" style="position: relative;"
+                    [routerLinkActive]="['active']" [routerLink]="item?.link"
+                    [attr.data-bs-target]="'#components-nav-' + i" data-bs-toggle="collapse">
                     <i class="bi bi-grid"></i>
                     <span>{{item?.label}}</span>
-                    <i class="fas fa-angle-right float-right nav-arrow" *ngIf="item?.subItems"></i>
+                    <i class="fas fa-angle-right float-right nav-arrow mr-3" *ngIf="item?.subItems"></i>
                 </a>
                 <ng-container *ngIf="item?.subItems">
-                    <ul *ngFor="let item of item?.subItems; let in = index" id="components-nav-{{in}}"
+                    <ul *ngFor="let item of item?.subItems; let in = index" id="components-nav-{{i}}"
                         class="nav-content collapse" data-bs-parent="#sidebar-nav">
                         <li>
-                            <a class="nav-link" [routerLinkActive]="['active']" (click)="manageParent($event,in)"
-                                [routerLink]="item?.link">
+                            <a class="nav-link" [routerLinkActive]="['active-inner']" [routerLink]="item?.link">
                                 <i class="bi bi-grid"></i>
                                 <span>{{item?.label}}</span>
                             </a>
                         </li>
                     </ul>
-                </ng-container> -->
+                </ng-container>
             </li>
         </ng-container>
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i
+                    class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="tables-general.html">
+                        <i class="bi bi-circle"></i><span>General Tables</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="tables-data.html">
+                        <i class="bi bi-circle"></i><span>Data Tables</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
 
     </ul>
+
+
 
 
 

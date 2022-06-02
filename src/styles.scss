@@ -705,7 +705,7 @@ h6 {
     align-items: center;
     font-size: 14px;
     font-weight: 600;
-    color: #4154f1;
+    color: #012970;
     transition: 0.3;
     // background: #f6f9ff;
     padding: 10px 15px;
@@ -714,23 +714,33 @@ h6 {
 
 .sidebar-nav .nav-link {
     &.active {
-        background: #cedeff;
+        background: #e9f0ff;
+        color: #4154f1;
 
         &:hover {
-            background: #cedeff;
+            background: #e9f0ff;
         }
+    }
+
+    &.active-inner {
+        color: #4154f1;
     }
 }
 
 .sidebar-nav .nav-link i {
     font-size: 16px;
     margin-right: 10px;
-    color: #4154f1;
+    color: #012970;
 }
 
 .sidebar-nav .nav-link.collapsed {
     color: #012970;
     background: #fff;
+
+    &.active {
+        background: #e9f0ff;
+        color: #4154f1;
+    }
 }
 
 .sidebar-nav .nav-link.collapsed i {
@@ -751,7 +761,7 @@ h6 {
 }
 
 .sidebar-nav .nav-link .fas.fa-angle-right {
-    margin-right: 0;
+    margin-right: 20px;
     transition: transform 0.2s ease-in-out;
 }
 
