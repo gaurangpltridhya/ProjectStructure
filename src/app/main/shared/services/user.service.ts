@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 import { BaseApiService } from 'src/app/core/api/base-api.service';
 import { ResponseBeanModel } from 'src/app/core/models/response-bean.model';
+import { User } from 'src/app/shared/user.model';
 
 const user = {
     name: 'aa',
@@ -14,6 +15,9 @@ const user = {
 })
 
 export class UserService extends BaseApiService {
+  userChanged = new Subject<User[]>();
+
+  usersData: User[] = [];
 
   constructor(http: HttpClient) { 
     super(http);
@@ -25,5 +29,27 @@ export class UserService extends BaseApiService {
           data: {user},
       })
     // return this.makeRequest('GET', '', {});
+  }
+
+  // add/create user data
+  addUser(user: User){
+    this.usersData.push(user);
+    this.userChanged.next(this.usersData.slice());
+  }
+
+  //get single user data
+  getUser(index: number){
+    return this.usersData[index];
+  }
+
+  // get user create list
+  getUsersList(){
+    return this.usersData.slice();
+  }
+
+  // update user data
+  updateUser(index: number , newUserData: User){
+    this.usersData[index] = newUserData;
+    this.userChanged.next(this.usersData.slice());
   }
 }

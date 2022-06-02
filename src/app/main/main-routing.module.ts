@@ -1,3 +1,5 @@
+import { UserListComponent } from './user/user-list/user-list.component';
+import { AddUserComponent } from './user/add-user/add-user.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RoleAccessControl } from '../common/role-access-control/role-access-control.service';
@@ -88,7 +90,12 @@ const routes: Routes = [
     resolve: {
       user: UserResolver
     },
-    component: UserComponent
+    
+    children: [
+      { path: '', component: UserListComponent},
+      { path: 'add', component: AddUserComponent},
+      { path: 'edit/:id', component: AddUserComponent}
+    ]
     // canActivate: [RoleAccessControl],
   },
 ];

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -8,12 +8,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((response: any) => {
       console.log('15 response', response);
     });
   }
+
+
+  // create / add new user
+  addNewUser(){
+    this.router.navigate(['add'], {relativeTo: this.activatedRoute})
+  }
+
 
 }

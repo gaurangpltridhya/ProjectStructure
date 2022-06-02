@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <button class="btn btn-primary" (click)="addNewUser()">Add User</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">No.</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone No.</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of usersData; let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.mobile}}</td>
+                        <td>{{user.email}}</td>
+                        <!-- <td><span class="badge bg-success">{{user.role}}</span></td> -->
+                        <td><span [ngClass]="user.role == 'Admin' ? 'badge bg-success' : 'badge bg-primary'" >{{user.role}}</span></td>
+                        <td><span class="badge bg-secondary">Active</span></td>
+                        <td>
+                            <button class="btn btn-info m-r-5 ">View</button>
+                            <button class="btn btn-warning m-r-5 " (click)="editUser(i)">Edit</button>
+                            <button class="btn btn-danger m-r-5 ">Delete</button>
+                            <button class="btn btn-primary">Disabled</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
