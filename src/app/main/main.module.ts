@@ -12,6 +12,7 @@ import { UserComponent } from './user/user.component';
 import { CommonElementsComponent } from './common-elements/common-elements.component';
 import { DataViewComponent } from './data-view/data-view.component';
 import { AgmMapComponent } from './agm-map/agm-map.component';
+import { UserAccessComponent } from './user-access/user-access.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AgmMapComponent } from './agm-map/agm-map.component';
     UserComponent,
     CommonElementsComponent,
     DataViewComponent,
-    AgmMapComponent
+    AgmMapComponent,
+    UserAccessComponent
   ],
   imports: [
     CommonModule,
