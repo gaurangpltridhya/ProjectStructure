@@ -50,10 +50,38 @@
                                     <div *ngIf="userFormControls['email'].errors?.['required']">
                                         Email is requried.
                                     </div>
+                                    <div *ngIf="userFormControls['email'].errors?.['email']">
+                                        Email is invalid.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- password -->
+                            <div class="col-6" *ngIf="!editMode">
+                                <label class="form-label">Password</label>
+                                <input type="password" class="form-control" formControlName="password">
+                                <div *ngIf="userFormControls['password'].touched && !userFormControls['password'].valid" class="text-danger">
+                                    <div *ngIf="userFormControls['password'].errors?.['required']">
+                                        Password is requried
+                                    </div>
                                 </div>
                             </div>
 
-                            <!-- role -->
+                            <!-- confirm password -->
+                            <div class="col-6" *ngIf="!editMode">
+                                <label class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" formControlName="confirmPassword">
+                                <div *ngIf="userFormControls['confirmPassword'].touched && !userFormControls['confirmPassword'].valid" class="text-danger">
+                                    <div *ngIf="userFormControls['confirmPassword'].errors?.['required']">
+                                        Password is requried
+                                    </div>
+                                    <div *ngIf="userFormControls['confirmPassword'].errors?.['confirmedValidator']">
+                                        Password and confirm password must be match
+                                    </div>
+                                </div>
+                            </div>
+
+                        <!-- role -->
                             <div class="col-6">
                                 <label class="form-label">Role</label><small class="p-error">*</small>
                                 <select class="form-select" formControlName="role">

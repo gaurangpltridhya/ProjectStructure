@@ -1,3 +1,4 @@
+import { ViewUserComponent } from './user/view-user/view-user.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
 import { NgModule } from '@angular/core';
@@ -94,7 +95,8 @@ const routes: Routes = [
     children: [
       { path: '', component: UserListComponent},
       { path: 'add', component: AddUserComponent},
-      { path: 'edit/:id', component: AddUserComponent}
+      { path: 'edit/:id', component: AddUserComponent},
+      { path: 'view/:id', component: ViewUserComponent},
     ]
     // canActivate: [RoleAccessControl],
   },

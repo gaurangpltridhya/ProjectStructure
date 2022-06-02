@@ -14,6 +14,7 @@ import { DataViewComponent } from './data-view/data-view.component';
 import { AgmMapComponent } from './agm-map/agm-map.component';
 import { AddUserComponent } from './user/add-user/add-user.component';
 import { UserListComponent } from './user/user-list/user-list.component';
+import { ViewUserComponent } from './user/view-user/view-user.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { UserListComponent } from './user/user-list/user-list.component';
     DataViewComponent,
     AgmMapComponent,
     AddUserComponent,
-    UserListComponent
+    UserListComponent,
+    ViewUserComponent
   ],
   imports: [
     CommonModule,

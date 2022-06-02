@@ -7,6 +7,7 @@ export class User {
   role?: any;
   access?: string;
   password?: string;
+  confirmPassword?: string;
   changes?: any;
   fullName?: string;
 }

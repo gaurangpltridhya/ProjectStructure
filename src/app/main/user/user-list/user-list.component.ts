@@ -21,6 +21,7 @@ constructor(private activatedRoute: ActivatedRoute, private router: Router, priv
       this.usersData = userData;
     });
     this.usersData = this.userService.getUsersList();
+    console.log('this.usersData :>> ', this.usersData);
   }
 
   // add new user
@@ -36,6 +37,11 @@ constructor(private activatedRoute: ActivatedRoute, private router: Router, priv
   // delete user
   deleteUser(index: number){
     this.userService.deleteUser(index);
+  }
+
+  // view User
+  viewUser(index: number){
+   this.router.navigate(['view/'+index], {relativeTo: this.activatedRoute}) 
   }
   
   // unsubscribe subscription

@@ -2,6 +2,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../shared/services/user.service';
+import { ConfirmedValidator } from '../shared/confirmed.validator';
 
 @Component({
   selector: 'app-add-user',
@@ -41,24 +42,30 @@ export class AddUserComponent implements OnInit {
     let userMobile: any = '';
     let userEmail: any = '';
     let userRole: any = '';
+    let userPassword: any = '';
+    let userConfirmPassword: any = '';
 
     if(this.editMode){
       const user = this.userService.getUser(this.id);
-      console.log('user :>> ', user);
       userFirstName = user.firstName;
       userLastName = user.lastName;
       userMobile = user.mobile;
       userEmail= user.email;
       userRole= user.role;
+      userPassword = user.password;
+      userConfirmPassword = user.confirmPassword;
     }
 
     this.userForm = this.fb.group({
       firstName: [userFirstName, [Validators.required]],
       lastName: [userLastName, [Validators.required]],
       mobile: [userMobile, [Validators.required, Validators.pattern(this.Mobile)]],
-      email: [userEmail, [Validators.required]],
+      email: [userEmail, [Validators.required, Validators.email]],
       role: [userRole, [Validators.required]],
-    });
+      password: [userPassword,[Validators.required]],
+      confirmPassword: [userConfirmPassword, [Validators.required]]
+    },
+    { validator: ConfirmedValidator('password','confirmPassword')});
   }
 
   // submit button
