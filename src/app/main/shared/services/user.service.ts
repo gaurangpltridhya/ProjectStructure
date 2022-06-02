@@ -52,4 +52,10 @@ export class UserService extends BaseApiService {
     this.usersData[index] = newUserData;
     this.userChanged.next(this.usersData.slice());
   }
+
+  // delete user data
+  deleteUser(index: number){
+    this.usersData.splice(index,1);
+    this.userChanged.next(this.usersData.slice());
+  }
 }

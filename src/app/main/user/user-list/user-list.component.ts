@@ -32,7 +32,13 @@ constructor(private activatedRoute: ActivatedRoute, private router: Router, priv
   editUser(index: number){
     this.router.navigate(['edit/'+ index], {relativeTo: this.activatedRoute})
   }
+
+  // delete user
+  deleteUser(index: number){
+    this.userService.deleteUser(index);
+  }
   
+  // unsubscribe subscription
   ngOnDestroy(): void {
     this.userDataSubscription.unsubscribe();
   }
