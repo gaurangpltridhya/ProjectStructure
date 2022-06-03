@@ -1,63 +1,75 @@
 <div class="container">
+    <div class="row m-b-10">
+        <div class="col-md-12">
+            <button class="btn btn-primary float-right" (click)="addNewUser()">
+                Add User
+            </button>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body table-responsive">
                     <div class="card-title">
-                        <button class="btn btn-primary" (click)="addNewUser()">
-                            Add User
-                        </button>
-                    </div>
-                </div>
-                <div class="card-text">
-                    <div class="row">
-                        <div class="col-12">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">No.</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Phone No.</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Role</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let user of usersData; let i = index">
-                                        <th scope="row">{{ i + 1 }}</th>
-                                        <td>{{ user.firstName }}</td>
-                                        <td>{{ user.mobile }}</td>
-                                        <td>{{ user.email }}</td>
-                                        <!-- <td><span class="badge bg-success">{{user.role}}</span></td> -->
-                                        <td>
-                                            <span [ngClass]="
+                        <h2>User List</h2>
+                        <hr>
+                        <div class="card-text">
+                            <div class="row">
+                                <div class="col-12">
+                                    <table class="table table-striped datatables dt-responsive nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">No.</th>
+                                                <th scope="col">Name</th>
+                                                <th scope="col">Phone No.</th>
+                                                <th scope="col">Email</th>
+                                                <th scope="col">Role</th>
+                                                <th scope="col">Status</th>
+                                                <th scope="col" class="nosort text-center action-th">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                 
+                                            <tr *ngFor="let user of usersData; let i = index">
+                                                <th scope="row">{{ i + 1 }}</th>
+                                                <td>{{ user.firstName }}</td>
+                                                <td>{{ user.mobile }}</td>
+                                                <td>{{ user.email }}</td>
+                                                <!-- <td><span class="badge bg-success">{{user.role}}</span></td> -->
+                                                <td>
+                                                    <span [ngClass]="
                           user.role == 'Admin'
                             ? 'badge bg-success'
                             : 'badge bg-primary'
-                        ">{{ user.role }}</span>
-                                        </td>
-                                        <td><span class="badge bg-secondary">Active</span></td>
-                                        <td>
-                                            <button class="btn m-r-5" (click)="viewUser(i)">
-                                                <i class="fa fa-eye"></i>
-                                            </button>
-                                            <button class="btn m-r-5" (click)="editUser(i)">
-                                                <i class="fa fa-edit"></i>
-                                            </button>
-                                            <button class="btn m-r-5" (click)="deleteUser(i)">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                            <button class="btn"><i class="fa fa-ban"></i></button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        " style="color: white;">{{ user.role }}</span>
+                                                </td>
+                                                <td><span class="badge bg-secondary" style="color: white;">Active</span>
+                                                </td>
+                                                <td class="nosort text-center ">
+                                                    <button class="btn m-r-5" (click)="viewUser(i)">
+                                                        <i class="fa fa-eye" style="color: blue;"></i>
+                                                    </button>
+
+                                                    <button class="btn m-r-5" (click)="editUser(i)">
+                                                        <i class="fa fa-edit" style="color: blue;"></i>
+                                                    </button>
+
+                                                    <button class="btn m-r-5" (click)="deleteUser(i)">
+                                                        <i class="fa fa-trash" style="color: red;"></i>
+                                                    </button>
+                                                    
+                                                    <button class="btn"><i class="fa fa-ban"
+                                                        style="color: blue;"></i></button>
+
+                                                    <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="1"></p-confirmDialog>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>

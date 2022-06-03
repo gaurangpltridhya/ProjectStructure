@@ -30,7 +30,7 @@ import { ViewUserComponent } from './user/view-user/view-user.component';
     AgmMapComponent,
     AddUserComponent,
     UserListComponent,
-    ViewUserComponent
+    ViewUserComponent,
   ],
   imports: [
     CommonModule,

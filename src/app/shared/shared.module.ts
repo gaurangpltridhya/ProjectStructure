@@ -22,6 +22,9 @@ import { RatingModule } from 'primeng/rating';
 import { RippleModule } from 'primeng/ripple';
 import { AgmCoreModule } from '@agm/core';
 import { DndModule } from 'ngx-drag-drop';
+import { MessagesModule } from 'primeng/messages';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 
 // components
 import { FooterComponent } from './footer/footer.component';
@@ -36,6 +39,7 @@ import { MinutesToHoursPipe } from '../common/pipes/minutes-to-hours.pipe';
 
 //directives
 import { CustomTooltipDirective } from '../common/custom-tooltip/custom-tooltip.directive';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -68,12 +72,15 @@ import { CustomTooltipDirective } from '../common/custom-tooltip/custom-tooltip.
     RatingModule,
     RippleModule,
     ButtonModule,
+    MessagesModule,
+    ConfirmDialogModule,
     PanelModule,
     DropdownModule,
     DialogModule,
     InputTextModule,
     AgmCoreModule,
-    DndModule
+    DndModule,
+    ToastrModule.forRoot()
   ],
   exports: [
     FormsModule,
@@ -92,12 +99,15 @@ import { CustomTooltipDirective } from '../common/custom-tooltip/custom-tooltip.
     RatingModule,
     RippleModule,
     ButtonModule,
+    MessagesModule,
+    ConfirmDialogModule,
     PanelModule,
     DropdownModule,
     DialogModule,
     InputTextModule,
     AgmCoreModule,
     DndModule,
+
 
     HeaderComponent,
     FooterComponent,

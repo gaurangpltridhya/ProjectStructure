@@ -41,6 +41,7 @@
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "src/assets/scss/extra-margin-padding.scss",
                             "src/app/common/custom-tooltip/custom-tooltip.scss",
+                            "node_modules/ngx-toastr/toastr.css",
                             "src/styles.scss"
                         ],
                         "scripts": [],

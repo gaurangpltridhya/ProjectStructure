@@ -11,12 +11,13 @@ import { Constants } from './API-URL/contants';
 import { SharedModule } from './shared/shared.module';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { AgmCoreModule } from '@agm/core';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 import { Globals } from './globals';
 import { RoleAccessControl } from './common/role-access-control/role-access-control.service';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { FlatpickrModule } from 'angularx-flatpickr';
-
 
 @NgModule({
   declarations: [
@@ -31,11 +32,13 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     ReactiveFormsModule,
     HttpClientModule,
     SharedModule,
+    ToastModule,
+    
     OAuthModule.forRoot(),
     FlatpickrModule.forRoot(),
     AgmCoreModule.forRoot({
       // apiKey: GOOGLE_API_KEY
-    })
+    }),
   ],
   exports: [
 
@@ -43,7 +46,8 @@ import { FlatpickrModule } from 'angularx-flatpickr';
   providers: [
     Constants,
     Globals,
-    RoleAccessControl
+    RoleAccessControl,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

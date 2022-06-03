@@ -1,0 +1,128 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@ng-select/ng-select/themes/default.theme.css";
+
+.ng-select.ng-select.ng-select-single.ng-select-filtered:not(.ng-select-opened) .ng-select-container.ng-has-value .ng-value-container .ng-value{ visibility: visible!important; }
+
+.ng-select.ng-select-opened.ng-select-bottom>.ng-select-container:hover {
+    color: #212529;
+    background-color: #fff;
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+}
+
+.bg-dark {
+    background-color: #3f88d0 !important
+}
+
+.nav-link, .cursor-pointer {
+    cursor: pointer;
+}
+
+
+
+.fab-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 18.7px;
+    width: 43px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #29589c;
+    box-shadow: 0 5px 15px 0 grey;
+    cursor: pointer;
+    color: #fff;
+    z-index: 100;
+}
+
+.fab-button:hover {
+    color: white;
+}
+
+.btn-primary {
+    background-color: #29589c !important
+}
+
+.p-dialog .p-dialog-header {
+    padding: 1.0rem;
+}
+
+.p-dialog .p-dialog-header .p-dialog-title {
+    color: hsl(215deg 58% 39%);
+}
+
+.p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
+    color: #29589c;
+}
+
+.p-accordion .p-accordion-content {
+    border: none;
+}
+
+.p-accordion .p-accordion-header .p-accordion-header-link {
+    border: none;
+    background-color: #e9ecef !important;
+    padding: 0.6rem !important;
+}
+
+.btn:disabled {
+    color: #fff;
+    background-color: #6c757d !important;
+    border-color: #6c757d;
+}
+
+.p-toast {
+    width: 20rem !important;
+}
+
+.sub-tab {
+    background-color: hsl(200deg 70% 88%);
+}
+
+.bg-light {
+    height: 100vh;
+}
+
+.p-confirm-popup {
+    z-index: 1035 !important;
+}
+
+.form-label {
+    margin-bottom: 0.1rem;
+}
+
+.sticky-title {
+    position: fixed;
+    z-index: 5;
+    /* width: 100%; */
+    right: 10px;
+    left: 10px;
+    top: 56px;
+}
+
+.main-wrap {
+    padding-top: 80px;
+}
+
+.loader {
+    color: #fff;
+}
+
+.display-none {
+    display: none;
+}
+
+#freshworks-container {
+    display: none;
+}
+
+.SpecialGujFonts{
+    font-family: 'Mukta Vaani', sans-serif;
+}
+
+.ssd-btn-reject, .ssd-btn-reject.p-button:enabled:hover {
+    background-color: transparent;
+    color: #3B82F6;
+    border-color: transparent;
+}

@@ -5,101 +5,118 @@
                 <div class="card-body">
                     <h2 class="card-title">{{ editMode ? "Edit" : 'Add' }} User</h2>
                     <div class="card-text">
-                        <form [formGroup]="userForm" class="row g-3">
-                            <!-- fristname -->
-                            <div class="col-6">
-                                <label class="form-label">First Name<small class="p-error">*</small></label>
-                                <input type="text" class="form-control" formControlName="firstName" >
-                                <div *ngIf="userFormControls['firstName'].touched && !userFormControls['firstName'].valid" class="text-danger">
-                                    <div *ngIf="userFormControls['firstName'].errors?.['required']">
-                                        Fristname is requried.
-                                    </div>
-                                </div>
-                            </div>
+                        <form [formGroup]="userForm">
+                            <div class="row g-3">
 
-                            <!-- lastname -->
-                            <div class="col-6">
-                                <label class="form-label">Last Name</label><small class="p-error">*</small>
-                                <input type="text" class="form-control" formControlName="lastName" >
-                                <div *ngIf="userFormControls['lastName'].touched && !userFormControls['lastName'].valid" class="text-danger">
-                                    <div *ngIf="userFormControls['lastName'].errors?.['required']">
-                                        Lastname is requried.
-                                    </div>
-                                </div>
-                            </div>
 
-                            <!-- phone number -->
-                            <div class="col-6">
-                                <label class="form-label">Phone No.</label><small class="p-error">*</small>
-                                <input type="text" class="form-control" formControlName="mobile">
-                                <div *ngIf="userFormControls['mobile'].touched && !userFormControls['mobile'].valid" class="text-danger">
-                                    <div *ngIf="userFormControls['mobile'].errors?.['required']">
-                                        Phone no. is requried.
-                                    </div>
-                                    <div *ngIf="userFormControls['mobile'].touched && userFormControls['mobile'].errors?.['pattern']">
-                                        The mobile number should start with 6-9 digit and maximum 10 digit.
+                                <!-- fristname -->
+                                <div class="col-md-6">
+                                    <label class="form-label">First Name<small class="p-error">*</small></label>
+                                    <input type="text" class="form-control" formControlName="firstName">
+                                    <div *ngIf="userFormControls['firstName'].touched && !userFormControls['firstName'].valid"
+                                        class="text-danger">
+                                        <div *ngIf="userFormControls['firstName'].errors?.['required']">
+                                            Fristname is requried.
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- email -->
-                            <div class="col-6">
-                                <label class="form-label">Email</label><small class="p-error">*</small>
-                                <input type="email" class="form-control" formControlName="email" >
-                                <div *ngIf="userFormControls['email'].touched && !userFormControls['email'].valid" class="text-danger">
-                                    <div *ngIf="userFormControls['email'].errors?.['required']">
-                                        Email is requried.
-                                    </div>
-                                    <div *ngIf="userFormControls['email'].errors?.['email']">
-                                        Email is invalid.
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- password -->
-                            <div class="col-6" *ngIf="!editMode">
-                                <label class="form-label">Password</label>
-                                <input type="password" class="form-control" formControlName="password">
-                                <div *ngIf="userFormControls['password'].touched && !userFormControls['password'].valid" class="text-danger">
-                                    <div *ngIf="userFormControls['password'].errors?.['required']">
-                                        Password is requried
+                                <!-- lastname -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Last Name</label><small class="p-error">*</small>
+                                    <input type="text" class="form-control" formControlName="lastName">
+                                    <div *ngIf="userFormControls['lastName'].touched && !userFormControls['lastName'].valid"
+                                        class="text-danger">
+                                        <div *ngIf="userFormControls['lastName'].errors?.['required']">
+                                            Lastname is requried.
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- confirm password -->
-                            <div class="col-6" *ngIf="!editMode">
-                                <label class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" formControlName="confirmPassword">
-                                <div *ngIf="userFormControls['confirmPassword'].touched && !userFormControls['confirmPassword'].valid" class="text-danger">
-                                    <div *ngIf="userFormControls['confirmPassword'].errors?.['required']">
-                                        Password is requried
-                                    </div>
-                                    <div *ngIf="userFormControls['confirmPassword'].errors?.['confirmedValidator']">
-                                        Password and confirm password must be match
-                                    </div>
-                                </div>
-                            </div>
-
-                        <!-- role -->
-                            <div class="col-6">
-                                <label class="form-label">Role</label><small class="p-error">*</small>
-                                <select class="form-select" formControlName="role">
-                                    <option value="" selected disabled>Select Role</option>
-                                    <option value="Admin">Admin</option>
-                                    <option value="User">User</option>
-                                </select>
-                                <div *ngIf="userFormControls['role'].touched && !userFormControls['role'].valid" class="text-danger">
-                                    <div *ngIf="userFormControls['role'].errors?.['required']">
-                                        Role is requried.
+                                <!-- phone number -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Phone No.</label><small class="p-error">*</small>
+                                    <input type="text" class="form-control" formControlName="mobile">
+                                    <div *ngIf="userFormControls['mobile'].touched && !userFormControls['mobile'].valid"
+                                        class="text-danger">
+                                        <div *ngIf="userFormControls['mobile'].errors?.['required']">
+                                            Phone no. is requried.
+                                        </div>
+                                        <div
+                                            *ngIf="userFormControls['mobile'].touched && userFormControls['mobile'].errors?.['pattern']">
+                                            The mobile number should start with 6-9 digit and maximum 10 digit.
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <!-- submit and reset button -->
-                            <div class="">
-                                <button type="submit" class="btn btn-primary m-r-10"  [disabled]="userForm.invalid" (click)="onSubmit()">{{ editMode ? "Update" : 'Submit' }}</button>
-                                <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+                                <!-- email -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Email</label><small class="p-error">*</small>
+                                    <input type="email" class="form-control" formControlName="email">
+                                    <div *ngIf="userFormControls['email'].touched && !userFormControls['email'].valid"
+                                        class="text-danger">
+                                        <div *ngIf="userFormControls['email'].errors?.['required']">
+                                            Email is requried.
+                                        </div>
+                                        <div *ngIf="userFormControls['email'].errors?.['email']">
+                                            Email is invalid.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- password -->
+                                <div class="col-md-6" *ngIf="!editMode">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" formControlName="password">
+                                    <div *ngIf="userFormControls['password'].touched && !userFormControls['password'].valid"
+                                        class="text-danger">
+                                        <div *ngIf="userFormControls['password'].errors?.['required']">
+                                            Password is requried
+                                        </div>
+                                        <div *ngIf="userFormControls['password'].errors?.['minlength']">
+                                            Password must contain at least 6 character.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- confirm password -->
+                                <div class="col-md-6" *ngIf="!editMode">
+                                    <label class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" formControlName="confirmPassword">
+                                    <div *ngIf="userFormControls['confirmPassword'].touched && !userFormControls['confirmPassword'].valid"
+                                        class="text-danger">
+                                        <div *ngIf="userFormControls['confirmPassword'].errors?.['required']">
+                                            Password is requried
+                                        </div>
+                                        <div *ngIf="userFormControls['confirmPassword'].errors?.['confirmedValidator']">
+                                            Password and confirm password must be match
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- role -->
+                                <div class="col-md-6">
+                                    <label class="form-label">Role</label><small class="p-error">*</small>
+                                    <select class="form-select" formControlName="role">
+                                        <option value="" selected disabled>Select Role</option>
+                                        <option value="Admin">Admin</option>
+                                        <option value="User">User</option>
+                                    </select>
+                                    <div *ngIf="userFormControls['role'].touched && !userFormControls['role'].valid"
+                                        class="text-danger">
+                                        <div *ngIf="userFormControls['role'].errors?.['required']">
+                                            Role is requried.
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- submit and reset button -->
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary m-r-10" [disabled]="userForm.invalid"
+                                        (click)="onSubmit()">{{ editMode ? "Update" : 'Submit' }}</button>
+                                    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+                                </div>
                             </div>
                         </form>
                     </div>
