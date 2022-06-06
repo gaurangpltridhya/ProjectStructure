@@ -18,12 +18,20 @@ export class UserService extends BaseApiService {
 
   usersData: User[] = [
     {confirmPassword: "112233",
-    email: "m@m.com",
-    firstName: "sdc",
-    lastName: "sdc",
+    email: "mukund@gmail.com",
+    firstName: "Mukund",
+    lastName: "Dholariya",
     mobile: "9874563210",
     password: "112233",
-    role: "Admin"}
+    role: "Admin"},
+
+    {confirmPassword: "112233",
+    email: "yash@gmail.com",
+    firstName: "Yash",
+    lastName: "Bharadva",
+    mobile: "9874563211",
+    password: "112233",
+    role: "User"}
   ];
 
   constructor(http: HttpClient) {

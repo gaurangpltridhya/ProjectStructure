@@ -24,6 +24,8 @@ import { AgmCoreModule } from '@agm/core';
 import { DndModule } from 'ngx-drag-drop';
 import { MessagesModule } from 'primeng/messages';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 
 
 // components
@@ -80,6 +82,8 @@ import { ToastrModule } from 'ngx-toastr';
     InputTextModule,
     AgmCoreModule,
     DndModule,
+    MatToolbarModule,
+    MatIconModule,
     ToastrModule.forRoot()
   ],
   exports: [
@@ -107,6 +111,8 @@ import { ToastrModule } from 'ngx-toastr';
     InputTextModule,
     AgmCoreModule,
     DndModule,
+    MatToolbarModule,
+    MatIconModule,
 
 
     HeaderComponent,

@@ -34,6 +34,7 @@
                             "src/assets"
                         ],
                         "styles": [
+                            "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
                             "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
                             "node_modules/primeng/resources/primeng.min.css",
                             "src/assets/scss/ng-prime-selectbox-custom.scss",
@@ -41,7 +42,6 @@
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "src/assets/scss/extra-margin-padding.scss",
                             "src/app/common/custom-tooltip/custom-tooltip.scss",
-                            "node_modules/ngx-toastr/toastr.css",
                             "src/styles.scss"
                         ],
                         "scripts": [],
