@@ -1,0 +1,75 @@
+<h1>Upload Images</h1>
+<div class="card">
+  <div class="card-body">
+    
+    <div class="d-flex">
+      <svg class="ic_close" (click)="onClose()" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+              <g id="close" transform="translate(-1265 -197)">
+                <circle id="Ellipse_1" data-name="Ellipse 1" cx="20" cy="20" r="20" transform="translate(1265 197)" fill="#fed66b"/>
+                <path id="Path_1" data-name="Path 1" d="M8.542,7.016l5.235-5.235a.767.767,0,0,0,0-1.083L13.319.24a.768.768,0,0,0-1.083,0L7,5.474,1.766.24A.767.767,0,0,0,.683.24L.224.7a.766.766,0,0,0,0,1.083L5.459,7.016.224,12.251a.768.768,0,0,0,0,1.083l.459.459a.767.767,0,0,0,1.083,0L7,8.558l5.235,5.235a.76.76,0,0,0,.541.224h0a.76.76,0,0,0,.541-.224l.459-.459a.768.768,0,0,0,0-1.083Z" transform="translate(1278 209.984)" fill="#326291"/>
+              </g>
+      </svg>
+  </div>
+<div class="row">
+    <div class="col-8">
+      <label class="btn btn-default p-0 fa fa-cloud-upload">
+        <input type="file" accept="image/*" multiple (change)="selectFiles($event)" />
+        <!-- <button class="btn btn-primary float-right" type="button" accept="image/*" multiple
+                                    (change)="selectFiles($event)">Upload Image</button> -->
+        <!-- <i class="fa-thin fa-up-from-bracket " style="font-size:60px;color:red;" aria-hidden="true"></i>
+        <span>uploadFiles</span> -->
+      </label>
+    </div>
+  
+    <div class="col-4">
+        <!-- <p>
+            <i class="fa fa-cloud-upload" aria-hidden="true"></i>
+            <span class="up">up</span>
+            <span class="load">load</span>
+           </p> -->
+           <!-- <i class="fa fa-cloud-upload" aria-hidden="true"></i> -->
+
+      <button
+        class="btn btn-success btn-sm fa-solid fa-arrow-up-to-line"
+        [disabled]="!selectedFiles"
+        (click)="uploadFiles()"
+      >
+      <i class="fa-solid fa-arrow-up-to-line"> Upload</i>
+       
+      </button>
+      </div>
+      <div class="col-mb-4">
+      <button
+      class="btn btn-success btn-sm "
+      [disabled]="!selectedFiles"
+      (click)="deleteFiles()"
+    >
+      Delete
+    </button>
+    </div>
+  </div>
+  
+  <div class="mb-2">
+    <img *ngFor='let preview of previews' [src]="preview" class="preview shadow">
+  </div>
+  <div *ngFor="let progressInfo of progressInfos" class="mb-2">
+    <div class="progress">
+      <div
+        class="progress-bar progress-bar-info progress-bar-striped progress"
+        role="progressbar"
+        attr.aria-valuenow="{{ progressInfo.value }}"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        [ngStyle]="{ width: progressInfo.value + '%' }"
+      >
+        {{ progressInfo.value }}%
+      </div>
+    </div>
+  </div>
+  <div *ngIf="message.length" class="alert alert-secondary my-3" role="alert">
+    <ul *ngFor="let msg of message; let i = index">
+      <li>{{ msg }}</li>
+    </ul>
+  </div>
+  <!-- </div>
+  </div> -->

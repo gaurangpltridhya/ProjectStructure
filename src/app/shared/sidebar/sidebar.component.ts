@@ -76,6 +76,12 @@ export class SidebarComponent implements OnInit {
         link: '/user',
         // access: (this.access.includes('dashboard') // used for role access control
       },
+      {
+        label: 'Images',
+        icon: '',
+        link: '/images',
+        // access: (this.access.includes('dashboard') // used for role access control
+      },
       // {
       //   label: 'Components',
       //   icon: '',

@@ -1,0 +1,23 @@
+<h1> List of Images</h1>
+
+<div class="col-4">
+    <button
+      class="btn btn-success btn-sm modal-aside__btn btn btn--white"
+      (click)="addImage()"
+    >
+      Add Image
+    </button>
+    </div>
+  <div class="card mt-3">
+    <div class="card-header">List of Images</div>
+    <ul
+      class="list-group list-group-flush"
+      *ngFor="let image of imageInfos | async"
+    >
+      <li class="list-group-item">
+        <p><a href="{{ image.url }}">{{ image.name }}</a></p>
+        <img src="{{ image.url }}" alt="{{ image.name }}" height="80px" />
+      </li>
+    </ul>
+  </div>
+  

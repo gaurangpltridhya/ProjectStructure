@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -10,6 +10,9 @@ export class BaseApiService {
     headers = new HttpHeaders({
         'Content-Type': 'application/json'
     });
+
+    private baseUrl = 'https://api.imgur.com/3';
+
     constructor(protected http: HttpClient) { }
 
     protected makeRequest<T>(method: Methods, endpoint: any, params: any, responseType?: 'json', headers?: HttpHeaders): Observable<T> {
@@ -45,6 +48,24 @@ export class BaseApiService {
         }
         return '?' + urlParams.toString();
     }
+
+    
+  upload(file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', `${this.baseUrl}/image`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
+  }
+
+  getFiles(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/files`);
+  }
 }
 
 

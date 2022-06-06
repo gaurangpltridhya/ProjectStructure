@@ -11,6 +11,8 @@ import { UserResolver } from './shared/resolvers/user.resolver';
 import { CommonElementsComponent } from './common-elements/common-elements.component';
 import { DataViewComponent } from './data-view/data-view.component';
 import { AgmMapComponent } from './agm-map/agm-map.component';
+import { ImagesComponent } from './images/images.component';
+import { UploadImagesComponent } from './upload-images/upload-images.component';
 
 const routes: Routes = [
   {
@@ -80,6 +82,22 @@ const routes: Routes = [
     component: TablesComponent,
     data: {
       module: 'tables'
+    },
+    // canActivate: [RoleAccessControl],
+  },
+  {
+    path: 'images',
+    component: ImagesComponent,
+    data: {
+      module: 'images'
+    },
+    // canActivate: [RoleAccessControl],
+  },
+  {
+    path: 'upload-image',
+    component: UploadImagesComponent,
+    data: {
+      module: 'upload-image'
     },
     // canActivate: [RoleAccessControl],
   },
