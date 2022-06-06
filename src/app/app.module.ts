@@ -16,6 +16,8 @@ import { Globals } from './globals';
 import { RoleAccessControl } from './common/role-access-control/role-access-control.service';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { FlatpickrModule } from 'angularx-flatpickr';
+import { ToastrModule } from 'ngx-toastr';
+import { UtilityService } from './common/utility.service';
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { FlatpickrModule } from 'angularx-flatpickr';
     FlatpickrModule.forRoot(),
     AgmCoreModule.forRoot({
       // apiKey: GOOGLE_API_KEY
-    })
+    }),
+    ToastrModule.forRoot()
   ],
   exports: [
 
@@ -43,7 +46,8 @@ import { FlatpickrModule } from 'angularx-flatpickr';
   providers: [
     Constants,
     Globals,
-    RoleAccessControl
+    RoleAccessControl,
+    UtilityService
   ],
   bootstrap: [AppComponent]
 })

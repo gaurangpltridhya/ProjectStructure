@@ -2,7 +2,7 @@
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
         <ng-container *ngFor="let item of menuItems; let i = index;">
-            <li class="nav-item collaps-main-{{i}}">
+            <li class="nav-item collaps-main-{{i}} aa" id="collaps-main-{{i}}">
                 <!-- without sub menu -->
                 <a *ngIf="!item?.subItems" class="nav-link w-100-p" style="position: relative;"
                     [routerLinkActive]="['active']" [routerLink]="item?.link">

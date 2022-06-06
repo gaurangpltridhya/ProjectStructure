@@ -71,6 +71,12 @@ export class SidebarComponent implements OnInit {
         // access: (this.access.includes('forms')
       },
       {
+        label: 'Product Category',
+        icon: '',
+        link: 'product-category',
+        // access: (this.access.includes('forms')
+      },
+      {
         label: 'User',
         icon: '',
         link: '/user',
@@ -89,6 +95,7 @@ export class SidebarComponent implements OnInit {
           },
         ]
       }
+
     ]
   }
 
