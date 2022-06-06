@@ -31,12 +31,14 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
-    this.userDataSubscription = this.userService.userChanged.subscribe(
-      (userData: User[]) => {
-        this.usersData = userData;
-      }
-    );
-    this.usersData = this.userService.getUsersList();
+    // this.userDataSubscription = this.userService.userChanged.subscribe(
+    //   (userData: User[]) => {
+    //     this.usersData = userData;
+    //   }
+    // );
+    // this.usersData = this.userService.getUsersList();
+
+    this.userList();
     console.log('this.usersData :>> ', this.usersData);
   }
 
@@ -46,20 +48,22 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   // edit user
-  editUser(index: number) {
+  editUser(index: any) {
     this.router.navigate(['edit/' + index], {
       relativeTo: this.activatedRoute,
     });
   }
 
   // delete user
-  deleteUser(index: number) {
+  deleteUser(index: any) {
     this.confirmationService.confirm({
       message: 'Do you want to delete this record?',
       header: 'Delete Confirmation',
       icon: 'pi pi-info-circle',
       accept: () => {
-        this.userService.deleteUser(index);
+        this.userService.deleteUser(index).subscribe(res => {
+          this.userList();
+        });
         this.messageService.add({severity:'success', summary:'', detail: 'Delete user successfully!'});
       },
       reject: () => {
@@ -75,12 +79,16 @@ export class UserListComponent implements OnInit, OnDestroy {
     });
   }
 
-  onchange(i: any){
-    this.addClass = !this.addClass;
+  // user List 
+  private userList(){
+     this.userService.getUsersList().subscribe((resData: any) => {
+      this.usersData = resData.Users;
+      console.log('this.usersData :>> ', this.usersData);
+    });
   }
-
+  
   // unsubscribe subscription
   ngOnDestroy(): void {
-    this.userDataSubscription.unsubscribe();
+    // this.userDataSubscription.unsubscribe();
   }
 }

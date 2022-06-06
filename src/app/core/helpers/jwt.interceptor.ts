@@ -29,7 +29,9 @@ export class JwtInterceptor implements HttpInterceptor {
         headers['Content-Type'] = 'application/json';
       }
       request = request.clone({
-        setHeaders: headers
+        setHeaders: {
+        Authorization:`Bearer ${token}`
+        }
       });
     }
 

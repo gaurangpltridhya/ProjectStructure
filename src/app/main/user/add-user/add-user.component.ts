@@ -64,7 +64,7 @@ export class AddUserComponent implements OnInit {
     this.userForm = this.fb.group({
       firstName: [userFirstName, [Validators.required]],
       lastName: [userLastName, [Validators.required]],
-      mobile: [userMobile, [Validators.required, Validators.pattern(this.Mobile)]],
+      contact: [userMobile, [Validators.required, Validators.pattern(this.Mobile)]],
       email: [userEmail, [Validators.required, Validators.email]],
       role: [userRole, [Validators.required]],
       password: [userPassword,[Validators.required, Validators.minLength(6)]],
@@ -80,7 +80,7 @@ export class AddUserComponent implements OnInit {
       this.messageService.add({severity:'success', summary:'', detail: 'Update user successfully!'})
     }
     else{
-      this.userService.addUser(this.userForm.value);
+      this.userService.addUser(this.userForm.value).subscribe(res => {});
       this.messageService.add({severity:'success', summary:'', detail: 'Add user successfully!'})
     }
     this.onCancel();

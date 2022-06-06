@@ -51,7 +51,8 @@ import { UtilityService } from './common/utility.service';
     Globals,
     RoleAccessControl,
     MessageService,
-    UtilityService
+    UtilityService,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
   ],
   bootstrap: [AppComponent]
 })

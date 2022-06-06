@@ -36,14 +36,14 @@
                                 <!-- phone number -->
                                 <div class="col-md-6">
                                     <label class="form-label">Phone No.</label><small class="p-error">*</small>
-                                    <input type="text" class="form-control" formControlName="mobile">
-                                    <div *ngIf="userFormControls['mobile'].touched && !userFormControls['mobile'].valid"
+                                    <input type="text" class="form-control" formControlName="contact">
+                                    <div *ngIf="userFormControls['contact'].touched && !userFormControls['contact'].valid"
                                         class="text-danger">
-                                        <div *ngIf="userFormControls['mobile'].errors?.['required']">
+                                        <div *ngIf="userFormControls['contact'].errors?.['required']">
                                             Phone no. is requried.
                                         </div>
                                         <div
-                                            *ngIf="userFormControls['mobile'].touched && userFormControls['mobile'].errors?.['pattern']">
+                                            *ngIf="userFormControls['contact'].touched && userFormControls['contact'].errors?.['pattern']">
                                             The mobile number should start with 6-9 digit and maximum 10 digit.
                                         </div>
                                     </div>

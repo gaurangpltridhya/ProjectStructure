@@ -12,7 +12,7 @@ export class BaseApiService {
     });
     constructor(protected http: HttpClient) { }
 
-    protected makeRequest<T>(method: Methods, endpoint: any, params: any, responseType?: 'json', headers?: HttpHeaders): Observable<T> {
+    protected makeRequest<T>(method: Methods, endpoint: any, params?: any, responseType?: 'json', headers?: HttpHeaders): Observable<T> {
         const urlParams = this.getUrlParams(params, method);
         const url = `${endpoint}${urlParams}`;
 

@@ -48,9 +48,7 @@ export class AuthService {
 
     return this._httpClient.post(LOGIN_URL, data).pipe(
       map((res: any) => {
-        console.log('res :>> ', res);
         if(res.accessToken){
-          debugger
           // this.jwtService.setToken(JSON.parse(res.accessToken));
           this.jwtService.setToken(res.accessToken);
           this.jwtService.setUser(JSON.stringify(res.user));
