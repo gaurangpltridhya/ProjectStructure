@@ -24,6 +24,8 @@ import { AgmCoreModule } from '@agm/core';
 import { DndModule } from 'ngx-drag-drop';
 import { ToastrModule } from 'ngx-toastr';
 import { NgbPaginationModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 // components
@@ -82,6 +84,8 @@ import { AdvancedSortableDirective } from './advanced-sortable.directive';
     ToastrModule,
     NgbPaginationModule,
     NgbTypeaheadModule,
+    MatToolbarModule,
+    MatDialogModule
   ],
   exports: [
     FormsModule,
@@ -109,6 +113,8 @@ import { AdvancedSortableDirective } from './advanced-sortable.directive';
     ToastrModule,
     NgbPaginationModule,
     NgbTypeaheadModule,
+    MatToolbarModule,
+    MatDialogModule,
 
     AdvancedSortableDirective,
     HeaderComponent,
