@@ -4,6 +4,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/shared/user.model';
 import { ConfirmationService, Message, MessageService, PrimeNGConfig } from 'primeng/api';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-list',
@@ -25,6 +26,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     private router: Router,
     private userService: UserService,
     private messageService: MessageService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
