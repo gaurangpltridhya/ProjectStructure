@@ -1,3 +1,4 @@
+import { JwtService } from './jwt.service';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
@@ -17,7 +18,8 @@ export class AuthService {
   constructor(
     private _httpClient: HttpClient,
     private globals: Globals,
-    private router: Router
+    private router: Router,
+    private jwtService: JwtService
   ) { }
 
 
@@ -44,17 +46,20 @@ export class AuthService {
 
   adminlogin(data: any): Observable<any> {
 
-    return this._httpClient.put(LOGIN_URL, data).pipe(
+    return this._httpClient.post(LOGIN_URL, data).pipe(
       map((res: any) => {
-        if (res?.data && res?.data?.result?.loggedIn) {
-          localStorage.setItem('access_token', res?.data?.result?.loggedIn);
-          localStorage.setItem('currentUser', JSON.stringify(res.data.user));
+        console.log('res :>> ', res);
+        if(res.accessToken){
+          debugger
+          // this.jwtService.setToken(JSON.parse(res.accessToken));
+          localStorage.setItem('access_token', JSON.stringify(res.accessToken));
+          localStorage.setItem('currentUser', JSON.stringify(res.user));
 
           this.globals.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
-          if (res.data.user.permissions != undefined) {
-            localStorage.setItem('access', JSON.stringify(res.data.user.permissions));
-            this.globals.currentUser['access'] = res.data.user.permissions;
-          }
+          // if (res.data.user.permissions != undefined) {
+          //   localStorage.setItem('access', JSON.stringify(res.data.user.permissions));
+          //   this.globals.currentUser['access'] = res.data.user.permissions;
+          // }
         }
         return res;
 
@@ -98,7 +103,7 @@ export class AuthService {
 
   admin_Register(data: any): Observable<any> {
     let userDataKeys = Object.keys(data);
-    return this._httpClient.post(REGISTER_URL, { data: data, TYPE: 'user-register', fields: userDataKeys }).pipe(
+    return this._httpClient.post(REGISTER_URL, data).pipe(
       map((res: any) => {
         return res;
 
@@ -156,7 +161,7 @@ export class AuthService {
    * @returns 
    */
   logout(): void{
-    localStorage.removeItem('access_token');
+    localStorage.removeItem('jwt_token');
     this.router.navigate(['/auth/login'])
   }
 }

@@ -30,13 +30,13 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registrationForm = this.builder.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
+      // firstName: ['', [Validators.required]],
+      // lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$")]],
-      phone: ['', [Validators.required, Validators.pattern('[- +()0-9]+'), Validators.minLength(10)]],
+      // phone: ['', [Validators.required, Validators.pattern('[- +()0-9]+'), Validators.minLength(10)]],
       // username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, confirmPasswordValidator]]
+      // confirmPassword: ['', [Validators.required, confirmPasswordValidator]]
     });
 
     // Update the validity of the 'confirmPassword' field

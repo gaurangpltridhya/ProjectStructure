@@ -18,6 +18,7 @@ module.exports.userRegister = async(req,res) => {
 module.exports.userLogin =async(req,res) => {
     try{
         const user = await User.findOne({email: req.body.email})
+        console.log('user :>> ', user);
         if(!user){
             res.status(401).send({message: "User Not Found"})
         }else{

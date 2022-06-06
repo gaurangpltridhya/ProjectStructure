@@ -18,25 +18,25 @@
 
                             <div class="pt-4 pb-2">
                                 <h5 class="card-title text-center pb-0 fs-4" (click)="onClick()">Login to Your Account</h5>
-                                <p class="text-center small">Enter your username & password to login</p>
+                                <p class="text-center small">Enter your email & password to login</p>
                             </div>
 
                             <form class="row g-3 needs-validation" name="loginForm" [formGroup]="loginForm"
                                 (ngSubmit)="submitLoginData()" novalidate>
                                 <div class="col-12">
-                                    <label for="username" class="form-label">Username</label>
+                                    <label for="email" class="form-label">email</label>
                                     <div class="input-group has-validation">
                                         <span class="input-group-text" id="inputGroupPrepend"><i
                                                 class="fas fa-at"></i></span>
-                                        <input type="text" name="username" placeholder="Username" #username
-                                            formControlName="username" class="form-control" id="username"
-                                            [ngClass]="{ 'is-invalid':loginFormSubmitted && form['username']?.errors }">
+                                        <input type="text" name="email" placeholder="email" #email
+                                            formControlName="email" class="form-control" id="email"
+                                            [ngClass]="{ 'is-invalid':loginFormSubmitted && form['email']?.errors }">
                                         <div class="invalid-feedback" *ngIf="loginFormSubmitted">
-                                            <div *ngIf="loginForm?.get('username')?.hasError('required')">
-                                                Username is required!
+                                            <div *ngIf="loginForm?.get('email')?.hasError('required')">
+                                                email is required!
                                             </div>
                                             <div
-                                                *ngIf="!loginForm.get('username').hasError('required') && loginForm.get('username').hasError('pattern')">
+                                                *ngIf="!loginForm.get('email').hasError('required') && loginForm.get('email').hasError('pattern')">
                                                 Please enter a valid email!
                                             </div>
                                         </div>

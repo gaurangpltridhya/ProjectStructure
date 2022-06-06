@@ -1,3 +1,4 @@
+import { JwtService } from './../jwt.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import { JwksValidationHandler } from 'angular-oauth2-oidc-jwks';
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private router: Router,
     private auth: AuthService,
-    private oauthService: OAuthService
+    private oauthService: OAuthService,
+    private jwtService: JwtService
   ) {
     var isAuthenticated = this.auth.getAuthStatus();
     if (!isAuthenticated) {
@@ -31,7 +33,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
 
     this.loginForm = this._formBuilder.group({
-      username: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$")]],
+      email: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$")]],
       // , Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$")
       password: ['', Validators.required]
     });
@@ -61,14 +63,15 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    if (this.loginForm.value.password === 'admin') { //TODO: remove this if condition when API implemented
-      localStorage.setItem('access_token', 'token');
-      this.router.navigate(['/']);
-    }
+    // if (this.loginForm.value.password === 'admin') { //TODO: remove this if condition when API implemented
+    //   localStorage.setItem('access_token', 'token');
+    //   this.router.navigate(['/']);
+    // }
 
     this.auth.adminlogin(this.loginForm.value).subscribe({
       next: (data: any) => {
         console.log(data);
+        this.jwtService.setToken(data.accessToken);
         this.router.navigate(['/']);
       }
     })
