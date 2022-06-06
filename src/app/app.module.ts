@@ -18,6 +18,8 @@ import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { ImagesComponent } from './main/images/images.component';
 import { UploadImagesComponent } from './main/upload-images/upload-images.component';
+import { ToastrModule } from 'ngx-toastr';
+import { UtilityService } from './common/utility.service';
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { UploadImagesComponent } from './main/upload-images/upload-images.compon
     FlatpickrModule.forRoot(),
     AgmCoreModule.forRoot({
       // apiKey: GOOGLE_API_KEY
-    })
+    }),
+    ToastrModule.forRoot()
   ],
   exports: [
 
@@ -47,7 +50,8 @@ import { UploadImagesComponent } from './main/upload-images/upload-images.compon
   providers: [
     Constants,
     Globals,
-    RoleAccessControl
+    RoleAccessControl,
+    UtilityService
   ],
   bootstrap: [AppComponent]
 })
