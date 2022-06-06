@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule, Component } from '@angular/core';
+import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
 import { RoleAccessControl } from '../common/role-access-control/role-access-control.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AngularFormsComponent } from './angular-forms/angular-forms.component';
@@ -7,6 +7,9 @@ import { TablesComponent } from './tables/tables.component';
 import { ChartsComponent } from './charts/charts.component';
 import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
 import { UserComponent } from './user/user.component';
+import { UserAccessComponent } from './user-access/user-access.component';
+import { UserAccessListComponent } from './user-access/user-access-list/user-access-list.component';
+import { UserPermissionComponent } from './user-access/user-permission/user-permission.component';
 import { UserResolver } from './shared/resolvers/user.resolver';
 import { CommonElementsComponent } from './common-elements/common-elements.component';
 import { DataViewComponent } from './data-view/data-view.component';
@@ -83,6 +86,7 @@ const routes: Routes = [
     },
     // canActivate: [RoleAccessControl],
   },
+
   {
     path: 'user',
     resolve: {
@@ -91,6 +95,16 @@ const routes: Routes = [
     component: UserComponent
     // canActivate: [RoleAccessControl],
   },
+  {
+    path: 'user-access',
+    children : [{
+      path: '', component: UserAccessListComponent
+    },
+    {
+    path: 'add', component: UserPermissionComponent
+    }]
+  }
+
 ];
 
 @NgModule({

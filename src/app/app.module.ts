@@ -12,29 +12,45 @@ import { SharedModule } from './shared/shared.module';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { AgmCoreModule } from '@agm/core';
 
+import { ActivatedRoute, Router } from '@angular/router';
+
+
+
+
 import { Globals } from './globals';
 import { RoleAccessControl } from './common/role-access-control/role-access-control.service';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { FlatpickrModule } from 'angularx-flatpickr';
 
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatDialogModule,
+    MatToolbarModule,
+    MatIconModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatButtonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatCheckboxModule,
     SharedModule,
+    MatCardModule,
+    MatSelectModule,
     OAuthModule.forRoot(),
     FlatpickrModule.forRoot(),
-    AgmCoreModule.forRoot({
-      // apiKey: GOOGLE_API_KEY
+    AgmCoreModule.forRoot({ // apiKey: GOOGLE_API_KEY
     })
   ],
   exports: [
