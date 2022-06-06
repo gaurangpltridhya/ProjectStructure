@@ -1,1 +1,36 @@
-
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card text-left">
+                <div class="card-body">
+                    <h4 class="card-title">User Detail</h4>
+                    <hr>
+                    <div class="card-text">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="../../../../assets/img/userlogo.png">
+                            </div>
+                            <div class="col-md-6 userData">
+                                <div>
+                                    <b>Name: </b> {{userData.firstName}} {{userData.lastName}}
+                                </div>
+                                <div>
+                                    <b>Role: </b> {{userData.role}}
+                                </div>
+                                <div>
+                                    <b>Email: </b> {{userData.email}}
+                                </div>
+                                <div>
+                                    <b>Phone no.</b> {{userData.mobile}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-primary" [routerLink]="['user']">Back</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

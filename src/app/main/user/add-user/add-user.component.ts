@@ -29,13 +29,10 @@ export class AddUserComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private toastr: ToastrService,
     private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
-    this.toastr.success('','User update sucessfully!')
-
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = +params['id'];
       this.editMode = params['id'] !=null;
@@ -78,8 +75,6 @@ export class AddUserComponent implements OnInit {
 
   // submit button
   onSubmit() {
-    this.toastr.success('','User update sucessfully!', {timeOut: 5000})
-
     if(this.editMode){
       this.userService.updateUser(this.id, this.userForm.value);
       this.messageService.add({severity:'success', summary:'', detail: 'Update user successfully!'})
