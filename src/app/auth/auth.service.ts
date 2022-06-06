@@ -52,8 +52,8 @@ export class AuthService {
         if(res.accessToken){
           debugger
           // this.jwtService.setToken(JSON.parse(res.accessToken));
-          localStorage.setItem('access_token', JSON.stringify(res.accessToken));
-          localStorage.setItem('currentUser', JSON.stringify(res.user));
+          this.jwtService.setToken(res.accessToken);
+          this.jwtService.setUser(JSON.stringify(res.user));
 
           this.globals.currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
           // if (res.data.user.permissions != undefined) {

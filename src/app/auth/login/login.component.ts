@@ -71,7 +71,6 @@ export class LoginComponent implements OnInit {
     this.auth.adminlogin(this.loginForm.value).subscribe({
       next: (data: any) => {
         console.log(data);
-        this.jwtService.setToken(data.accessToken);
         this.router.navigate(['/']);
       }
     })
