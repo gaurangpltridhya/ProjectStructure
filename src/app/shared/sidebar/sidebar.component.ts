@@ -71,74 +71,83 @@ export class SidebarComponent implements OnInit {
         // access: (this.access.includes('forms')
       },
       {
+        label: 'Product Category',
+        icon: '',
+        link: 'product-category',
+        // access: (this.access.includes('forms')
+      },
+      {
         label: 'User',
         icon: '',
         link: '/user',
         // access: (this.access.includes('dashboard') // used for role access control
       },
-      // {
-      //   label: 'Components',
-      //   icon: '',
-      //   access: true,
-      //   subItems: [
-      //     {
-      //       label: 'tables',
-      //       link: '/tables',
-      //     },
-      //   ]
-      // }
+      {
+        label: 'Components',
+        icon: '',
+        access: true,
+        childAvailable: true,
+        link: 'component',
+        subItems: [
+          {
+            label: 'tables',
+            link: '/component/tables',
+          },
+        ]
+      }
+
     ]
   }
 
-  /**
-   * manage parent class for highlight
-   */
-  manageParent(event: any, index: number) {
-    debugger
-    let currentClickedEle: any = document.getElementById("components-nav-" + index);
-    console.log(currentClickedEle.classList.contains('show'));
-    if (currentClickedEle.classList.contains('show')) {
-      currentClickedEle.closest('li').classList.remove("show");
-    } else {
-      currentClickedEle.closest('li').classList.add("show");
-    }
-    // currentClickedEle.closest('li').style.color = 'red';
+  // /**
+  //  * manage parent class for highlight
+  //  */
+  // manageParent(event: any, index: number) {
+  //   debugger
+  //   let currentClickedEle: any = document.getElementById("components-nav-" + index);
+  //   console.log(currentClickedEle.classList.contains('show'));
+  //   if (currentClickedEle.classList.contains('show')) {
+  //     currentClickedEle.closest('li').classList.remove("show");
+  //   } else {
+  //     currentClickedEle.closest('li').classList.add("show");
+  //   }
+  //   // currentClickedEle.closest('li').style.color = 'red';
 
-  }
+  // }
 
 
-  showHideChild(index: number) {
-    let currentClickedEle: any = document.querySelector(".collaps-main-" + index);
-    let selectorD = currentClickedEle.querySelector('.show');
-    // debugger
-    // console.log(currentClickedEle.closest('ul').classList.contains('show'));
-    if (selectorD !== null) {
-      // currentClickedEle.closest('ul').classList.remove("show");
-    } else {
-      // currentClickedEle.closest('ul').classList.add("show");
-      var childNodes: any = document.getElementsByClassName("collaps-main-" + index);
-      debugger
-      childNodes = childNodes.childNodes;
-      for (var i = 0; i < childNodes.length; i++) {
-        console.log(childNodes[i].className);
+  // showHideChild(index: number) {
+  //   let currentClickedEle: any = document.querySelector(".collaps-main-" + index);
+  //   let selectorD = currentClickedEle.querySelector('.show');
+  //   // debugger
+  //   // console.log(currentClickedEle.closest('ul').classList.contains('show'));
+  //   if (selectorD !== null) {
+  //     // currentClickedEle.closest('ul').classList.remove("show");
+  //   } else {
+  //     // currentClickedEle.closest('ul').classList.add("show");
+  //     var childNodes: any = document.getElementsByClassName("collaps-main-" + index);
+  //     debugger
+  //     childNodes = childNodes.childNodes;
+  //     for (var i = 0; i < childNodes.length; i++) {
+  //       console.log(childNodes[i].className);
 
-        if (childNodes[i].className == 'collapse') {
-          debugger
-          childNodes[i].className = "show";
-        }
-      }
-    }
-  }
+  //       if (childNodes[i].className == 'collapse') {
+  //         debugger
+  //         childNodes[i].className = "show";
+  //       }
+  //     }
+  //   }
+  // }
 
-  /**
-   * hide sub items of all navbar
-   */
-  hideSubItems() {
-    let menubarDiv: any = document.getElementById("sidebar");
-    var fourChildNode = menubarDiv.querySelector('.show');
-    console.log(fourChildNode);
+  // /**
+  //  * hide sub items of all navbar
+  //  */
+  // hideSubItems() {
+  //   let menubarDiv: any = document.getElementById("sidebar");
+  //   var fourChildNode = menubarDiv.querySelector('.show');
+  //   console.log(fourChildNode);
 
-    // fourChildNode.classList.remove("show");
-  }
+  //   // fourChildNode.classList.remove("show");
+  // }
 
 }

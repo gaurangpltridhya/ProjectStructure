@@ -24,8 +24,10 @@ import { AgmCoreModule } from '@agm/core';
 import { DndModule } from 'ngx-drag-drop';
 import { MessagesModule } from 'primeng/messages';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { NgbPaginationModule, NgbTypeaheadModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 // components
@@ -42,10 +44,12 @@ import { MinutesToHoursPipe } from '../common/pipes/minutes-to-hours.pipe';
 //directives
 import { CustomTooltipDirective } from '../common/custom-tooltip/custom-tooltip.directive';
 import { ToastrModule } from 'ngx-toastr';
+import { AdvancedSortableDirective } from './advanced-sortable.directive';
 
 
 @NgModule({
   declarations: [
+    AdvancedSortableDirective,
     FooterComponent,
     HeaderComponent,
     LayoutComponent,
@@ -84,7 +88,12 @@ import { ToastrModule } from 'ngx-toastr';
     DndModule,
     MatToolbarModule,
     MatIconModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ToastrModule,
+    NgbPaginationModule,
+    NgbTypeaheadModule,
+    MatToolbarModule,
+    MatDialogModule
   ],
   exports: [
     FormsModule,
@@ -114,7 +123,13 @@ import { ToastrModule } from 'ngx-toastr';
     MatToolbarModule,
     MatIconModule,
 
+    ToastrModule,
+    NgbPaginationModule,
+    NgbTypeaheadModule,
+    MatToolbarModule,
+    MatDialogModule,
 
+    AdvancedSortableDirective,
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
