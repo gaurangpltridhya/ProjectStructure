@@ -46,7 +46,7 @@
                                                 <td><span class="badge bg-secondary" style="color: white;">Active</span>
                                                 </td>
                                                 <td class="nosort text-center ">
-                                                    <button class="btn m-r-5" (click)="viewUser(i)">
+                                                    <button class="btn m-r-5" (click)="viewUser(user._id)">
                                                         <i class="fa fa-eye" style="color: blue;"></i>
                                                     </button>
 
@@ -54,7 +54,7 @@
                                                         <i class="fa fa-edit" style="color: blue;"></i>
                                                     </button>
 
-                                                    <button class="btn m-r-5" (click)="deleteUser(user._id )">
+                                                    <button class="btn m-r-5" (click)="deleteUser(user._id!)">
                                                         <i class="fa fa-trash" style="color: red;"></i>
                                                     </button>
                                                     

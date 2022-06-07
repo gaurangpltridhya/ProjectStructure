@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors,
 import { Router } from '@angular/router';
 import { Constants } from 'src/app/API-URL/contants';
 import { AuthService } from '../auth.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-register',
@@ -24,19 +25,20 @@ export class RegisterComponent implements OnInit {
     private builder: FormBuilder,
     private auth: AuthService,
     public _constants: Constants,
+    private messageService: MessageService
   ) {
 
   }
 
   ngOnInit(): void {
     this.registrationForm = this.builder.group({
-      // firstName: ['', [Validators.required]],
-      // lastName: ['', [Validators.required]],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.pattern("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,4}$")]],
-      // phone: ['', [Validators.required, Validators.pattern('[- +()0-9]+'), Validators.minLength(10)]],
+      contact: ['', [Validators.required, Validators.pattern('[- +()0-9]+'), Validators.minLength(10)]],
       // username: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      // confirmPassword: ['', [Validators.required, confirmPasswordValidator]]
+      confirmPassword: ['', [Validators.required, confirmPasswordValidator]]
     });
 
     // Update the validity of the 'confirmPassword' field
@@ -79,17 +81,17 @@ export class RegisterComponent implements OnInit {
   }
 
   /**
-   * check register phone exist
-   * use this when need to verify phone for existing or not
+   * check register contact exist
+   * use this when need to verify contact for existing or not
    * @returns 
    */
   registerPhoneCheck() {
-    if (this.registrationForm.value?.phone !== '' && this.existingPhone !== this.registrationForm.value?.phone) {
-      this.existingPhone = this.registrationForm.value?.phone;
+    if (this.registrationForm.value?.contact !== '' && this.existingPhone !== this.registrationForm.value?.contact) {
+      this.existingPhone = this.registrationForm.value?.contact;
     } else {
       return;
     }
-    this.auth.registerEmailCheck(this.registrationForm.value?.phone).subscribe((res: any) => {
+    this.auth.registerEmailCheck(this.registrationForm.value?.contact).subscribe((res: any) => {
       if (res.status == 200) {
         this.phoneCheckValid = res.data?.result;
       }
@@ -104,8 +106,9 @@ export class RegisterComponent implements OnInit {
     }
 
     this.auth.admin_Register(this.registrationForm.value).subscribe((res: any) => {
-      if (res.code == 200) {
-        console.log("succesfully Added user");
+      if (res.status === 'pass') {
+        this.router.navigate(['/auth']);
+        this.messageService.add({severity:'success', summary:'', detail: 'User register successfully!'})
       }
     })
   }

@@ -7,6 +7,8 @@ export class JwtService {
 
   constructor() { }
 
+  // token set-get-destory
+
   setToken(token: string) {
     return window.localStorage.setItem('access_token', token);
   }
@@ -23,8 +25,18 @@ export class JwtService {
     return !!localStorage.getItem('access_token')
   }
 
+  // user set-get-destory
+
   setUser(userDetails: string){
     return window.localStorage.setItem('currentUser', userDetails);
+  }
+
+  getUser(){
+    return window.localStorage.getItem('currentUser')
+  }
+
+  destoryUser(){
+    return window.localStorage.removeItem('currentUser');
   }
 
 }

@@ -17,7 +17,7 @@ export class AddUserComponent implements OnInit {
   Mobile = /^[6-9]\d{9}$/;
   password_reg = '(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{6,}';
   editMode = false;
-  id!: number;
+  id!: any;
 
   // get form controls
   get userFormControls() {
@@ -34,7 +34,7 @@ export class AddUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.id = +params['id'];
+      this.id = params['id'];
       this.editMode = params['id'] !=null;
       this.initForm();
     })
@@ -51,14 +51,15 @@ export class AddUserComponent implements OnInit {
     let userConfirmPassword: any = '';
 
     if(this.editMode){
-      const user = this.userService.getUser(this.id);
-      userFirstName = user.firstName;
-      userLastName = user.lastName;
-      userMobile = user.mobile;
-      userEmail= user.email;
-      userRole= user.role;
-      userPassword = user.password;
-      userConfirmPassword = user.confirmPassword;
+      const user = this.userService.getUser(this.id).subscribe(result => {console.log('result usser:>> ', result);});
+      console.log('user :>> ', user);
+      // userFirstName = user.firstName;
+      // userLastName = user.lastName;
+      // userMobile = user.mobile;
+      // userEmail= user.email;
+      // userRole= user.role;
+      // userPassword = user.password;
+      // userConfirmPassword = user.confirmPassword;
     }
 
     this.userForm = this.fb.group({

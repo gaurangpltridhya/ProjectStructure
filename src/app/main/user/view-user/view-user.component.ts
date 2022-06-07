@@ -10,20 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewUserComponent implements OnInit {
   userData!: any;
-  id!: number;
+  id!: any;
 
   constructor(private userService: UserService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.id = +params['id'];
+      this.id = params['id'];
       this.viewUser(this.id)
     })
   }
 
   // view User
-  viewUser(id: number){
-    this.userData = this.userService.getUser(id);
+  viewUser(id: any){
+    this.userData = this.userService.getUser(id).subscribe(resView => {console.log('resView :>> ', resView);});
     console.log('this.userData :>> ', this.userData);
   }
 

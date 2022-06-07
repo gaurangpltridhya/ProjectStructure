@@ -19,7 +19,7 @@
 
                             <form class="row g-3 needs-validation" name="registrationForm"
                                 [formGroup]="registrationForm" (ngSubmit)="submitRegistrationData()" novalidate>
-                                <!-- <div class="col-6">
+                                <div class="col-6">
                                     <label for="firstName" class="form-label">First Name</label>
                                     <input type="text" formControlName="firstName" placeholder="First Name" name="name"
                                         class="form-control" id="firstName"
@@ -29,8 +29,8 @@
                                             Please enter First Name!
                                         </div>
                                     </div>
-                                </div> -->
-                                <!-- <div class="col-6">
+                                </div>
+                                <div class="col-6">
                                     <label for="lastName" class="form-label">Last Name</label>
                                     <input type="text" formControlName="lastName" placeholder="Last Name" name="name"
                                         class="form-control" id="lastName"
@@ -40,7 +40,7 @@
                                             Please enter Last Name!
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
                                 <div class="col-6">
                                     <label for="emailId" class="form-label">Email</label>
                                     <input type="email" formControlName="email" placeholder="Email" name="emailId"
@@ -51,30 +51,30 @@
                                             Please enter a Email!
                                         </div>
                                         <div
-                                            *ngIf="!registrationForm.get('email').hasError('required') && registrationForm.get('email').hasError('pattern')">
+                                            *ngIf="!registrationForm.get('email')?.hasError('required') && registrationForm.get('email')?.hasError('pattern')">
                                             Please enter a valid Email!
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="col-6">
+                                <div class="col-6">
                                     <label for="phoneNo" class="form-label">Phone Number</label>
-                                    <input type="text" maxlength="11" formControlName="phone" placeholder="Phone Number"
+                                    <input type="text" maxlength="11" formControlName="contact" placeholder="Phone Number"
                                         name="phoneNo" class="form-control" id="phoneNo"
-                                        [ngClass]="{ 'is-invalid':registrationFormSubmitted && form['phone']?.errors }">
+                                        [ngClass]="{ 'is-invalid':registrationFormSubmitted && form['contact']?.errors }">
                                     <div class="invalid-feedback" *ngIf="registrationFormSubmitted">
-                                        <div *ngIf="registrationForm?.get('phone')?.hasError('required')">
+                                        <div *ngIf="registrationForm?.get('contact')?.hasError('required')">
                                             Please enter a Phone Number!
                                         </div>
                                         <div
-                                            *ngIf="!registrationForm.get('phone').hasError('required') && registrationForm.get('phone').hasError('minlength')">
+                                            *ngIf="!registrationForm.get('contact')?.hasError('required') && registrationForm.get('contact')?.hasError('minlength')">
                                             Phone Number must be minimum 10 digit long!
                                         </div>
                                     </div>
                                     <div class="invalid-feedback"
-                                        *ngIf="!registrationForm.get('phone').hasError('required') && registrationForm.get('phone').hasError('pattern')">
+                                        *ngIf="!registrationForm.get('contact')?.hasError('required') && registrationForm.get('contact')?.hasError('pattern')">
                                         Please enter a valid Phone Number!
                                     </div>
-                                </div> -->
+                                </div>
                                 <!-- <div class="col-6">
                                     <label for="yourUsername" class="form-label">Username</label>
                                     <div class="input-group has-validation">
@@ -95,12 +95,12 @@
                                             Please enter password!
                                         </div>
                                         <div
-                                            *ngIf="!registrationForm.get('password').hasError('required') && registrationForm.get('password').hasError('minlength')">
+                                            *ngIf="!registrationForm.get('password')?.hasError('required') && registrationForm.get('password')?.hasError('minlength')">
                                             password must be minimum 6 digit long!
                                         </div>
                                     </div>
                                 </div>
-                                <!-- <div class="col-6">
+                                <div class="col-6">
                                     <label for="confPassword" class="form-label">Confirm Password</label>
                                     <input type="password" formControlName="confirmPassword" name="confPassword"
                                         class="form-control" id="confPassword" placeholder="Confirm Password"
@@ -111,11 +111,11 @@
                                         </div>
                                     </div>
                                     <div class="invalid-feedback"
-                                        *ngIf="!registrationForm.get('confirmPassword').hasError('required') && registrationForm.get('confirmPassword').hasError('passwordsNotMatching')">
+                                        *ngIf="!registrationForm.get('confirmPassword')?.hasError('required') && registrationForm.get('confirmPassword')?.hasError('passwordsNotMatching')">
                                         Password and Confirm Password must match.
                                     </div>
-                                </div> -->
-                                <!-- <div class="col-12">
+                                </div>
+                                <div class="col-12">
                                     <div class="form-check">
                                         <input class="form-check-input" name="terms" type="checkbox" value=""
                                             id="acceptTerms" required>
@@ -123,7 +123,7 @@
                                                 href="#">terms and conditions</a></label>
                                         <div class="invalid-feedback">You must agree before submitting.</div>
                                     </div>
-                                </div> -->
+                                </div>
                                 <div class="col-12">
                                     <button class="btn btn-primary w-100" type="submit">Create Account</button>
                                 </div>

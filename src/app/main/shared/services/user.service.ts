@@ -57,8 +57,9 @@ export class UserService extends BaseApiService {
   }
 
   //get single user data
-  getUser(index: number) {
-    return this.usersData[index];
+  getUser(index: any) {
+    return this.makeRequest('GET',USER_DATA_LIST+`/${index}`);
+    // return this.usersData[index];
   }
 
   // get user create list
@@ -74,7 +75,7 @@ export class UserService extends BaseApiService {
   }
 
   // delete user data
-  deleteUser(index: number) {
+  deleteUser(index: string) {
     return this.makeRequest('DELETE',USER_DATA_LIST+`/${index}`)
     // this.usersData.splice(index, 1);
     // this.userChanged.next(this.usersData.slice());

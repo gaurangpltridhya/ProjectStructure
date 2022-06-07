@@ -1,3 +1,5 @@
+import { JwtService } from './../../auth/jwt.service';
+import { Router } from '@angular/router';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
@@ -22,7 +24,9 @@ export class HeaderComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private auth: AuthService,
-    public _commonService: CommonService
+    public _commonService: CommonService,
+    private router: Router,
+    private jwtService: JwtService
   ) {
   }
 
@@ -31,6 +35,12 @@ export class HeaderComponent implements OnInit {
       this.notificationCount++;
     });
     this.subscriptions.push(subject);
+  }
+
+  onSignOut(){
+    this.jwtService.destoryToken();
+    this.jwtService.destoryUser();
+    this.router.navigate(['/auth']);
   }
 
 

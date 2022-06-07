@@ -39,7 +39,6 @@ export class UserListComponent implements OnInit, OnDestroy {
     // this.usersData = this.userService.getUsersList();
 
     this.userList();
-    console.log('this.usersData :>> ', this.usersData);
   }
 
   // add new user
@@ -55,7 +54,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   // delete user
-  deleteUser(index: any) {
+  deleteUser(index: string) {
     this.confirmationService.confirm({
       message: 'Do you want to delete this record?',
       header: 'Delete Confirmation',
@@ -73,22 +72,22 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   // view User
-  viewUser(index: number) {
+  viewUser(index: any) {
     this.router.navigate(['view/' + index], {
       relativeTo: this.activatedRoute,
     });
   }
 
-  // user List 
+  // users List 
   private userList(){
-     this.userService.getUsersList().subscribe((resData: any) => {
+    this.userDataSubscription = this.userService.getUsersList().subscribe((resData: any) => {
       this.usersData = resData.Users;
       console.log('this.usersData :>> ', this.usersData);
     });
   }
-  
+
   // unsubscribe subscription
   ngOnDestroy(): void {
-    // this.userDataSubscription.unsubscribe();
+    this.userDataSubscription.unsubscribe();
   }
 }
