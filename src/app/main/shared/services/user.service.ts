@@ -52,20 +52,16 @@ export class UserService extends BaseApiService {
   // add/create user data
   addUser(user: User) {
     return this.makeRequest('POST', USER_REGISTER_URL, user);
-    // this.usersData.push(user);
-    // this.userChanged.next(this.usersData.slice());
   }
 
   //get single user data
   getUser(index: any) {
     return this.makeRequest('GET',USER_DATA_LIST+`/${index}`);
-    // return this.usersData[index];
   }
 
   // get user create list
   getUsersList() {
     return this.makeRequest('GET', USER_DATA_LIST);
-    // return this.usersData.slice();
   }
 
   // update user data
@@ -77,7 +73,5 @@ export class UserService extends BaseApiService {
   // delete user data
   deleteUser(index: string) {
     return this.makeRequest('DELETE',USER_DATA_LIST+`/${index}`)
-    // this.usersData.splice(index, 1);
-    // this.userChanged.next(this.usersData.slice());
   }
 }
