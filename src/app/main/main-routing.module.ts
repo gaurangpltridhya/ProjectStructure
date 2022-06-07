@@ -14,6 +14,7 @@ import { UserResolver } from './shared/resolvers/user.resolver';
 import { CommonElementsComponent } from './common-elements/common-elements.component';
 import { DataViewComponent } from './data-view/data-view.component';
 import { AgmMapComponent } from './agm-map/agm-map.component';
+import { RoleAccessGuard } from './shared/guard/role-access.guard';
 
 const routes: Routes = [
   {
@@ -93,10 +94,10 @@ const routes: Routes = [
   },
   {
     path: 'user',
+    canActivate: [RoleAccessGuard],
     resolve: {
       user: UserResolver
     },
-    
     children: [
       { path: '', component: UserListComponent},
       { path: 'add', component: AddUserComponent},

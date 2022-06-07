@@ -1,3 +1,4 @@
+import { JwtService } from './../../auth/jwt.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   menuItems: Array<any> = [];
-
-  constructor() { }
+  userRole: any;
+  accessField!: any;
+  constructor(private jwtService: JwtService) { }
 
   ngOnInit(): void {
+    this.userRole = localStorage.getItem('currentUser');
+    this.userRole=JSON.parse(this.userRole).role; 
+    this.accessField = this.userRole == 'Admin';
     this.initialize();
   }
 
@@ -26,60 +31,70 @@ export class SidebarComponent implements OnInit {
         label: 'Dashboard',
         icon: '',
         link: '/dashboard',
+        access: true,
         // access: (this.access.includes('dashboard') // used for role access control
       },
       {
         label: 'Forms/Elements',
         icon: '',
         link: 'forms',
+        access: true,
         // access: (this.access.includes('forms')
       },
       {
         label: 'Common Elements',
         icon: '',
         link: 'common-elements',
+        access: true
         // access: (this.access.includes('forms')
       },
       {
         label: 'Form Layouts',
         icon: '',
         link: 'form-layouts',
+        access: true,
         // access: (this.access.includes('forms')
       },
       {
         label: 'Data View',
         icon: '',
         link: 'data-view',
+        access: true,
         // access: (this.access.includes('forms')
       },
       {
         label: 'AGM Map',
         icon: '',
         link: 'agm-map',
+        access: true,
         // access: (this.access.includes('forms')
       },
       {
         label: 'Charts',
         icon: '',
         link: 'charts',
+        access: true,
         // access: (this.access.includes('forms')
       },
       {
         label: 'Tables',
         icon: '',
         link: 'tables',
+        access: true,
         // access: (this.access.includes('forms')
       },
       {
         label: 'Product Category',
         icon: '',
         link: 'product-category',
+        access: true,
         // access: (this.access.includes('forms')
       },
       {
         label: 'User',
         icon: '',
         link: '/user',
+        access: this.accessField,
         // access: (this.access.includes('dashboard') // used for role access control
       },
       {
@@ -92,8 +107,9 @@ export class SidebarComponent implements OnInit {
           {
             label: 'tables',
             link: '/component/tables',
+            access: true,
           },
-        ]
+        ],
       }
 
     ]

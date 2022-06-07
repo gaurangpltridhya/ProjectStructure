@@ -35,13 +35,12 @@ export class AddUserComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = params['id'];
-      this.editMode = params['id'] !=null;
+      this.editMode = params['id'] != null;
       this.initForm();
-    })
+    });
   }
 
   private initForm() {
-    
     let userFirstName: any = '';
     let userLastName: any = '';
     let userMobile: any = '';
@@ -50,9 +49,22 @@ export class AddUserComponent implements OnInit {
     let userPassword: any = '';
     let userConfirmPassword: any = '';
 
-    if(this.editMode){
-      const user = this.userService.getUser(this.id).subscribe(result => {console.log('result usser:>> ', result);});
-      console.log('user :>> ', user);
+    if (this.editMode) {
+     this.userService
+        .getUser(this.id)
+        .subscribe((userData: any) => {
+          console.log('userData.user :>> ', userData.User);
+          this.userForm.setValue({
+            firstName: userData.User.firstName,
+            lastName: userData.User.lastName,
+            contact: userData.User.contact,
+            email: userData.User.email,
+            role: userData.User.role,
+            password: userData.User.password,
+            confirmPassword: userData.User.password,
+          });
+        });
+      
       // userFirstName = user.firstName;
       // userLastName = user.lastName;
       // userMobile = user.mobile;
@@ -62,27 +74,42 @@ export class AddUserComponent implements OnInit {
       // userConfirmPassword = user.confirmPassword;
     }
 
-    this.userForm = this.fb.group({
-      firstName: [userFirstName, [Validators.required]],
-      lastName: [userLastName, [Validators.required]],
-      contact: [userMobile, [Validators.required, Validators.pattern(this.Mobile)]],
-      email: [userEmail, [Validators.required, Validators.email]],
-      role: [userRole, [Validators.required]],
-      password: [userPassword,[Validators.required, Validators.minLength(6)]],
-      confirmPassword: [userConfirmPassword, [Validators.required]]
-    },
-    { validator: ConfirmedValidator('password','confirmPassword')});
+    this.userForm = this.fb.group(
+      {
+        firstName: [userFirstName, [Validators.required]],
+        lastName: [userLastName, [Validators.required]],
+        contact: [
+          userMobile,
+          [Validators.required, Validators.pattern(this.Mobile)],
+        ],
+        email: [userEmail, [Validators.required, Validators.email]],
+        role: [userRole, [Validators.required]],
+        password: [
+          userPassword,
+          [Validators.required, Validators.minLength(6)],
+        ],
+        confirmPassword: [userConfirmPassword, [Validators.required]],
+      },
+      { validator: ConfirmedValidator('password', 'confirmPassword') }
+    );
   }
 
   // submit button
   onSubmit() {
-    if(this.editMode){
+    if (this.editMode) {
       this.userService.updateUser(this.id, this.userForm.value);
-      this.messageService.add({severity:'success', summary:'', detail: 'Update user successfully!'})
-    }
-    else{
-      this.userService.addUser(this.userForm.value).subscribe(res => {});
-      this.messageService.add({severity:'success', summary:'', detail: 'Add user successfully!'})
+      this.messageService.add({
+        severity: 'success',
+        summary: '',
+        detail: 'Update user successfully!',
+      });
+    } else {
+      this.userService.addUser(this.userForm.value).subscribe((res) => {});
+      this.messageService.add({
+        severity: 'success',
+        summary: '',
+        detail: 'Add user successfully!',
+      });
     }
     this.onCancel();
   }
