@@ -86,6 +86,10 @@ export class UserListComponent implements OnInit, OnDestroy {
     });
   }
 
+  //user block
+  block = true;
+
+
   // unsubscribe subscription
   ngOnDestroy(): void {
     this.userDataSubscription.unsubscribe();
