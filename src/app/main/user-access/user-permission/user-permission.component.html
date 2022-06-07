@@ -1,41 +1,49 @@
-<div class="card">
-  <div class="card-body"><br>
-  <h1>Type</h1>
-<mat-form-field appearance="fill">
-  <mat-label>Role name</mat-label>
-  <mat-select>
-    <mat-option *ngFor="let food of foods" [value]="food.value">
-      {{food.viewValue}}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-</div>
-</div>
 
-<div class="card">
-  <div class="card-body"><br>
-    <section class="example-section">
-      <span class="example-list-section">
-        <mat-checkbox class="example-margin"
-                      [checked]="allComplete"
-                      [color]="task.color"
-                      [indeterminate]="someComplete()"
-                      (change)="setAll($event.checked)">
-          {{task.name}}
-        </mat-checkbox>
-      </span>
-      <span class="example-list-section">
-        <ul>
-          <li *ngFor="let subtask of task.subtasks">
-            <mat-checkbox [(ngModel)]="subtask.completed"
-                          [color]="subtask.color"
-                          (ngModelChange)="updateAllComplete()">
-              {{subtask.name}}
-            </mat-checkbox>
-          </li>
-        </ul>
-      </span>
-    </section>
+<form [formGroup]= "userPermissionForm">
+  <div class="card">
+    <div class="card-body"><br>
+    <h1>Type</h1>
+    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+      <option selected>Role of User</option>
+      <option value="1">Admin</option>
+      <option value="2">User</option>
+      <option value="3">Manager</option>
+    </select>
+  </div>
+  </div>
+  <div class="card">
+    <div class="card-body"><br>
 
-</div>
-</div>
+      <h1>Access</h1>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (change)="bulk($event)">
+        <label class="form-check-label" for="flexCheckDefault">
+          Select All
+        </label>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [checked] = "checks">
+          <label class="form-check-label" for="flexCheckDefault">
+            Create
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [checked] = "checks">
+          <label class="form-check-label" for="flexCheckDefault">
+            Edit
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [checked] = "checks">
+          <label class="form-check-label" for="flexCheckDefault">
+           Delete
+          </label>
+        </div>
+      </div>
+<button class="button1" mat-raised-button color="primary" [routerLink]="['/user-access']">Cancel</button>
+  <button   mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+      </div>
+      </div>
+</form>
+
+
+
