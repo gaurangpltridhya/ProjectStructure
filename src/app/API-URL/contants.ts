@@ -25,7 +25,6 @@ export const GET_PRODUCT_CATEGORY_LIST = API_LINK_URL + '/' + API_VERSION + '/ca
 export const USER_REGISTER_URL = API_LINK_URL + API_VERSION + 'auth/register'; // register User
 export const USER_DATA_LIST = API_LINK_URL + API_VERSION + 'user'; //get all user list
 
-
 @Injectable()
 export class Constants {
   constructor(

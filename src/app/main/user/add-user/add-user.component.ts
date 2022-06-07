@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -29,7 +30,8 @@ export class AddUserComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -50,21 +52,19 @@ export class AddUserComponent implements OnInit {
     let userConfirmPassword: any = '';
 
     if (this.editMode) {
-     this.userService
-        .getUser(this.id)
-        .subscribe((userData: any) => {
-          console.log('userData.user :>> ', userData.User);
-          this.userForm.setValue({
-            firstName: userData.User.firstName,
-            lastName: userData.User.lastName,
-            contact: userData.User.contact,
-            email: userData.User.email,
-            role: userData.User.role,
-            password: userData.User.password,
-            confirmPassword: userData.User.password,
-          });
+      this.userService.getUser(this.id).subscribe((userData: any) => {
+        console.log('userData.user :>> ', userData.User);
+        this.userForm.setValue({
+          firstName: userData.User.firstName,
+          lastName: userData.User.lastName,
+          contact: userData.User.contact,
+          email: userData.User.email,
+          role: userData.User.role,
+          password: userData.User.password,
+          confirmPassword: userData.User.password,
         });
-      
+      });
+
       // userFirstName = user.firstName;
       // userLastName = user.lastName;
       // userMobile = user.mobile;
@@ -97,7 +97,12 @@ export class AddUserComponent implements OnInit {
   // submit button
   onSubmit() {
     if (this.editMode) {
-      this.userService.updateUser(this.id, this.userForm.value);
+      this.http
+        .put(`http://localhost:3001/api/user/${this.id}`, this.userForm.value)
+        .subscribe((res: any) => {
+          console.log('res update 1 :>> ', res);
+        });
+
       this.messageService.add({
         severity: 'success',
         summary: '',

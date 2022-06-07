@@ -36,13 +36,14 @@ module.exports.updateUser = async (req, res) => {
 };
 
 module.exports.updateUserById = async (req, res) => {
-  if (req.body.password) {
-    req.body.password = cryptojs.AES.encrypt(
-      req.body.password,
-      process.env.PASSWORD_SECRET
-    );
-  }
   try {
+  // if (req.body.password) {
+  //   req.body.password = cryptojs.AES.encrypt(
+  //     req.body.password,
+  //     process.env.PASSWORD_SECRET
+  //   );
+  // }
+ 
     const updateUser = await User.findByIdAndUpdate(
       req.params.id,
       {
@@ -52,6 +53,7 @@ module.exports.updateUserById = async (req, res) => {
     );
     res.status(200).send({ message: "User Updated", user: updateUser });
   } catch (err) {
+    console.log('err :>> ', err);
     res.status(401).send({ Error: err.message });
   }
 };

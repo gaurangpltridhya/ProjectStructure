@@ -65,9 +65,10 @@ export class UserService extends BaseApiService {
   }
 
   // update user data
-  updateUser(index: number, newUserData: User) {
-    this.usersData[index] = newUserData;
-    this.userChanged.next(this.usersData.slice());
+  updateUser(index: any, body: any) {
+    return this.makeRequest('PUT',USER_DATA_LIST+`/${index}`);
+    // this.usersData[index] = newUserData;
+    // this.userChanged.next(this.usersData.slice());
   }
 
   // delete user data
