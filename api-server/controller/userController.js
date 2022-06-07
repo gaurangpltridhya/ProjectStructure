@@ -36,12 +36,6 @@ module.exports.updateUser = async (req, res) => {
 };
 
 module.exports.updateUserById = async (req, res) => {
-  if (req.body.password) {
-    req.body.password = cryptojs.AES.encrypt(
-      req.body.password,
-      process.env.PASSWORD_SECRET
-    );
-  }
   try {
     const updateUser = await User.findByIdAndUpdate(
       req.params.id,
