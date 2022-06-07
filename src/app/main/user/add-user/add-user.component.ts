@@ -121,6 +121,6 @@ export class AddUserComponent implements OnInit {
 
   // cancel button
   onCancel() {
-    this.router.navigate(['../'], { relativeTo: this.activatedRoute });
+    this.router.navigate(['/user'], { relativeTo: this.activatedRoute });
   }
 }

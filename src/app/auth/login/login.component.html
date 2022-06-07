@@ -36,7 +36,7 @@
                                                 email is required!
                                             </div>
                                             <div
-                                                *ngIf="!loginForm.get('email').hasError('required') && loginForm.get('email').hasError('pattern')">
+                                                *ngIf="!loginForm.get('email')?.hasError('required') && loginForm.get('email')?.hasError('pattern')">
                                                 Please enter a valid email!
                                             </div>
                                         </div>
