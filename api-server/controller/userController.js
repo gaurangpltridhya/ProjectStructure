@@ -46,20 +46,14 @@ module.exports.deleteUser = async (req, res) => {
 
 module.exports.searchUserById = async (req, res) => {
   try {
-    const user = await User.findById(req.params.id, {
-      _id: 1,
-      username: 1,
-      email: 1,
-    });
+    const user = await User.findById(req.params.id);
     if (user) {
       res.status(200).send({ message: "Search Result", User: user });
     } else {
-      res
-        .status(404)
-        .send({
-          Error: "User Not Found",
-          message: "user with id " + req.params.id + "doesnt exist",
-        });
+      res.status(404).send({
+        Error: "User Not Found",
+        message: "user with id " + req.params.id + "doesnt exist",
+      });
     }
   } catch (err) {
     res.status(401).send({ Error: err.message });
