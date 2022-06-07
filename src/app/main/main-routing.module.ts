@@ -88,6 +88,11 @@ const routes: Routes = [
   },
 
   {
+    path: 'product-category',
+    loadChildren: () => import('./product-category/product-category.module').then(m => m.ProductCategoryModule),
+    // canActivate: [RoleAccessControl],
+  },
+  {
     path: 'user',
     resolve: {
       user: UserResolver

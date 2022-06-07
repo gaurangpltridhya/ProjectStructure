@@ -15,6 +15,10 @@
 @import "~@ng-select/ng-select/themes/default.theme.css";
 
 
+/** ngx toaster **/
+// regular style toast
+@import '~ngx-toastr/toastr';
+
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -23,9 +27,10 @@
 }
 
 body {
-    font-family: "Open Sans", sans-serif;
+    // font-family: "Open Sans", sans-serif;
     background: #f6f9ff;
     color: #444444;
+    font-size: 0.9rem;
 }
 
 a {
@@ -273,9 +278,9 @@ h6 {
     font-weight: 400;
 }
 
-.card-body {
-    padding: 0 20px 20px 20px;
-}
+// .card-body {
+//     padding: 0 20px 20px 20px;
+// }
 
 .card-img-overlay {
     background-color: rgba(255, 255, 255, 0.6);
@@ -703,9 +708,9 @@ h6 {
 .sidebar-nav .nav-link {
     display: flex;
     align-items: center;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 600;
-    color: #4154f1;
+    color: #012970;
     transition: 0.3;
     // background: #f6f9ff;
     padding: 10px 15px;
@@ -714,23 +719,33 @@ h6 {
 
 .sidebar-nav .nav-link {
     &.active {
-        background: #cedeff;
+        background: #e9f0ff;
+        color: #4154f1;
 
         &:hover {
-            background: #cedeff;
+            background: #e9f0ff;
         }
+    }
+
+    &.active-inner {
+        color: #4154f1;
     }
 }
 
 .sidebar-nav .nav-link i {
     font-size: 16px;
     margin-right: 10px;
-    color: #4154f1;
+    color: #012970;
 }
 
 .sidebar-nav .nav-link.collapsed {
     color: #012970;
     background: #fff;
+
+    &.active {
+        background: #e9f0ff;
+        color: #4154f1;
+    }
 }
 
 .sidebar-nav .nav-link.collapsed i {
@@ -751,7 +766,7 @@ h6 {
 }
 
 .sidebar-nav .nav-link .fas.fa-angle-right {
-    margin-right: 0;
+    margin-right: 20px;
     transition: transform 0.2s ease-in-out;
 }
 
@@ -1328,5 +1343,87 @@ h6 {
 }
 
 /******************************************************************* below are custom css end  ******************************************************************/
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn {
+    font-size: 0.9rem;
+}
+
+/*********************************************  ngb pagination css start  *********************************************/
+
+@media (min-width: 768px) {
+    .text-md-right {
+        text-align: right !important;
+    }
+
+    .float-md-right {
+        float: right !important;
+    }
+
+    .align-items-md-center {
+        align-items: center !important;
+    }
+
+    .justify-content-md-between {
+        justify-content: space-between !important;
+    }
+}
+
+.w-80 {
+    width: 80px;
+}
+
+.paginate-length {
+    display: flex;
+    justify-content: end;
+    align-items: start;
+}
+
+ngb-pagination {
+    .pagination {
+        .page-item {
+            font-size: 16px;
+        }
+    }
+}
+
+
+/*********************************************  ngb pagination css end  *********************************************/
+
+
+/*********************************************  custom table css start  *********************************************/
+
+table.custom-table {
+    thead {
+        th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #dedfe0;
+            padding: 0.75rem;
+            border-top: 1px solid #dedfe0;
+            font-weight: 500;
+
+            i {
+                margin-left: 5px;
+            }
+        }
+    }
+
+    tbody {
+        tr {
+            border-bottom: #dedfe0;
+        }
+    }
+}
+
+/*********************************************  custom table css end  *********************************************/
+
+
+/*********************************************  angular material components css css start  *********************************************/
+.mat-toolbar.mat-primary {
+    background-color: #0d6efd;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+/*********************************************  angular material components css css end  *********************************************/

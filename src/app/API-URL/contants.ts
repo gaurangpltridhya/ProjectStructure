@@ -17,6 +17,10 @@ export const REGISTER_EMAIL_CHECK = API_LINK_URL + '/' + API_VERSION + '/verify/
 export const VERIFY_EMAIL_FORGOT_PASSWORD = API_LINK_URL + '/' + API_VERSION + '/verify/email'; //email verify
 export const OTP_VERIFY_RESET_PASSWORD = API_LINK_URL + '/' + API_VERSION + '/otp/reset-password'; //email verify
 
+// product category
+export const GET_PRODUCT_CATEGORY_LIST = API_LINK_URL + '/' + API_VERSION + '/categories'; //email verify
+
+
 @Injectable()
 export class Constants {
   constructor(
@@ -27,4 +31,12 @@ export class Constants {
   //   { "name": "Admin", "value": "admin" },
   //   { "name": "Accountant", "value": "accountant" }
   // ];
+
+
+  datatableParam: any = {
+    start: 0,
+    length: 10,
+    sort: {},
+    pageLengths: [10, 25, 50, 100]
+  };
 }

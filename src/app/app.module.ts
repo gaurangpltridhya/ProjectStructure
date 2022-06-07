@@ -21,6 +21,8 @@ import { Globals } from './globals';
 import { RoleAccessControl } from './common/role-access-control/role-access-control.service';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { FlatpickrModule } from 'angularx-flatpickr';
+import { ToastrModule } from 'ngx-toastr';
+import { UtilityService } from './common/utility.service';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -50,8 +52,10 @@ import {MatSelectModule} from '@angular/material/select';
     MatSelectModule,
     OAuthModule.forRoot(),
     FlatpickrModule.forRoot(),
-    AgmCoreModule.forRoot({ // apiKey: GOOGLE_API_KEY
-    })
+    AgmCoreModule.forRoot({
+      // apiKey: GOOGLE_API_KEY
+    }),
+    ToastrModule.forRoot()
   ],
   exports: [
 
@@ -59,7 +63,8 @@ import {MatSelectModule} from '@angular/material/select';
   providers: [
     Constants,
     Globals,
-    RoleAccessControl
+    RoleAccessControl,
+    UtilityService
   ],
   bootstrap: [AppComponent]
 })
