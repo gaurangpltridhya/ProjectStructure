@@ -1,6 +1,6 @@
 import { HttpClient, HttpEvent, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 export type Methods = 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH';
@@ -11,7 +11,7 @@ export class BaseApiService {
         'Content-Type': 'application/json'
     });
 
-    private baseUrl = 'https://api.imgur.com/3';
+    private baseUrl = 'http://localhost:8080';
 
     constructor(protected http: HttpClient) { }
 
@@ -53,9 +53,9 @@ export class BaseApiService {
   upload(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
 
-    formData.append('file', file);
+    formData.append('image', file);
 
-    const req = new HttpRequest('POST', `${this.baseUrl}/image`, formData, {
+    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
       reportProgress: true,
       responseType: 'json'
     });
@@ -63,9 +63,28 @@ export class BaseApiService {
     return this.http.request(req);
   }
 
-  getFiles(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/files`);
-  }
+  getFiles() {
+    return this.http.get(`${this.baseUrl}/`, {}).pipe(
+      map((res: any) => {
+        return res;
+
+      }),
+      catchError((error: any) => {
+        // this.commonErrorHandler(error.error.status);
+        return throwError(error)
+      })
+    )
 }
 
-
+deleteFiles(id :any){
+  return this.http.delete(`${this.baseUrl}/`+id, {body:id}).pipe(
+    map((res :any) => {
+      return res;
+    }),
+    catchError((error: any) => {
+      // this.commonErrorHandler(error.error.status);
+      return throwError(error)
+    })
+  )
+}
+}

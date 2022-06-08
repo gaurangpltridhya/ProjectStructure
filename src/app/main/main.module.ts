@@ -15,6 +15,9 @@ import { AgmMapComponent } from './agm-map/agm-map.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
+
 
 
 @NgModule({
@@ -34,7 +37,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MainRoutingModule,
     SharedModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatCardModule,
+    MatGridListModule
   ]
 })
 export class MainModule { }

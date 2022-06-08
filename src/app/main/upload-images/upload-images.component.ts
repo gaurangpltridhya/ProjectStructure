@@ -15,7 +15,13 @@ export class UploadImagesComponent implements OnInit {
   message: string[] = [];
 
   previews: string[] = [];
-  imageInfos?: Observable<any>;
+  imageInfos?: any;
+  public isFileChanged = false;
+  public coverImageWeb!: string;
+  public imageChangedEvent: any = '';
+  public croppedImage: any = '';
+  showError = false;
+
 
   constructor(private uploadService: BaseApiService,
     public dialog: MatDialog,
@@ -23,7 +29,12 @@ export class UploadImagesComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.imageInfos = this.uploadService.getFiles();
+    // this.imageInfos = this.uploadService.getFiles();
+    // this.uploadService.getFiles().subscribe((res:any)=>{
+    //   this.imageInfos = res?.getImages;
+    //   console.log('40',this.imageInfos)
+
+    // });
   }
 
   selectFiles(event: any): void {
@@ -59,7 +70,7 @@ export class UploadImagesComponent implements OnInit {
           } else if (event instanceof HttpResponse) {
             const msg = 'Uploaded the file successfully: ' + file.name;
             this.message.push(msg);
-            this.imageInfos = this.uploadService.getFiles();
+            // this.imageInfos = this.uploadService.getFiles();
           }
         },
         (err: any) => {
@@ -71,6 +82,22 @@ export class UploadImagesComponent implements OnInit {
     }
   }
 
+  delete(id: number ,file : File):void {
+    this.uploadService.deleteFiles(file).subscribe(
+      (event:any) => {
+        if(event instanceof HttpResponse){
+          this.uploadService.getFiles().subscribe((res:any)=>{
+              this.imageInfos = res?.getImages;
+              console.log('40',this.imageInfos)
+        
+            });
+          this.imageInfos = this.uploadService.deleteFiles(this.imageInfos);
+        }
+      }
+    )
+      
+    };
+
   uploadFiles(): void {
     this.message = [];
 
@@ -79,14 +106,18 @@ export class UploadImagesComponent implements OnInit {
         this.upload(i, this.selectedFiles[i]);
       }
     }
+    this.dialogRef.close(true);
   }
 
   deleteFiles(): void{
-    if (this.selectedFiles) {
-      for (let i = 0; i < this.selectedFiles.length; i++) {
-    console.log(this.selectedFiles?.length)
-      }
-    }
+    this.imageInfos = null;
+this.previews = [];
+    // if (this.selectedFiles) {
+    //   for (let i = 0; i < this.selectedFiles.length; i++) {
+    //     this.delete(i, this.selectedFiles[i]);
+    // console.log(this.selectedFiles?.length)
+    //   }
+    // }
     // if (this.selectedFiles) {
     //   for (let i = 0; i < this.selectedFiles.length; i++) {
     //     this.remove(i, this.selectedFiles[i]);
@@ -94,12 +125,28 @@ export class UploadImagesComponent implements OnInit {
     // } 
    }
 
-   addImage(){
-    const dialogRef = this.dialog.open(UploadImagesComponent, {
-    });
-   }
    
   onClose(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(true);
+  }
+
+  onFileChanged(eventOnChange: any): void {
+    if (eventOnChange.target.files[0]) {
+      if(eventOnChange.target.files[0].type === 'image/png' || eventOnChange.target.files[0].type === 'image/jpeg' || eventOnChange.target.files[0].type === 'image/jpg'){
+        this.isFileChanged = true;
+        this.showError = false;
+        this.imageChangedEvent = eventOnChange.target.files[0];
+      }
+      else{
+        this.isFileChanged = true;
+        this.imageChangedEvent = null;
+        this.croppedImage = null;
+        this.loadImageFailed();
+      }
+    }
+  }
+  loadImageFailed(): void{
+    // this.toastr.showError("File not supported","");
+    this.showError = true;
   }
 }

@@ -1,23 +1,43 @@
-<h1> List of Images</h1>
+<!-- <h1> List of Images</h1> -->
+<mat-toolbar color="primary" class="justify-content-between">
+  <span>List of Images</span>
+  <span class="example-spacer"></span>
+  <button class="btn btn-light float-right" (click)="addImage()"><i class="fas fa-plus m-r-5"></i>Add</button>
+</mat-toolbar>
 
-<div class="col-4">
+<!-- <div class="col-4 color" >
     <button
-      class="btn btn-success btn-sm modal-aside__btn btn btn--white"
+      class="btn btn-purple btn-sm "
       (click)="addImage()"
     >
       Add Image
     </button>
-    </div>
+    </div> -->
   <div class="card mt-3">
     <div class="card-header">List of Images</div>
-    <ul
+
+    <mat-grid-list cols="4" rowHeight="2:1">
+      <mat-grid-tile    
+       *ngFor="let image of imageInfos"
+      >
+      <div class="m-b-5 border-0 shadow-lg">
+        <img  mat-card-xl-image src="http://localhost:8080{{ image?.imagePath }}" alt="{{ image?.imagePath }}" height="80px" />
+    </div>
+    </mat-grid-tile>
+    
+    </mat-grid-list>
+
+  <!-- <mat-card class="example-card ">
+    <li
       class="list-group list-group-flush"
-      *ngFor="let image of imageInfos | async"
-    >
-      <li class="list-group-item">
-        <p><a href="{{ image.url }}">{{ image.name }}</a></p>
-        <img src="{{ image.url }}" alt="{{ image.name }}" height="80px" />
-      </li>
-    </ul>
+      *ngFor="let image of imageInfos"
+    > -->
+      <!-- <li class="list-group-item"> -->
+        <!-- <p><a href="http://localhost:8080{{ image?.imagePath }}">http://localhost:8080{{ image?.imagePath }}</a></p> -->
+        
+        <!-- <img  mat-card-xl-image src="http://localhost:8080{{ image?.imagePath }}" alt="{{ image?.imagePath }}" height="80px" /> -->
+      <!-- </li> -->
+    <!-- </li>
+    </mat-card> -->
   </div>
   

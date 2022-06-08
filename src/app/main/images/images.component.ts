@@ -18,7 +18,7 @@ export class ImagesComponent implements OnInit {
   message: string[] = [];
 
   previews: string[] = [];
-  imageInfos?: Observable<any>;
+  imageInfos?: Array<any> = [];
 
 
   constructor(private uploadService: BaseApiService,
@@ -26,7 +26,11 @@ export class ImagesComponent implements OnInit {
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.imageInfos = this.uploadService.getFiles();
+    this.uploadService.getFiles().subscribe((res:any)=>{
+      this.imageInfos = res?.getImages;
+      console.log('30',this.imageInfos)
+
+    });
   }
    
   selectFiles(event: any): void {
@@ -49,41 +53,30 @@ export class ImagesComponent implements OnInit {
     }
   }
 
-  upload(idx: number, file: File): void {
-    this.progressInfos[idx] = { value: 0, fileName: file.name };
-
-    if (file) {
-      this.uploadService.upload(file).subscribe(
-        (event: any) => {
-          if (event.type === HttpEventType.UploadProgress) {
-            this.progressInfos[idx].value = Math.round(
-              (100 * event.loaded) / event.total
-            );
-          } else if (event instanceof HttpResponse) {
-            const msg = 'Uploaded the file successfully: ' + file.name;
-            this.message.push(msg);
-            this.imageInfos = this.uploadService.getFiles();
-          }
-        },
-        (err: any) => {
-          this.progressInfos[idx].value = 0;
-          const msg = 'Could not upload the file: ' + file.name;
-          this.message.push(msg);
-        }
-      );
-    }
-  }
-
-
    addImage(): void{
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    // dialogConfig.data = {
-    //   dogDetails: this.formGroup.value
-    // };
-    this.dialog.open(UploadImagesComponent, dialogConfig);
+    // const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    // dialogConfig.autoFocus = true;
+    // // dialogConfig.data = {
+    // //   dogDetails: this.formGroup.value
+    // // };
+    // this.dialog.open(UploadImagesComponent, dialogConfig);
+
+    this.dialog.open(UploadImagesComponent, {
+      panelClass: 'new-assign-dialog',
+      disableClose: true,
+      // data: {
+      //   request: reqData
+      // }
+    }).afterClosed()
+      .subscribe((response: any) => {
+        if (response) {
+          
+        } else {
+        }
+      });
   }
+  
     // this.router.navigate(['/upload-image']);
    }
 

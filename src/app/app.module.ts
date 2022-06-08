@@ -20,6 +20,8 @@ import { ImagesComponent } from './main/images/images.component';
 import { UploadImagesComponent } from './main/upload-images/upload-images.component';
 import { ToastrModule } from 'ngx-toastr';
 import { UtilityService } from './common/utility.service';
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { UtilityService } from './common/utility.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatGridListModule,
     SharedModule,
+    MatCardModule,
     OAuthModule.forRoot(),
     FlatpickrModule.forRoot(),
     AgmCoreModule.forRoot({
