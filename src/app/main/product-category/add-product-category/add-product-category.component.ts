@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { Constants, IMAGE_PATH } from 'src/app/API-URL/contants';
 
 @Component({
   selector: 'app-add-product-category',
@@ -15,12 +16,15 @@ export class AddProductCategoryComponent implements OnInit {
   addProductCategoryForm!: FormGroup;
   addProductCategoryFormSubmitted: Boolean = false;
   attachmentExtenstions = ["jpg", "jpeg", "png", "svg", "gif", "bmp"];
+  pageAction: string = '';
+  IMAGE_PATH: string = IMAGE_PATH;
 
   constructor(
     public matDialogRef: MatDialogRef<AddProductCategoryComponent>,
     @Inject(MAT_DIALOG_DATA) public _data: any,
     private _formBuilder: FormBuilder,
-    private toasterService: ToastrService
+    private toasterService: ToastrService,
+    public _constants: Constants
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +33,19 @@ export class AddProductCategoryComponent implements OnInit {
       file: ['', [Validators.required]],
       fileSource: ['', [Validators.required]]
     });
+
+    if (this._data !== undefined) {
+      this.pageAction = 'edit';
+      this.addProductCategoryForm.patchValue({
+        name: this._data?.name,
+        file: this._data?.path,
+        fileSource: { path: this._data?.path }
+      });
+      console.log(this.addProductCategoryForm.value);
+
+    } else {
+      this.pageAction = 'add';
+    }
   }
 
 
@@ -51,16 +68,15 @@ export class AddProductCategoryComponent implements OnInit {
         var extension = file.name.split('.').pop().toLowerCase();
 
         if (this.attachmentExtenstions.includes(extension)) {
+
           this.addProductCategoryForm.patchValue({
             fileSource: {
               type: extension,
               fileName: file.name,
               file: file,
               fileData: event.target.result,
-              attachmentFor: '',
-              comment: '',
+              path: event.target.result,
               isNew: true
-
             }
           });
 

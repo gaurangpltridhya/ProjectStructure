@@ -3,7 +3,11 @@
 
     <mat-toolbar matDialogTitle color="primary">
         <mat-toolbar-row class="row">
-            <span class="title dialog-title">Add Product Category</span>
+            <span class="title dialog-title">
+                <ng-container *ngIf="pageAction === 'add'">Add</ng-container>
+                <ng-container *ngIf="pageAction === 'edit'">Edit</ng-container>
+                Product Category
+            </span>
 
         </mat-toolbar-row>
     </mat-toolbar>
@@ -38,17 +42,17 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <div [ngClass]="{'user-img-box': addProductCategoryForm?.value?.fileSource?.fileName != undefined && addProductCategoryForm?.value?.fileSource?.fileName != ''}"
+                    <div [ngClass]="{'user-img-box': addProductCategoryForm?.value?.fileSource?.path != undefined && addProductCategoryForm?.value?.fileSource?.path != ''}"
                         class="image-cropper">
-                        <!-- <img *ngIf="addProductCategoryForm?.value?.fileSource?.isNew ==undefined"
+                        <img *ngIf="addProductCategoryForm?.value?.fileSource?.isNew == undefined"
                             src="{{IMAGE_PATH}}{{addProductCategoryForm?.value?.fileSource?.path}}"
-                            onerror="this.src='assets/images/avatars/avatar-blank.png';"> -->
+                            onerror="this.src='assets/img/avatar-blank.jpg';">
                         <img *ngIf="addProductCategoryForm?.value?.fileSource?.isNew" height="120" width="120"
                             src="{{addProductCategoryForm?.value?.fileSource?.fileData}}"
-                            onerror="this.src='assets/images/avatars/avatar-blank.png';">
+                            onerror="this.src='assets/img/avatar-blank.jpg';">
 
                         <div class="user-img-action"
-                            *ngIf="addProductCategoryForm?.value?.fileSource?.fileName != undefined && addProductCategoryForm?.value?.fileSource?.fileName != ''">
+                            *ngIf="addProductCategoryForm?.value?.fileSource?.path != undefined && addProductCategoryForm?.value?.fileSource?.path != ''">
                             <ng-container>
                                 <i class="fas fa-times-circle fa-lg cursor-pointer" (click)="deleteProductImage()"></i>
                             </ng-container>
@@ -62,7 +66,8 @@
         <a mat-button class="m-r-5 btn btn-light float-right" (click)="matDialogRef.close()"
             aria-label="Cancel">Close</a>
         <button class="btn btn-primary float-right" type="submit" form="addProductCategoryForm">
-            Add
+            <ng-container *ngIf="pageAction === 'add'">Add</ng-container>
+            <ng-container *ngIf="pageAction === 'edit'">Update</ng-container>
         </button>
     </div>
 </div>

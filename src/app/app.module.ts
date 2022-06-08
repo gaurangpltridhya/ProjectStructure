@@ -20,10 +20,12 @@ import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { ToastrModule } from 'ngx-toastr';
 import { UtilityService } from './common/utility.service';
+import { CustomConfirmationPopupComponent } from './common/custom-confirmation-popup/custom-confirmation-popup.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CustomConfirmationPopupComponent
   ],
   imports: [
     BrowserModule,

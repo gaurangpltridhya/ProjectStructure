@@ -1,0 +1,27 @@
+.custom-confirmation {
+
+    min-width: 300px;
+    max-width: 600px !important;
+
+    @media (max-width: 767.98px) {
+        width: 80%;
+    }
+
+    .mat-dialog-container {
+        padding: 0;
+
+        .mat-toolbar {
+            flex: 1 0 auto;
+            min-height: initial;
+        }
+
+        .toolbar-bottom {
+            height: auto;
+        }
+    }
+
+    .confirm-ico {
+        color: #facea8;
+    }
+
+}
