@@ -45,9 +45,11 @@
                     <div [ngClass]="{'user-img-box': addProductCategoryForm?.value?.fileSource?.path != undefined && addProductCategoryForm?.value?.fileSource?.path != ''}"
                         class="image-cropper">
                         <img *ngIf="addProductCategoryForm?.value?.fileSource?.isNew == undefined"
-                            src="{{IMAGE_PATH}}{{addProductCategoryForm?.value?.fileSource?.path}}">
+                            src="{{IMAGE_PATH}}{{addProductCategoryForm?.value?.fileSource?.path}}"
+                            onerror="this.src='assets/img/avatar-blank.jpg';">
                         <img *ngIf="addProductCategoryForm?.value?.fileSource?.isNew" height="120" width="120"
-                            src="{{addProductCategoryForm?.value?.fileSource?.fileData}}">
+                            src="{{addProductCategoryForm?.value?.fileSource?.fileData}}"
+                            onerror="this.src='assets/img/avatar-blank.jpg';">
 
                         <div class="user-img-action"
                             *ngIf="addProductCategoryForm?.value?.fileSource?.path != undefined && addProductCategoryForm?.value?.fileSource?.path != ''">
