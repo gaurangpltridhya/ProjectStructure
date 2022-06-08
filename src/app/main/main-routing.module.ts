@@ -11,8 +11,8 @@ import { UserResolver } from './shared/resolvers/user.resolver';
 import { CommonElementsComponent } from './common-elements/common-elements.component';
 import { DataViewComponent } from './data-view/data-view.component';
 import { AgmMapComponent } from './agm-map/agm-map.component';
-import { ImagesComponent } from './images/images.component';
-import { UploadImagesComponent } from './upload-images/upload-images.component';
+import { ImagesComponent } from './image-slider/images/images.component';
+import { UploadImagesComponent } from './image-slider/upload-images/upload-images.component';
 
 const routes: Routes = [
   {
@@ -86,19 +86,9 @@ const routes: Routes = [
     // canActivate: [RoleAccessControl],
   },
   {
-    path: 'images',
-    component: ImagesComponent,
-    data: {
-      module: 'images'
-    },
+    path: 'image-slider',
+    loadChildren: () => import('./image-slider/image-slider.module').then(m => m.ImageSliderModule),
     // canActivate: [RoleAccessControl],
-  },
-  {
-    path: 'upload-image',
-    component: UploadImagesComponent,
-    data: {
-      module: 'upload-image'
-    },
   },
   {
     path: 'product-category',

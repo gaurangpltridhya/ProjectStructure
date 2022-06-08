@@ -75,3 +75,9 @@
 .c-upload-icon {
   transform: rotate(140deg);
 }
+
+.dialog-content-wrapper {
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+}

@@ -37,9 +37,6 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MainRoutingModule,
     SharedModule,
     HttpClientModule,
-    MatDialogModule,
-    MatCardModule,
-    MatGridListModule
   ]
 })
 export class MainModule { }
