@@ -13,14 +13,14 @@
                             <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col" sortable="user.name" (sort)="onSort($event)">Name
-                                    <!-- <i class="fas fa-arrow-up" *ngIf="datatableParams.sort.active === 'user.name' && datatableParams.sort.dic === 'asc'"></i> -->
-                                    <!-- <i class="fas fa-arrow-down" *ngIf="datatableParams.sort.active === 'user.name' && datatableParams.sort.dic === 'desc'"></i> -->
+                                    <i class="fa fa-arrow-up" *ngIf="datatableParams.sort.active === 'user.name' && datatableParams.sort.dir === 'asc'"></i>
+                                    <i class="fa fa-arrow-down" *ngIf="datatableParams.sort.active === 'user.name' && datatableParams.sort.dir === 'desc'"></i>
                                 </th>
                                 <th scope="col">Phone No.</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Role</th>
                                 <th scope="col">Status</th>
-                                <th scope="col" class="nosort text-center action-th">Actions</th>
+                                <th scope="col" class="nosort text-center action-th" width="200">Actions</th>
                             </tr>
                         </thead>
                         <tbody>

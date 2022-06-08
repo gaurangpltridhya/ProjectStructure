@@ -1,3 +1,5 @@
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, Subject, map } from 'rxjs';
@@ -62,6 +64,26 @@ export class UserService extends BaseApiService {
   // get user create list
   getUsersList() {
     return this.makeRequest('GET', USER_DATA_LIST);
+  }
+
+  // get user create list page
+  getUsersPageList(dtParams: any, dtSearch: any, type: any){
+    dtParams['search'] = dtSearch
+    return this.http.post(USER_DATA_LIST, dtParams).pipe(
+      map((res: any) => {
+        return res;
+      }),
+      catchError(error => {
+        this.commonErrorHandler(error.error.status);
+        return throwError(error);
+      })
+    )
+  }
+
+  commonErrorHandler(errorStatus: any) {
+    if (errorStatus === 401) {
+      // this.authenticationService.logout();
+    }
   }
 
   // update user data

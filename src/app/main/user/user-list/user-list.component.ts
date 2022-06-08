@@ -28,6 +28,7 @@ export class UserListComponent implements OnInit, OnDestroy {
   datatableParams!: any;
 
   // pagination
+  dtSearch: any = {};
   recordsFiltered = 0;
   totalRecord = 0;
   startIndex = 0;
@@ -106,7 +107,8 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   // users List 
-  private userList(){
+  userList(){
+    this.datatableParams.start = 0;
     this.userDataSubscription = this.userService.getUsersList().subscribe((resData: any) => {
       this.usersData = resData.Users;
       console.log('this.usersData :>> ', this.usersData);
@@ -125,6 +127,7 @@ export class UserListComponent implements OnInit, OnDestroy {
         header.direction = '';
       }
     });
+
     this.userList();
   }
 
@@ -132,20 +135,20 @@ export class UserListComponent implements OnInit, OnDestroy {
   public onpageChange(event: any) {
     this.showUserListLoader = true;
     this.datatableParams.start = (event - 1) * this.datatableParams.length;
-    // this._productCategoryService.getProductCategoryList(this.datatableParams, this.dtSearch, '').subscribe((res: any) => {
-    //   if (res.status == 200) {
+    this.userService.getUsersPageList(this.datatableParams, this.dtSearch, '').subscribe((res: any) => {
+      if (res.status == 200) {
 
-    //     this.usersData = res.data.list;
-    //     this.recordsFiltered = res.data.recordsFiltered;
-    //     this.totalRecord = res.data.recordsTotal;
-    //     let footerCount = this._util.getDatatableFooterCount(res.data.list.length, event, this.datatableParams.length, this.datatableParams.start, this.recordsFiltered);
-    //     this.startIndex = footerCount.startIndex;
-    //     this.endIndex = footerCount.endIndex;
-    //     this.showUserListLoader = false;
-    //   }
-    // }, (error: any) => {
-    //   this.showUserListLoader = false;
-    // });
+        this.usersData = res.data.list;
+        this.recordsFiltered = res.data.recordsFiltered;
+        this.totalRecord = res.data.recordsTotal;
+        let footerCount = this._util.getDatatableFooterCount(res.data.list.length, event, this.datatableParams.length, this.datatableParams.start, this.recordsFiltered);
+        this.startIndex = footerCount.startIndex;
+        this.endIndex = footerCount.endIndex;
+        this.showUserListLoader = false;
+      }
+    }, (error: any) => {
+      this.showUserListLoader = false;
+    });
   }
 
 
