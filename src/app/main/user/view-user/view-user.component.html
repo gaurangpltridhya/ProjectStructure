@@ -1,11 +1,12 @@
 <div class="container">
+    <mat-toolbar color="primary" class="justify-content-between">
+        <span>{{viewUserData.firstName}}'s Details</span>
+        <span class="example-spacer"></span>
+        <button type="button" class="btn btn-light" [routerLink]="['user']">Back</button>
+    </mat-toolbar>
     <div class="row">
         <div class="col-md-12">
             <div class="card text-left">
-                <div class="card-header">
-                    <h4>{{userData.firstName}}'s Details</h4>
-                </div>
-                <br>
                 <div class="card-body">
                     <div class="card-text">
                         <div class="row">
@@ -14,23 +15,20 @@
                             </div>
                             <div class="col-md-6 userData">
                                 <div>
-                                    <b>Name: </b> {{userData.firstName}} {{userData.lastName}}
+                                    <b>Name: </b> {{viewUserData.firstName}} {{viewUserData.lastName}}
                                 </div>
                                 <div>
-                                    <b>Role: </b> {{userData.role}}
+                                    <b>Role: </b> {{viewUserData.role}}
                                 </div>
                                 <div>
-                                    <b>Email: </b> {{userData.email}}
+                                    <b>Email: </b> {{viewUserData.email}}
                                 </div>
                                 <div>
-                                    <b>Phone no.</b> {{userData.contact}}
+                                    <b>Phone no.</b> {{viewUserData.contact}}
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-footer">
-                    <button type="button" class="btn btn-primary" [routerLink]="['/user']">Back</button>
                 </div>
             </div>
         </div>

@@ -18,25 +18,6 @@ const user = {
 })
 export class UserService extends BaseApiService {
   userChanged = new Subject<User[]>();
-
-  // usersData: User[] = [
-  //   {confirmPassword: "112233",
-  //   email: "mukund@gmail.com",
-  //   firstName: "Mukund",
-  //   lastName: "Dholariya",
-  //   mobile: "9874563210",
-  //   password: "112233",
-  //   role: "Admin"},
-
-  //   {confirmPassword: "112233",
-  //   email: "yash@gmail.com",
-  //   firstName: "Yash",
-  //   lastName: "Bharadva",
-  //   mobile: "9874563211",
-  //   password: "112233",
-  //   role: "User"}
-  // ];
-
   usersData: User[] = [];
 
   constructor(http: HttpClient) {
@@ -88,9 +69,7 @@ export class UserService extends BaseApiService {
 
   // update user data
   updateUser(index: any, body: any) {
-    return this.makeRequest('PUT',USER_DATA_LIST+`/${index}`);
-    // this.usersData[index] = newUserData;
-    // this.userChanged.next(this.usersData.slice());
+    return this.makeRequest('PUT',USER_DATA_LIST+`/${index}`,body);
   }
 
   // delete user data

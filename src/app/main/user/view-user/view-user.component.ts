@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-user.component.scss'],
 })
 export class ViewUserComponent implements OnInit {
-  userData!: any;
+  viewUserData!: any;
   id!: any;
 
   constructor(
@@ -23,12 +23,12 @@ export class ViewUserComponent implements OnInit {
     });
   }
 
-  // view User
+  // view User details
   viewUser(id: any) {
-    this.userData = this.userService.getUser(id).subscribe((resView: any) => {
+    this.viewUserData = this.userService.getUser(id).subscribe((resView: any) => {
       console.log('resView :>> ', resView.User);
-      this.userData = resView.User;
-      console.log('this.userData :>> ', this.userData);
+      this.viewUserData = resView.User;
+      console.log('this.viewUserData :>> ', this.viewUserData);
     });
   }
 }

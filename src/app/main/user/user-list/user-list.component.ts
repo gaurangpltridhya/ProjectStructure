@@ -1,10 +1,8 @@
 import { Subscription } from 'rxjs';
 import { UserService } from './../../shared/services/user.service';
 import { Component, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/shared/user.model';
-import { ConfirmationService, Message, MessageService, PrimeNGConfig } from 'primeng/api';
-import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationService, MessageService, PrimeNGConfig } from 'primeng/api';
 import { AdvancedSortableDirective, SortEvent } from 'src/app/shared/advanced-sortable.directive';
 import { Constants } from 'src/app/API-URL/contants';
 import { UtilityService } from 'src/app/common/utility.service';
@@ -19,7 +17,6 @@ export class UserListComponent implements OnInit, OnDestroy {
   @ViewChildren(AdvancedSortableDirective) headers!: QueryList<AdvancedSortableDirective>;
 
   usersData!: User[];
-  msgs: Message[] = [];
   userDataSubscription!: Subscription;
   myVariable = false;
   addClass = false;
@@ -36,13 +33,9 @@ export class UserListComponent implements OnInit, OnDestroy {
   selectedPageLength!: number;
   showUserListLoader: Boolean = false;
 
-
-
   constructor(
     private primengConfig: PrimeNGConfig,
     private confirmationService: ConfirmationService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
     private userService: UserService,
     private messageService: MessageService,
     public constant: Constants,
@@ -57,28 +50,7 @@ export class UserListComponent implements OnInit, OnDestroy {
     this.primengConfig.ripple = true;
     this.totalRecord = 100; //TODO: remove it
     this.recordsFiltered = 20; //TODO: remove it
-
-
-    // this.userDataSubscription = this.userService.userChanged.subscribe(
-    //   (userData: User[]) => {
-    //     this.usersData = userData;
-    //   }
-    // );
-    // this.usersData = this.userService.getUsersList();
-
     this.userList();
-  }
-
-  // add new user
-  addNewUser() {
-    this.router.navigate(['add'], { relativeTo: this.activatedRoute });
-  }
-
-  // edit user
-  editUser(index: any) {
-    this.router.navigate(['edit/' + index], {
-      relativeTo: this.activatedRoute,
-    });
   }
 
   // delete user
@@ -99,19 +71,11 @@ export class UserListComponent implements OnInit, OnDestroy {
     });
   }
 
-  // view User
-  viewUser(index: any) {
-    this.router.navigate(['view/' + index], {
-      relativeTo: this.activatedRoute,
-    });
-  }
-
   // users List 
   userList(){
     this.datatableParams.start = 0;
     this.userDataSubscription = this.userService.getUsersList().subscribe((resData: any) => {
       this.usersData = resData.Users;
-      console.log('this.usersData :>> ', this.usersData);
     });
   }
 
@@ -127,7 +91,6 @@ export class UserListComponent implements OnInit, OnDestroy {
         header.direction = '';
       }
     });
-
     this.userList();
   }
 

@@ -1,12 +1,9 @@
-import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../shared/services/user.service';
 import { ConfirmedValidator } from '../shared/confirmed.validator';
-// import { ToastrService } from 'ngx-toastr/toastr/toastr.service';
-import { ConfirmationService, MessageService } from 'primeng/api';
-import { ToastrService } from 'ngx-toastr';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-add-user',
@@ -14,15 +11,15 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./add-user.component.scss'],
 })
 export class AddUserComponent implements OnInit {
-  userForm!: FormGroup;
+  addUserForm!: FormGroup;
   Mobile = /^[6-9]\d{9}$/;
   password_reg = '(?=.*d)(?=.*[a-z])(?=.*[A-Z]).{6,}';
   editMode = false;
   id!: any;
 
   // get form controls
-  get userFormControls() {
-    return this.userForm.controls;
+  get addUserFormControls() {
+    return this.addUserForm.controls;
   }
 
   constructor(
@@ -31,30 +28,21 @@ export class AddUserComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private messageService: MessageService,
-    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.id = params['id'];
-      this.editMode = params['id'] != null;
+      this.editMode = this.id != null;
       this.initForm();
     });
   }
 
+  // create add User form
   private initForm() {
-    let userFirstName: any = '';
-    let userLastName: any = '';
-    let userMobile: any = '';
-    let userEmail: any = '';
-    let userRole: any = '';
-    let userPassword: any = '';
-    let userConfirmPassword: any = '';
-
-    if (this.editMode) {
+    if (this.id) {
       this.userService.getUser(this.id).subscribe((userData: any) => {
-        console.log('userData.user :>> ', userData.User);
-        this.userForm.setValue({
+        this.addUserForm.patchValue({
           firstName: userData.User.firstName,
           lastName: userData.User.lastName,
           contact: userData.User.contact,
@@ -64,44 +52,34 @@ export class AddUserComponent implements OnInit {
           confirmPassword: userData.User.password,
         });
       });
-
-      // userFirstName = user.firstName;
-      // userLastName = user.lastName;
-      // userMobile = user.mobile;
-      // userEmail= user.email;
-      // userRole= user.role;
-      // userPassword = user.password;
-      // userConfirmPassword = user.confirmPassword;
     }
 
-    this.userForm = this.fb.group(
+    this.addUserForm = this.fb.group(
       {
-        firstName: [userFirstName, [Validators.required]],
-        lastName: [userLastName, [Validators.required]],
+        firstName: ['', [Validators.required]],
+        lastName: ['', [Validators.required]],
         contact: [
-          userMobile,
+          '',
           [Validators.required, Validators.pattern(this.Mobile)],
         ],
-        email: [userEmail, [Validators.required, Validators.email]],
-        role: [userRole, [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        role: ['', [Validators.required]],
         password: [
-          userPassword,
+          '',
           [Validators.required, Validators.minLength(6)],
         ],
-        confirmPassword: [userConfirmPassword, [Validators.required]],
+        confirmPassword: ['', [Validators.required]],
       },
       { validator: ConfirmedValidator('password', 'confirmPassword') }
     );
   }
 
   // submit button
-  onSubmit() {
-    if (this.editMode) {
-      this.http
-        .put(`http://localhost:3001/api/user/${this.id}`, this.userForm.value)
-        .subscribe((res: any) => {
-          console.log('res update 1 :>> ', res);
-        });
+  onAddUserSubmit() {
+    if (this.id) {
+        this.userService.updateUser(this.id,this.addUserForm.value).subscribe((res: any)=> {
+          console.log('res update :>> ', res);
+        })
 
       this.messageService.add({
         severity: 'success',
@@ -109,18 +87,13 @@ export class AddUserComponent implements OnInit {
         detail: 'Update user successfully!',
       });
     } else {
-      this.userService.addUser(this.userForm.value).subscribe((res) => {});
+      this.userService.addUser(this.addUserForm.value).subscribe((res) => {});
       this.messageService.add({
         severity: 'success',
         summary: '',
         detail: 'Add user successfully!',
       });
     }
-    this.onCancel();
-  }
-
-  // cancel button
-  onCancel() {
-    this.router.navigate(['/user'], { relativeTo: this.activatedRoute });
+    this.router.navigate(['/user']);
   }
 }
