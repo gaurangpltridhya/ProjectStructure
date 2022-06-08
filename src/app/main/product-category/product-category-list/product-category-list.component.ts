@@ -51,20 +51,6 @@ export class ProductCategoryListComponent implements OnInit {
     this.recordsFiltered = 20; //TODO: remove it
     this.datatableParams.start = 0; // for call API from page evet func
 
-    let data = {
-      okButtonText: 'Ok',
-      cancelButtonText: 'Close',
-      titleText: 'Are you sure',
-      message: 'Do you want to delete?'
-    }
-    // this.dialog.open(CustomConfirmationPopupComponent, {
-    //   panelClass: 'custom-confirmation',
-    //   disableClose: true,
-    //   data: data
-    // }).afterClosed()
-    //   .subscribe((response: any) => {
-
-    //   });
   }
 
   /**
@@ -135,7 +121,20 @@ export class ProductCategoryListComponent implements OnInit {
    * @param isDisabled 
    */
   manageProductCategoryStatus(isDisabled: Boolean) {
+    let data = {
+      okButtonText: 'Yes',
+      cancelButtonText: 'No',
+      titleText: 'Are you sure',
+      message: isDisabled === true ? 'Do you want to disable Product Category?' : 'Do you want to enable Product Category?'
+    }
+    this.dialog.open(CustomConfirmationPopupComponent, {
+      panelClass: 'custom-confirmation',
+      disableClose: true,
+      data: data
+    }).afterClosed()
+      .subscribe((response: any) => {
 
+      });
     this._productCategoryService.manageProductCategoryStatus(isDisabled).subscribe((res: any) => {
       if (res.status == 200) {
         this.toasterService.success(res?.message);

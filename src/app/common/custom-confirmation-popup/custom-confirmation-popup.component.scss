@@ -1,9 +1,10 @@
 .custom-confirmation {
 
     min-width: 300px;
+    max-width: 600px !important;
 
     @media (max-width: 767.98px) {
-        width: 100%;
+        width: 80%;
     }
 
     .mat-dialog-container {
@@ -19,6 +20,8 @@
         }
     }
 
-
+    .confirm-ico {
+        color: #facea8;
+    }
 
 }

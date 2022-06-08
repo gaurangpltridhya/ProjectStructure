@@ -1,5 +1,5 @@
 <div class="dialog-content-wrapper">
-    <div mat-dialog-content fxLayout="column" class="p-24 pb-0 m-0" fusePerfectScrollbar>
+    <div mat-dialog-content class="p-24 pb-0 m-0">
         <!-- <div fxLayout="row wrap">
 			<div fxFlex="100" fxLayoutAlign="center center">
 				<span class="material-icons" style="font-size: 70px; color: #6dad65;" *ngIf="_data?.alertType === 'success'">
@@ -21,12 +21,12 @@
 		</div> -->
         <div class="row">
             <div class="col-12 d-flex justify-content-center m-b-20" *ngIf="showIcon">
-                <i class="fas fa-question f-50"></i>
+                <i class="fas fa-exclamation-circle confirm-ico f-80"></i>
             </div>
-            <div class="col-12 d-flex justify-content-center m-b-10 f-18" *ngIf="titleText">
+            <div class="col-12 text-center m-b-10 f-18 font-weight-bold" *ngIf="titleText">
                 {{titleText}}
             </div>
-            <div class="col-12 d-flex justify-content-center m-b-30" *ngIf="message">
+            <div class="col-12 text-center m-b-30 f-18" *ngIf="message">
                 {{message}}
             </div>
             <div class="col-12">
