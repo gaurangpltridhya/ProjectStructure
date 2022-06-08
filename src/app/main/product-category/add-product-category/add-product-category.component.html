@@ -1,0 +1,68 @@
+<div class="dialog-content-wrapper">
+    <ng-template #dash>-</ng-template>
+
+    <mat-toolbar matDialogTitle color="primary">
+        <mat-toolbar-row class="row">
+            <span class="title dialog-title">Add Product Category</span>
+
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div mat-dialog-content class="p-24 pb-0 m-0">
+        <form id="addProductCategoryForm" class="row g-3 needs-validation" name="addProductCategoryForm"
+            [formGroup]="addProductCategoryForm" (ngSubmit)="submitAddProductForm()" novalidate>
+            <div class="row">
+                <div class="col-md-12 mb-3">
+                    <label for="catName" class="form-label">Category Name</label>
+                    <input type="text" name="catName" placeholder="Category Name" formControlName="name"
+                        class="form-control"
+                        [ngClass]="{ 'is-invalid':addProductCategoryFormSubmitted && form['name']?.errors }">
+                    <div class="invalid-feedback" *ngIf="addProductCategoryFormSubmitted">
+                        <div *ngIf="addProductCategoryForm?.get('name')?.hasError('required')">
+                            Name is required!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="upload-btn-wrapper">
+                        <button class="btn btn-primary btn-sm">
+                            Select Image
+                        </button>
+                        <input type="file" #file formControlName="file" (change)="fileChangeEvent($event)" name="upload"
+                            accept="'.csv'" maxFileSize="10000000" />
+                        <label class="m-l-20"></label>
+                    </div>
+                    <div class="invalid-feedback" *ngIf="addProductCategoryFormSubmitted">
+                        <div *ngIf="addProductCategoryForm?.get('file')?.hasError('required')">
+                            Product Image is required!
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div [ngClass]="{'user-img-box': addProductCategoryForm?.value?.fileSource?.fileName != undefined && addProductCategoryForm?.value?.fileSource?.fileName != ''}"
+                        class="image-cropper">
+                        <!-- <img *ngIf="addProductCategoryForm?.value?.fileSource?.isNew ==undefined"
+                            src="{{IMAGE_PATH}}{{addProductCategoryForm?.value?.fileSource?.path}}"
+                            onerror="this.src='assets/images/avatars/avatar-blank.png';"> -->
+                        <img *ngIf="addProductCategoryForm?.value?.fileSource?.isNew" height="120" width="120"
+                            src="{{addProductCategoryForm?.value?.fileSource?.fileData}}"
+                            onerror="this.src='assets/images/avatars/avatar-blank.png';">
+
+                        <div class="user-img-action"
+                            *ngIf="addProductCategoryForm?.value?.fileSource?.fileName != undefined && addProductCategoryForm?.value?.fileSource?.fileName != ''">
+                            <ng-container>
+                                <i class="fas fa-times-circle fa-lg cursor-pointer" (click)="deleteProductImage()"></i>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div mat-dialog-actions class="m-0 p-16 justify-content-end">
+        <a mat-button class="m-r-5 btn btn-light float-right" (click)="matDialogRef.close()"
+            aria-label="Cancel">Close</a>
+        <button class="btn btn-primary float-right" type="submit" form="addProductCategoryForm">
+            Add
+        </button>
+    </div>
+</div>

@@ -1,8 +1,10 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren, ViewEncapsulation } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Constants } from 'src/app/API-URL/contants';
 import { UtilityService } from 'src/app/common/utility.service';
 import { AdvancedSortableDirective, SortEvent } from 'src/app/shared/advanced-sortable.directive';
+import { AddProductCategoryComponent } from '../add-product-category/add-product-category.component';
 import { ProductCategoryService } from '../product-category.service';
 
 @Component({
@@ -34,9 +36,9 @@ export class ProductCategoryListComponent implements OnInit {
     public _util: UtilityService,
     private router: Router,
     public _productCategoryService: ProductCategoryService,
-    public constant: Constants
+    public constant: Constants,
+    public dialog: MatDialog,
   ) {
-
     this.datatableParams = this.constant.datatableParam;
     this.selectedPageLength = this.datatableParams.length;
   }
@@ -90,5 +92,22 @@ export class ProductCategoryListComponent implements OnInit {
       }
     });
     this.getProductCategoryList();
+  }
+
+
+  /**
+   * show material dialog for add product category
+   */
+  showAddProductCategoryDialog() {
+    this.dialog.open(AddProductCategoryComponent, {
+      panelClass: 'add-product-category',
+      disableClose: true,
+      data: {
+        data: {}
+      }
+    }).afterClosed()
+      .subscribe((response: any) => {
+
+      });
   }
 }
