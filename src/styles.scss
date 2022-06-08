@@ -7,6 +7,8 @@
 * License: https://bootstrapmade.com/license/
 */
 
+@import '~bootstrap/scss/bootstrap-utilities';
+
 /** angularx-flatpickr **/
 @import 'flatpickr/dist/flatpickr.css';
 
@@ -1294,6 +1296,18 @@ h6 {
 }
 
 
+.p-24 {
+    padding: 24px !important;
+}
+
+.p-16 {
+    padding: 16px !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
 /******************************************************************* below are custom css start  ******************************************************************/
 .invalid-feedback {
     display: block;
@@ -1426,6 +1440,11 @@ table.custom-table {
 
 .justify-content-between {
     justify-content: space-between;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+    height: 50px;
 }
 
 /*********************************************  angular material components css css end  *********************************************/
