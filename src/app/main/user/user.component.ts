@@ -16,11 +16,4 @@ export class UserComponent implements OnInit {
     });
   }
 
-
-  // create / add new user
-  addNewUser(){
-    this.router.navigate(['add'], {relativeTo: this.activatedRoute})
-  }
-
-
 }

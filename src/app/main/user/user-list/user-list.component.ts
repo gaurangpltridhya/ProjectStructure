@@ -1,10 +1,13 @@
 import { Subscription } from 'rxjs';
 import { UserService } from './../../shared/services/user.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/shared/user.model';
 import { ConfirmationService, Message, MessageService, PrimeNGConfig } from 'primeng/api';
 import { MatDialog } from '@angular/material/dialog';
+import { AdvancedSortableDirective, SortEvent } from 'src/app/shared/advanced-sortable.directive';
+import { Constants } from 'src/app/API-URL/contants';
+import { UtilityService } from 'src/app/common/utility.service';
 
 @Component({
   selector: 'app-user-list',
@@ -13,11 +16,26 @@ import { MatDialog } from '@angular/material/dialog';
   providers: [ConfirmationService],
 })
 export class UserListComponent implements OnInit, OnDestroy {
+  @ViewChildren(AdvancedSortableDirective) headers!: QueryList<AdvancedSortableDirective>;
+
   usersData!: User[];
   msgs: Message[] = [];
   userDataSubscription!: Subscription;
   myVariable = false;
   addClass = false;
+
+  // sorting
+  datatableParams!: any;
+
+  // pagination
+  recordsFiltered = 0;
+  totalRecord = 0;
+  startIndex = 0;
+  endIndex = 0;
+  selectedPageLength!: number;
+  showUserListLoader: Boolean = false;
+
+
 
   constructor(
     private primengConfig: PrimeNGConfig,
@@ -26,11 +44,20 @@ export class UserListComponent implements OnInit, OnDestroy {
     private router: Router,
     private userService: UserService,
     private messageService: MessageService,
-    private dialog: MatDialog
-  ) {}
+    public constant: Constants,
+    public _util: UtilityService,
+
+  ) {
+    this.datatableParams = this.constant.datatableParam;
+    this.selectedPageLength = this.datatableParams.length;
+  }
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;
+    this.totalRecord = 100; //TODO: remove it
+    this.recordsFiltered = 20; //TODO: remove it
+
+
     // this.userDataSubscription = this.userService.userChanged.subscribe(
     //   (userData: User[]) => {
     //     this.usersData = userData;
@@ -88,6 +115,38 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   //user block
   block = true;
+
+  // sort table data
+  onSort({ column, direction }: SortEvent) {
+    this.datatableParams.sort = { active: column, dir: direction }
+    // resetting other headers
+    this.headers.forEach(header => {
+      if (header.sortable !== column) {
+        header.direction = '';
+      }
+    });
+    this.userList();
+  }
+
+  // pagination page change event
+  public onpageChange(event: any) {
+    this.showUserListLoader = true;
+    this.datatableParams.start = (event - 1) * this.datatableParams.length;
+    // this._productCategoryService.getProductCategoryList(this.datatableParams, this.dtSearch, '').subscribe((res: any) => {
+    //   if (res.status == 200) {
+
+    //     this.usersData = res.data.list;
+    //     this.recordsFiltered = res.data.recordsFiltered;
+    //     this.totalRecord = res.data.recordsTotal;
+    //     let footerCount = this._util.getDatatableFooterCount(res.data.list.length, event, this.datatableParams.length, this.datatableParams.start, this.recordsFiltered);
+    //     this.startIndex = footerCount.startIndex;
+    //     this.endIndex = footerCount.endIndex;
+    //     this.showUserListLoader = false;
+    //   }
+    // }, (error: any) => {
+    //   this.showUserListLoader = false;
+    // });
+  }
 
 
   // unsubscribe subscription

@@ -1,6 +1,3 @@
-import { ViewUserComponent } from './user/view-user/view-user.component';
-import { UserListComponent } from './user/user-list/user-list.component';
-import { AddUserComponent } from './user/add-user/add-user.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RoleAccessControl } from '../common/role-access-control/role-access-control.service';
@@ -9,7 +6,6 @@ import { AngularFormsComponent } from './angular-forms/angular-forms.component';
 import { TablesComponent } from './tables/tables.component';
 import { ChartsComponent } from './charts/charts.component';
 import { FormLayoutsComponent } from './form-layouts/form-layouts.component';
-import { UserComponent } from './user/user.component';
 import { UserResolver } from './shared/resolvers/user.resolver';
 import { CommonElementsComponent } from './common-elements/common-elements.component';
 import { DataViewComponent } from './data-view/data-view.component';
@@ -98,12 +94,7 @@ const routes: Routes = [
     resolve: {
       user: UserResolver
     },
-    children: [
-      { path: '', component: UserListComponent},
-      { path: 'add', component: AddUserComponent},
-      { path: 'edit/:id', component: AddUserComponent},
-      { path: 'view/:id', component: ViewUserComponent},
-    ]
+    loadChildren: () => import('./user/userdata.module').then(m => m.UserdataModule),
     // canActivate: [RoleAccessControl],
   },
 ];
