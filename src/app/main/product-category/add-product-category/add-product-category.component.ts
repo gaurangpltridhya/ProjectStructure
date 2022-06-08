@@ -41,6 +41,8 @@ export class AddProductCategoryComponent implements OnInit {
         file: this._data?.path,
         fileSource: { path: this._data?.path }
       });
+      console.log(this.addProductCategoryForm.value);
+
     } else {
       this.pageAction = 'add';
     }

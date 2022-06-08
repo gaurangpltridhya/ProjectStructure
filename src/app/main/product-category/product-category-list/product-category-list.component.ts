@@ -107,9 +107,7 @@ export class ProductCategoryListComponent implements OnInit {
     this.dialog.open(AddProductCategoryComponent, {
       panelClass: 'add-product-category',
       disableClose: true,
-      data: {
-        data: data
-      }
+      data: data
     }).afterClosed()
       .subscribe((response: any) => {
 
@@ -133,15 +131,18 @@ export class ProductCategoryListComponent implements OnInit {
       data: data
     }).afterClosed()
       .subscribe((response: any) => {
+        if (!response) {
+          return;
+        }
+        this._productCategoryService.manageProductCategoryStatus(isDisabled).subscribe((res: any) => {
+          if (res.status == 200) {
+            this.toasterService.success(res?.message);
+            this.getProductCategoryList();
+          }
+        }, (error: any) => {
+
+        });
 
       });
-    this._productCategoryService.manageProductCategoryStatus(isDisabled).subscribe((res: any) => {
-      if (res.status == 200) {
-        this.toasterService.success(res?.message);
-        this.getProductCategoryList();
-      }
-    }, (error: any) => {
-
-    });
   }
 }

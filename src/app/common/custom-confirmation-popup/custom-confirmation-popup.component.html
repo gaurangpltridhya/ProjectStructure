@@ -30,7 +30,7 @@
                 {{message}}
             </div>
             <div class="col-12">
-                <button class="btn btn-primary float-right" type="button">
+                <button class="btn btn-primary float-right" type="button" (click)="matDialogRef.close(true)">
                     {{okButtonText}}
                 </button>
                 <a mat-button class="m-r-5 btn btn-light float-right" (click)="matDialogRef.close()"
