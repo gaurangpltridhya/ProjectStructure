@@ -1308,6 +1308,13 @@ h6 {
     cursor: pointer;
 }
 
+// for show any span div disabled
+.ele-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: #b1b1b1 !important;
+}
+
 /******************************************************************* below are custom css start  ******************************************************************/
 .invalid-feedback {
     display: block;
@@ -1446,3 +1453,16 @@ table.custom-table {
 }
 
 /*********************************************  angular material components css css end  *********************************************/
+
+
+/*********************************   font size class start    **************************************/
+.f-18 {
+    font-size: 18px;
+}
+
+.f-50 {
+    font-size: 50px;
+}
+
+
+/*********************************   font size class end    **************************************/

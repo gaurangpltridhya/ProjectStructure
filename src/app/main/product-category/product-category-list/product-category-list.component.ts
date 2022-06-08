@@ -1,7 +1,9 @@
 import { Component, OnInit, QueryList, ViewChildren, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Constants } from 'src/app/API-URL/contants';
+import { CustomConfirmationPopupComponent } from 'src/app/common/custom-confirmation-popup/custom-confirmation-popup.component';
 import { UtilityService } from 'src/app/common/utility.service';
 import { AdvancedSortableDirective, SortEvent } from 'src/app/shared/advanced-sortable.directive';
 import { AddProductCategoryComponent } from '../add-product-category/add-product-category.component';
@@ -16,11 +18,11 @@ export class ProductCategoryListComponent implements OnInit {
   @ViewChildren(AdvancedSortableDirective) headers!: QueryList<AdvancedSortableDirective>;
 
   productCategoryList: Array<any> = [
-    { name: 'watch', type: 'watch', _id: 'qq232ewe3e' },
-    { name: 'goggles', type: 'goggles', _id: 'qq232dewe3e' },
-    { name: 'bags', type: 'bags', _id: 'qq232ewex3e' },
-    { name: 'bags', type: 'bags', _id: 'qq232ewex3e' },
-    { name: 'AC', type: 'ac', _id: 'qq232xaewe3e' },
+    { name: 'watch', type: 'watch', _id: 'qq232ewe3e', isDisabled: false },
+    { name: 'goggles', type: 'goggles', _id: 'qq232dewe3e', isDisabled: false },
+    { name: 'bags', type: 'bags', _id: 'qq232ewex3e', isDisabled: true },
+    { name: 'bags', type: 'bags', _id: 'qq232ewex3e', isDisabled: false },
+    { name: 'AC', type: 'ac', _id: 'qq232xaewe3e', isDisabled: false },
 
   ]
   dtSearch: any = {};
@@ -38,6 +40,7 @@ export class ProductCategoryListComponent implements OnInit {
     public _productCategoryService: ProductCategoryService,
     public constant: Constants,
     public dialog: MatDialog,
+    private toasterService: ToastrService
   ) {
     this.datatableParams = this.constant.datatableParam;
     this.selectedPageLength = this.datatableParams.length;
@@ -47,6 +50,21 @@ export class ProductCategoryListComponent implements OnInit {
     this.totalRecord = 100; //TODO: remove it
     this.recordsFiltered = 20; //TODO: remove it
     this.datatableParams.start = 0; // for call API from page evet func
+
+    let data = {
+      okButtonText: 'Ok',
+      cancelButtonText: 'Close',
+      titleText: 'Are you sure',
+      message: 'Do you want to delete?'
+    }
+    // this.dialog.open(CustomConfirmationPopupComponent, {
+    //   panelClass: 'custom-confirmation',
+    //   disableClose: true,
+    //   data: data
+    // }).afterClosed()
+    //   .subscribe((response: any) => {
+
+    //   });
   }
 
   /**
@@ -98,16 +116,33 @@ export class ProductCategoryListComponent implements OnInit {
   /**
    * show material dialog for add product category
    */
-  showAddProductCategoryDialog() {
+  showAddProductCategoryDialog(data: any) {
+
     this.dialog.open(AddProductCategoryComponent, {
       panelClass: 'add-product-category',
       disableClose: true,
       data: {
-        data: {}
+        data: data
       }
     }).afterClosed()
       .subscribe((response: any) => {
 
       });
+  }
+
+  /**
+   * manage category status
+   * @param isDisabled 
+   */
+  manageProductCategoryStatus(isDisabled: Boolean) {
+
+    this._productCategoryService.manageProductCategoryStatus(isDisabled).subscribe((res: any) => {
+      if (res.status == 200) {
+        this.toasterService.success(res?.message);
+        this.getProductCategoryList();
+      }
+    }, (error: any) => {
+
+    });
   }
 }
