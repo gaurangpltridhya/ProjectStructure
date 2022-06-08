@@ -1,0 +1,42 @@
+<div class="dialog-content-wrapper">
+    <div mat-dialog-content fxLayout="column" class="p-24 pb-0 m-0" fusePerfectScrollbar>
+        <!-- <div fxLayout="row wrap">
+			<div fxFlex="100" fxLayoutAlign="center center">
+				<span class="material-icons" style="font-size: 70px; color: #6dad65;" *ngIf="_data?.alertType === 'success'">
+					check_circle
+				</span>
+				<span class="material-icons" style="font-size: 70px; color: #cc6363;" *ngIf="_data?.alertType === 'danger'">
+					cancel
+				</span>
+				<span class="material-icons" style="font-size: 70px; color: #ffc625;" *ngIf="_data?.alertType === 'warning'">
+					warning
+				</span>
+			</div>
+			<div *ngIf="_data?.title" fxFlex="100" fxLayoutAlign="center center" class="mt-12 f-20">
+				{{_data?.title}}
+			</div>
+			<div *ngIf="_data?.message" fxFlex="100" fxLayoutAlign="center center" class="mt-12 mb-20 f-16">
+				{{_data?.message}}
+			</div>
+		</div> -->
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center m-b-20" *ngIf="showIcon">
+                <i class="fas fa-question f-50"></i>
+            </div>
+            <div class="col-12 d-flex justify-content-center m-b-10 f-18" *ngIf="titleText">
+                {{titleText}}
+            </div>
+            <div class="col-12 d-flex justify-content-center m-b-30" *ngIf="message">
+                {{message}}
+            </div>
+            <div class="col-12">
+                <button class="btn btn-primary float-right" type="button">
+                    {{okButtonText}}
+                </button>
+                <a mat-button class="m-r-5 btn btn-light float-right" (click)="matDialogRef.close()"
+                    aria-label="Cancel">{{cancelButtonText}}</a>
+            </div>
+        </div>
+    </div>
+
+</div>
