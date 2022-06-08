@@ -1,0 +1,107 @@
+.add-product-category {
+
+    @media (min-width: 768px) {
+        width: 600px;
+    }
+
+    @media (max-width: 767.98px) {
+        width: 100%;
+    }
+
+    .mat-dialog-container {
+        padding: 0;
+
+        .mat-toolbar {
+            flex: 1 0 auto;
+            min-height: initial;
+        }
+
+        .toolbar-bottom {
+            height: auto;
+        }
+    }
+
+    .dialog-content-wrapper {
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+
+    .upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+
+    .upload-btn-wrapper input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        cursor: pointer;
+    }
+
+
+    /** profile pic start**/
+
+    .user-img-action {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        display: flex;
+        color: #ffff;
+    }
+
+    .user-img-box-no-action {
+        // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        // border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+        width: 120px;
+        height: 120px;
+        border-radius: 10px;
+        // border-radius: 50%;
+        // position: relative;
+        // display: block;
+        z-index: 10;
+    }
+
+    .user-img-box {
+        // box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        // border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        // position: relative;
+        // display: block;
+        z-index: 10;
+    }
+
+    .user-img-box:hover {
+        img {
+            // transform: scale(1.05, 1.05);
+            // -webkit-filter: blur(8px);
+            // filter: blur(8px);
+
+            transform: scale(8, 8);
+            -webkit-filter: blur(10px);
+            filter: blur(10px);
+        }
+
+        .user-img-action {
+            opacity: 1;
+        }
+    }
+
+    /** profile pic end**/
+}
