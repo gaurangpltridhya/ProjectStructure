@@ -75,32 +75,32 @@
                             <td><i class="fa fa-envelope"></i> {{ user.email }}</td>
                             <!-- <td><span class="badge bg-success">{{user.role}}</span></td> -->
                             <td>
-                                <span class="f-14" [ngClass]="
+                                <span class="f-14 text-white" [ngClass]="
                     user.role == 'Admin'
                       ? 'badge bg-success'
                       : 'badge bg-primary'
                   ">{{ user.role }}</span>
                             </td>
                             <td>
-                                <span class="badge bg-secondary f-14">{{
+                                <span class="badge bg-secondary text-white f-14">{{
                                     block ? "Active" : "Deactive"
                                     }}</span>
                             </td>
                             <td class="nosort text-center">
                                 <button type="button" class="btn m-r-5" [routerLink]="['view',user._id]">
-                                    <i class="fa fa-eye c-blue"></i>
+                                    <i class="fa fa-eye text-primary"></i>
                                 </button>
 
                                 <button type="button" class="btn m-r-5" [routerLink]="['edit',user._id]">
-                                    <i class="fa fa-edit c-blue"></i>
+                                    <i class="fa fa-edit text-primary"></i>
                                 </button>
 
                                 <button type="button" class="btn m-r-5" (click)="deleteUser(user._id!)">
-                                    <i class="fa fa-trash c-red"></i>
+                                    <i class="fa fa-trash text-danger"></i>
                                 </button>
 
                                 <button type="button" class="btn">
-                                    <i class="fa fa-ban c-blue"></i>
+                                    <i class="fa fa-ban text-primary"></i>
                                 </button>
                             </td>
                         </tr>

@@ -6,6 +6,8 @@ import { ConfirmationService, MessageService, PrimeNGConfig } from 'primeng/api'
 import { AdvancedSortableDirective, SortEvent } from 'src/app/shared/advanced-sortable.directive';
 import { Constants } from 'src/app/API-URL/contants';
 import { UtilityService } from 'src/app/common/utility.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CustomConfirmationPopupComponent } from 'src/app/common/custom-confirmation-popup/custom-confirmation-popup.component';
 
 @Component({
   selector: 'app-user-list',
@@ -35,12 +37,11 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   constructor(
     private primengConfig: PrimeNGConfig,
-    private confirmationService: ConfirmationService,
     private userService: UserService,
     private messageService: MessageService,
     public constant: Constants,
     public _util: UtilityService,
-
+    public dialog: MatDialog,
   ) {
     this.datatableParams = this.constant.datatableParam;
     this.selectedPageLength = this.datatableParams.length;
@@ -54,21 +55,30 @@ export class UserListComponent implements OnInit, OnDestroy {
   }
 
   // delete user
-  deleteUser(index: string) {
-    this.confirmationService.confirm({
-      message: 'Do you want to delete this record?',
-      header: 'Delete Confirmation',
-      icon: 'pi pi-info-circle',
-      accept: () => {
+  deleteUser(index: string){
+    let data = {
+      okButtonText: 'Yes',
+      cancelButtonText: 'No',
+      titleText: 'Are you sure',
+      message: 'Do you want to delete this record?'
+    }
+    this.dialog.open(CustomConfirmationPopupComponent, {
+      panelClass: 'custom-confirmation',
+      disableClose: true,
+      data: data
+    }).afterClosed().subscribe((response: any) => {
+      if(!response){
+        return;
+      }
+
+      if(response){
         this.userService.deleteUser(index).subscribe(res => {
           this.userList();
-        });
-        this.messageService.add({severity:'success', summary:'', detail: 'Delete user successfully!'});
-      },
-      reject: () => {
-        // this.msgs = [{severity:'info', summary:'Confirmed', detail:'You have rejected'}];
-      },
-    });
+          this.messageService.add({severity:'success', summary:'', detail: 'Delete user successfully!'});
+        })
+      }
+
+    })
   }
 
   // users List 

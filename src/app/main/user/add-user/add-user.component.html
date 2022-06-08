@@ -114,10 +114,10 @@
 
 
                 <!-- submit and reset button -->
-                <div class="float-right">
-                    <button type="button" class="btn btn-light" [routerLink]="['/user']">Cancel</button>
-                  <button type="submit" class="btn btn-primary" [disabled]="addUserForm.invalid"
-                    (click)="onAddUserSubmit()">{{ editMode ? "Update" : 'Submit' }}</button>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-primary float-right" [disabled]="addUserForm.invalid"
+                      (click)="onAddUserSubmit()">{{ editMode ? "Update" : 'Submit' }}</button>
+                    <button type="button" class="btn btn-light float-right m-r-10" [routerLink]="['/user']">Cancel</button>
                 </div>
               </div>
             </form>
