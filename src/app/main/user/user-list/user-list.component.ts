@@ -74,7 +74,7 @@ export class UserListComponent implements OnInit, OnDestroy {
       if(response){
         this.userService.deleteUser(index).subscribe(res => {
           this.userList();
-          this.messageService.add({severity:'success', summary:'', detail: 'Delete user successfully!'});
+          this.messageService.add({severity:'success', summary:'', detail: 'Delete user successfully!', life: 1000});
         })
       }
 
@@ -89,8 +89,29 @@ export class UserListComponent implements OnInit, OnDestroy {
     });
   }
 
-  //user block
-  block = true;
+  // block user
+  blockUser(index: any){
+    let data = {
+      okButtonText: 'Yes',
+      cancelButtonText: 'No',
+      titleText: 'Are you sure',
+      message: 'Do you want to block this user?'
+    }
+    this.dialog.open(CustomConfirmationPopupComponent, {
+      panelClass: 'custom-confirmation',
+      disableClose: true,
+      data: data
+    }).afterClosed().subscribe((response: any) => {
+      if(!response){
+        return;
+      }
+
+      if(response){
+        // block user code
+      }
+
+    })
+  }
 
   // sort table data
   onSort({ column, direction }: SortEvent) {

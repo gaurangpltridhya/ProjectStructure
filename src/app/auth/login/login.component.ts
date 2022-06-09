@@ -77,6 +77,7 @@ export class LoginComponent implements OnInit {
           severity: 'success',
           summary: '',
           detail: 'Login Succesfully!',
+          life: 1000
         });
       },
       error: (data: any) => {
@@ -84,6 +85,7 @@ export class LoginComponent implements OnInit {
           severity: 'error',
           summary: '',
           detail: 'User Not Found!',
+          life: 1000
         });
       }
     })

@@ -1,129 +1,132 @@
 <mat-toolbar color="primary" class="justify-content-between">
-    <span>User List</span>
-    <span class="example-spacer"></span>
-    <button class="btn btn-light float-right" [routerLink]="['add']">
-        <i class="fas fa-plus m-r-5"></i>Add
-    </button>
+  <span>User List</span>
+  <span class="example-spacer"></span>
+  <button class="btn btn-light float-right" [routerLink]="['add']">
+    <i class="fas fa-plus m-r-5"></i>Add
+  </button>
 </mat-toolbar>
 
 <div class="row">
-    <div class="col-xl-12">
-        <div class="card">
-            <div class="card-body table-responsive">
-                <table id="basic-datatable" class="table datatables custom-table nowrap">
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th sortable="user.name" (sort)="onSort($event)">
-                                Name
-                                <i class="fa fa-arrow-up" *ngIf="
+  <div class="col-xl-12">
+    <div class="card">
+      <div class="card-body table-responsive">
+        <table id="basic-datatable" class="table datatables custom-table nowrap">
+          <!-- tabel header -->
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th sortable="user.name" (sort)="onSort($event)">
+                Name
+                <i class="fa fa-arrow-up" *ngIf="
                     datatableParams.sort.active === 'user.name' &&
                     datatableParams.sort.dir === 'asc'
                   "></i>
-                                <i class="fa fa-arrow-down" *ngIf="
+                <i class="fa fa-arrow-down" *ngIf="
                     datatableParams.sort.active === 'user.name' &&
                     datatableParams.sort.dir === 'desc'
                   "></i>
-                            </th>
-                            <th>Phone No.</th>
-                            <th sortable="user.email" (sort)="onSort($event)">
-                                Email
-                                <i class="fa fa-arrow-up" *ngIf="
+              </th>
+              <th>Phone No.</th>
+              <th sortable="user.email" (sort)="onSort($event)">
+                Email
+                <i class="fa fa-arrow-up" *ngIf="
                     datatableParams.sort.active === 'user.email' &&
                     datatableParams.sort.dir === 'asc'
                   "></i>
-                                <i class="fa fa-arrow-down" *ngIf="
+                <i class="fa fa-arrow-down" *ngIf="
                     datatableParams.sort.active === 'user.email' &&
                     datatableParams.sort.dir === 'desc'
                   "></i>
-                            </th>
-                            <th sortable="user.role" (sort)="onSort($event)">
-                                Role
-                                <i class="fa fa-arrow-up" *ngIf="
+              </th>
+              <th sortable="user.role" (sort)="onSort($event)">
+                Role
+                <i class="fa fa-arrow-up" *ngIf="
                     datatableParams.sort.active === 'user.role' &&
                     datatableParams.sort.dir === 'asc'
                   "></i>
-                                <i class="fa fa-arrow-down" *ngIf="
+                <i class="fa fa-arrow-down" *ngIf="
                     datatableParams.sort.active === 'user.role' &&
                     datatableParams.sort.dir === 'desc'
                   "></i>
-                            </th>
-                            <th sortable="user.status" (sort)="onSort($event)">
-                                Status
-                                <i class="fa fa-arrow-up" *ngIf="
+              </th>
+              <th sortable="user.status" (sort)="onSort($event)">
+                Status
+                <i class="fa fa-arrow-up" *ngIf="
                     datatableParams.sort.active === 'user.status' &&
                     datatableParams.sort.dir === 'asc'
                   "></i>
-                                <i class="fa fa-arrow-down" *ngIf="
+                <i class="fa fa-arrow-down" *ngIf="
                     datatableParams.sort.active === 'user.status' &&
                     datatableParams.sort.dir === 'desc'
                   "></i>
-                            </th>
-                            <th class="nosort text-center action-th" width="200">
-                                Actions
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let user of usersData; let i = index">
-                            <td>{{ i + 1 }}</td>
-                            <td><i class="fa fa-user"></i> {{ user.firstName }}</td>
-                            <td>
-                                <i class="fa fa-phone" style="transform: rotateY(180deg)"></i>
-                                {{ user.contact }}
-                            </td>
-                            <td><i class="fa fa-envelope"></i> {{ user.email }}</td>
-                            <!-- <td><span class="badge bg-success">{{user.role}}</span></td> -->
-                            <td>
-                                <span class="f-14 text-white" [ngClass]="
+              </th>
+              <th class="nosort text-center action-th" width="200">
+                Actions
+              </th>
+            </tr>
+          </thead>
+
+          <!-- table body -->
+          <tbody>
+            <tr *ngFor="let user of usersData; let i = index">
+              <td>{{ i + 1 }}</td>
+              <td><i class="fa fa-user"></i> {{ user.firstName }}</td>
+              <td>
+                <i class="fa fa-phone rotate"></i>
+                {{ user.contact }}
+              </td>
+              <td><i class="fa fa-envelope"></i> {{ user.email }}</td>
+              <!-- <td><span class="badge bg-success">{{user.role}}</span></td> -->
+              <td>
+                <span class="f-14 text-white" [ngClass]="
                     user.role == 'Admin'
                       ? 'badge bg-success'
                       : 'badge bg-primary'
                   ">{{ user.role }}</span>
-                            </td>
-                            <td>
-                                <span class="badge bg-secondary text-white f-14">{{
-                                    block ? "Active" : "Deactive"
-                                    }}</span>
-                            </td>
-                            <td class="nosort text-center">
-                                <button type="button" class="btn m-r-5" [routerLink]="['view',user._id]">
-                                    <i class="fa fa-eye text-primary"></i>
-                                </button>
+              </td>
+              <td>
+                <span class="badge bg-secondary text-white f-14">Active</span>
+              </td>
+              <td class="nosort text-center">
+                <button type="button" class="btn m-r-5" [routerLink]="['view',user._id]">
+                  <i class="fa fa-eye text-primary"></i>
+                </button>
 
-                                <button type="button" class="btn m-r-5" [routerLink]="['edit',user._id]">
-                                    <i class="fa fa-edit text-primary"></i>
-                                </button>
+                <button type="button" class="btn m-r-5" [routerLink]="['edit',user._id]">
+                  <i class="fa fa-edit text-primary"></i>
+                </button>
 
-                                <button type="button" class="btn m-r-5" (click)="deleteUser(user._id!)">
-                                    <i class="fa fa-trash text-danger"></i>
-                                </button>
+                <button type="button" class="btn m-r-5" (click)="deleteUser(user._id!)">
+                  <i class="fa fa-trash text-danger"></i>
+                </button>
 
-                                <button type="button" class="btn">
-                                    <i class="fa fa-ban text-primary"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <p-confirmDialog [style]="{ width: '50vw' }" [baseZIndex]="1"></p-confirmDialog>
-                    </tbody>
-                    <tfoot *ngIf="usersData?.length == 0">
-                        <tr>
-                            <td colspan="3" class="no-data-available b-0 text-center">
-                                <p class="text-center text-muted mt-4 mb-4">No User found.</p>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <div class="row justify-content-md-between align-items-md-center mt-2">
-                    <div class="col-sm-12 col-md-auto col-xl-4">
-                        <div class="dataTables_info mb-2" id="tickets-table_info" role="status" aria-live="polite">
-                            Showing
-                            {{ startIndex }} to {{ endIndex }} of {{ totalRecord }}
-                            entries
-                        </div>
-                    </div>
-                    <!-- Pagination -->
-                    <!-- <div class="col-sm-12 col-md-auto col-xl-1">
+                <button type="button" class="btn" (click)="blockUser(user._id)">
+                  <i class="fa fa-ban text-primary"></i>
+                </button>
+              </td>
+            </tr>
+            <p-confirmDialog [style]="{ width: '50vw' }" [baseZIndex]="1"></p-confirmDialog>
+          </tbody>
+          
+          <tfoot *ngIf="!usersData">
+            <tr>
+              <td colspan="7" class="no-data-available b-0 text-center">
+                <p class="text-center text-muted mt-4 mb-4">No User found.</p>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div class="row justify-content-md-between align-items-md-center mt-2">
+          <div class="col-sm-12 col-md-auto col-xl-4">
+            <div class="dataTables_info mb-2" id="tickets-table_info" role="status" aria-live="polite">
+              Showing
+              {{ startIndex }} to {{ endIndex }} of {{ totalRecord }}
+              entries
+            </div>
+          </div>
+          <!-- Pagination -->
+          <!-- <div class="col-sm-12 col-md-auto col-xl-1">
                             <div class="float-md-right">
                                 <select class="form-control custom-select pg-len-select m-r-10" name="pgLen"
                                     #pgLen="ngModel" [(ngModel)]="selectedPageLength"
@@ -134,28 +137,28 @@
                                 </select>
                             </div>
                         </div> -->
-                    <div class="col-sm-12 col-md-auto col-xl-7">
-                        <div class="paginate-length">
-                            <select class="form-control form-select pg-len-select m-r-20 w-80" name="pgLen"
-                                #pgLen="ngModel" [(ngModel)]="selectedPageLength" (change)="
+          <div class="col-sm-12 col-md-auto col-xl-7">
+            <div class="paginate-length">
+              <select class="form-control form-select pg-len-select m-r-20 w-80" name="pgLen" #pgLen="ngModel"
+                [(ngModel)]="selectedPageLength" (change)="
                   datatableParams.length = selectedPageLength;
                   datatableParams.start = 0
                 ">
-                                <option *ngFor="let length of datatableParams?.pageLengths" [ngValue]="length">
-                                    {{ length }}
-                                </option>
-                            </select>
-                            <div class="text-md-right float-md-right pagination-rounded">
-                                <ngb-pagination [maxSize]="4" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"
-                                    [collectionSize]="recordsFiltered" (pageChange)="onpageChange($event)"
-                                    [(page)]="datatableParams.start" [pageSize]="datatableParams.length">
-                                </ngb-pagination>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Pagination -->
-                </div>
+                <option *ngFor="let length of datatableParams?.pageLengths" [ngValue]="length">
+                  {{ length }}
+                </option>
+              </select>
+              <div class="text-md-right float-md-right pagination-rounded">
+                <ngb-pagination [maxSize]="4" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"
+                  [collectionSize]="recordsFiltered" (pageChange)="onpageChange($event)"
+                  [(page)]="datatableParams.start" [pageSize]="datatableParams.length">
+                </ngb-pagination>
+              </div>
             </div>
+          </div>
+          <!-- End Pagination -->
         </div>
+      </div>
     </div>
+  </div>
 </div>

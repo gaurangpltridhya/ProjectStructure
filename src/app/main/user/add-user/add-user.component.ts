@@ -85,6 +85,7 @@ export class AddUserComponent implements OnInit {
         severity: 'success',
         summary: '',
         detail: 'Update user successfully!',
+        life: 1000
       });
     } else {
       this.userService.addUser(this.addUserForm.value).subscribe((res) => {});
@@ -92,6 +93,7 @@ export class AddUserComponent implements OnInit {
         severity: 'success',
         summary: '',
         detail: 'Add user successfully!',
+        life: 1000
       });
     }
     this.router.navigate(['/user']);
