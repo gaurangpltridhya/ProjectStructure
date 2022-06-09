@@ -15,7 +15,7 @@ import { RoleAccessGuard } from './shared/guard/role-access.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'user',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   {

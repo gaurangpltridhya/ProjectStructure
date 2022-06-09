@@ -1,7 +1,7 @@
 <mat-toolbar color="primary" class="justify-content-between">
     <span>Create About Us</span>
     <span class="example-spacer"></span>
-    <button class="btn btn-light float-right" [routerLink]="['aboutUs']">Cancel</button>
+    <button class="btn btn-light float-right" [routerLink]="['/aboutUs']">Cancel</button>
 </mat-toolbar>
 <div class="row">
     <div class="col-md-12">
@@ -29,7 +29,7 @@
                         <div class="row mt-2">
                             <div class="col-md-12">
                                 <button type="submit" [disabled]="!addAboutUsForm.valid" class="btn btn-primary float-right" (click)="submitAboutUs()">Submit</button>
-                                <button type="button" class="btn btn-light float-right m-r-10">Preview</button>
+                                <button type="button" class="btn btn-light float-right m-r-10" (click)="previewAboutUs()">Preview</button>
                             </div>
                         </div>
                     </form>

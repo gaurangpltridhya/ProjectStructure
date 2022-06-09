@@ -86,8 +86,6 @@ export class AddProductCategoryComponent implements OnInit {
             fileSource: ''
           });
         }
-
-
       }
       reader.readAsDataURL(file);
     }
