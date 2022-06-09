@@ -77,24 +77,30 @@ export class SidebarComponent implements OnInit {
         // access: (this.access.includes('forms')
       },
       {
+        label: 'Product',
+        icon: '',
+        link: 'product',
+        // access: (this.access.includes('forms')
+      },
+      {
         label: 'User',
         icon: '',
         link: '/user',
         // access: (this.access.includes('dashboard') // used for role access control
       },
-      {
-        label: 'Components',
-        icon: '',
-        access: true,
-        childAvailable: true,
-        link: 'component',
-        subItems: [
-          {
-            label: 'tables',
-            link: '/component/tables',
-          },
-        ]
-      }
+      // {
+      //   label: 'Components',
+      //   icon: '',
+      //   access: true,
+      //   childAvailable: true,
+      //   link: 'component',
+      //   subItems: [
+      //     {
+      //       label: 'tables',
+      //       link: '/component/tables',
+      //     },
+      //   ]
+      // }
 
     ]
   }
