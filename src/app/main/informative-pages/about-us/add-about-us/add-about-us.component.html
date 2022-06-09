@@ -14,7 +14,14 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label for="aboutUsTitle">Title<span class="p-error">*</span></label>
-                                <input type="text" id="aboutUsTitle" class="form-control" formControlName="aboutUsTitle" placeholder="About us title">
+                                <input type="text" id="aboutUsTitle" class="form-control" formControlName="aboutUsTitle"
+                                    placeholder="About us title">
+                            </div>
+                            <div *ngIf="addAboutUsFormControl['aboutUsTitle'].touched && !addAboutUsFormControl['aboutUsTitle'].valid"
+                                class="text-danger">
+                                <div *ngIf="addAboutUsFormControl['aboutUsTitle'].errors?.['required']">
+                                    Title is requried.
+                                </div>
                             </div>
                         </div>
 
@@ -22,16 +29,23 @@
                         <div class="row mt-2">
                             <div class="col-md-12">
                                 <ckeditor formControlName="aboutUsContent" debounce="500"></ckeditor>
+                                <div *ngIf="addAboutUsFormControl['aboutUsContent'].touched && !addAboutUsFormControl['aboutUsContent'].valid"
+                                    class="text-danger">
+                                    <div *ngIf="addAboutUsFormControl['aboutUsContent'].errors?.['required']">
+                                        Content is requried.
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-
-                        <div class="row mt-2">
-                            <div class="col-md-12">
-                                <button type="submit" [disabled]="!addAboutUsForm.valid" class="btn btn-primary float-right" (click)="submitAboutUs()">Submit</button>
-                                <button type="button" class="btn btn-light float-right m-r-10" (click)="previewAboutUs()">Preview</button>
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <button type="submit" [disabled]="addAboutUsForm.invalid"
+                                        class="btn btn-primary float-right" (click)="submitAboutUs()">Submit</button>
+                                    <button type="button" [disabled]="addAboutUsForm.invalid" class="btn btn-light float-right m-r-10"
+                                        (click)="previewAboutUs()">Preview</button>
+                                </div>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>

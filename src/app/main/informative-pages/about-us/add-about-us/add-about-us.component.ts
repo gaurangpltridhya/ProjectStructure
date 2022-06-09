@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
@@ -14,10 +15,11 @@ export class AddAboutUsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
+    private router: Router
   ) {}
 
   // get Form control
-  get f() {
+  get addAboutUsFormControl() {
     return this.addAboutUsForm.controls;
   }
 
@@ -35,14 +37,17 @@ export class AddAboutUsComponent implements OnInit {
 
   // submit button
   submitAboutUs() {
-    console.log('aboutUsContent :>> ', this.f['aboutUsContent'].value);
+    console.log('aboutUsContent :>> ', this.addAboutUsFormControl['aboutUsContent'].value);
     console.log(this.addAboutUsForm.value);
+
+    // after completed API process
+    this.router.navigate(['abouttUs']); 
   }
 
   // preview about us page
   previewAboutUs() {
-    console.log('aboutUsContent :>> ', this.f['aboutUsContent'].value);
-    const data = this.f['aboutUsContent'].value;
+    console.log('aboutUsContent :>> ', this.addAboutUsFormControl['aboutUsContent'].value);
+    const data = this.addAboutUsFormControl['aboutUsContent'].value;
     this.dialog.open(PreviewPageComponent, {
       width: '80%',
       height: '80%',

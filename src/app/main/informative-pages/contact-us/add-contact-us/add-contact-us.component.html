@@ -1,0 +1,54 @@
+<mat-toolbar color="primary" class="justify-content-between">
+    <span>Create Contect Us</span>
+    <span class="example-spacer"></span>
+    <button class="btn btn-light float-right" [routerLink]="['/contactUs']">Cancel</button>
+</mat-toolbar>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-text">
+                    <form [formGroup]="addContactUsForm">
+
+                        <!-- about us title -->
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="contactUsTitle">Title<span class="p-error">*</span></label>
+                                <input type="text" id="contactUsTitle" class="form-control" formControlName="contactUsTitle"
+                                    placeholder="About us title">
+                            </div>
+                            <div *ngIf="addContactUsFormControl['contactUsTitle'].touched && !addContactUsFormControl['contactUsTitle'].valid"
+                                class="text-danger">
+                                <div *ngIf="addContactUsFormControl['contactUsTitle'].errors?.['required']">
+                                    Title is requried.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- editor -->
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <ckeditor formControlName="contactUsContent" debounce="500"></ckeditor>
+                                <div *ngIf="addContactUsFormControl['contactUsContent'].touched && !addContactUsFormControl['contactUsContent'].valid"
+                                    class="text-danger">
+                                    <div *ngIf="addContactUsFormControl['contactUsContent'].errors?.['required']">
+                                        Content is requried.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                            <div class="row mt-2">
+                                <div class="col-md-12">
+                                    <button type="submit" [disabled]="addContactUsForm.invalid"
+                                        class="btn btn-primary float-right" (click)="submitContactUs()">Submit</button>
+                                    <button type="button" [disabled]="addContactUsForm.invalid" class="btn btn-light float-right m-r-10"
+                                        (click)="previewContactUs()">Preview</button>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
