@@ -93,9 +93,29 @@ export class SidebarComponent implements OnInit {
       {
         label: 'User',
         icon: '',
-        link: '/user',
+        link: 'user',
         access: this.accessField,
         // access: (this.access.includes('dashboard') // used for role access control
+      },
+      {
+        label: 'Informative Pages',
+        icon: '',
+        access: true,
+        childAvailable: true,
+        subItems: [
+          {
+            label: 'About Us',
+            icon: '',
+            access: true,
+            link: 'aboutUs'
+          },
+          {
+            label: 'Contact Us',
+            icon: '',
+            access: true,
+            link: 'contactUs'
+          }
+        ]
       },
       {
         label: 'Components',

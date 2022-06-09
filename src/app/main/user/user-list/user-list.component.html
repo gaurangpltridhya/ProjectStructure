@@ -70,7 +70,7 @@
           <tbody>
             <tr *ngFor="let user of usersData; let i = index">
               <td>{{ i + 1 }}</td>
-              <td><i class="fa fa-user"></i> {{ user.firstName }}</td>
+              <td><i class="fa fa-user"></i> {{ user.firstName | titlecase }}</td>
               <td>
                 <i class="fa fa-phone rotate"></i>
                 {{ user.contact }}
@@ -82,7 +82,7 @@
                     user.role == 'Admin'
                       ? 'badge bg-success'
                       : 'badge bg-primary'
-                  ">{{ user.role }}</span>
+                  ">{{ user.role | titlecase}}</span>
               </td>
               <td>
                 <span class="badge bg-secondary text-white f-14">Active</span>

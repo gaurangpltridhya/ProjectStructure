@@ -1,9 +1,9 @@
 <div class="container">
-    <mat-toolbar color="primary" class="justify-content-between">
-        <span>{{viewUserData.firstName}}'s Details</span>
-        <span class="example-spacer"></span>
-        <button type="button" class="btn btn-light" [routerLink]="['user']">Back</button>
-    </mat-toolbar>
+<mat-toolbar color="primary" class="justify-content-between">
+    <span>{{viewUserData.firstName}}'s Details</span>
+    <span class="example-spacer"></span>
+    <button type="button" class="btn btn-light" [routerLink]="['user']">Back</button>
+</mat-toolbar>
     <div class="row">
         <div class="col-md-12">
             <div class="card text-left">
@@ -15,10 +15,10 @@
                             </div>
                             <div class="col-md-6 userData">
                                 <div>
-                                    <b>Name: </b> {{viewUserData.firstName}} {{viewUserData.lastName}}
+                                    <b>Name: </b> {{viewUserData.firstName | titlecase}} {{viewUserData.lastName | titlecase}}
                                 </div>
                                 <div>
-                                    <b>Role: </b> {{viewUserData.role}}
+                                    <b>Role: </b> {{viewUserData.role | titlecase}}
                                 </div>
                                 <div>
                                     <b>Email: </b> {{viewUserData.email}}

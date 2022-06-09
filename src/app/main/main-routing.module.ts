@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RoleAccessControl } from '../common/role-access-control/role-access-control.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -97,6 +97,17 @@ const routes: Routes = [
     loadChildren: () => import('./user/userdata.module').then(m => m.UserdataModule),
     // canActivate: [RoleAccessControl],
   },
+  {
+    path: 'contactUs',
+    resolve: {
+      user: UserResolver
+    },
+    loadChildren: () => import('./informative-pages/contact-us/contact-us.module').then(m => m.ContactUsModule)
+  },
+  {
+    path: 'aboutUs',
+    loadChildren: () => import('./informative-pages/about-us/about-us.module').then(m => m.AboutUsModule)
+  }
 ];
 
 @NgModule({
