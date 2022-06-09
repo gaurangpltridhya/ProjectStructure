@@ -1,0 +1,56 @@
+<mat-toolbar color="primary" class="justify-content-between">
+    <span>About Us List</span>
+    <span class="example-spacer"></span>
+    <button class="btn btn-light float-right" [routerLink]="['add']">
+      <i class="fas fa-plus m-r-5"></i>Add
+    </button>
+  </mat-toolbar>
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-body table-responsive">
+          <table id="basic-datatable" class="table datatables custom-table nowrap">
+            <!-- tabel header -->
+
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Title</th>
+                    <th class="nosort text-center action-th">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>About us 1</td>
+                    <td class="nosort text-center">
+                        <button type="button" class="btn m-r-5">
+                            <i class="fa fa-eye text-primary"></i>
+                          </button>
+          
+                          <button type="button" class="btn m-r-5" [routerLink]="['edit']">
+                            <i class="fa fa-edit text-primary"></i>
+                          </button>
+          
+                          <button type="button" class="btn m-r-5">
+                            <i class="fa fa-trash text-danger"></i>
+                          </button>
+                    </td>
+                </tr>
+            </tbody>
+
+            <!-- <tfoot *ngIf="!usersData">
+              <tr>
+                <td colspan="7" class="no-data-available b-0 text-center">
+                  <p class="text-center text-muted mt-4 mb-4">No User found.</p>
+                </td>
+              </tr>
+            </tfoot> -->
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  

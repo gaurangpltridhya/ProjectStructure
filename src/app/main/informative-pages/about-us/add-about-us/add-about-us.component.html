@@ -1,2 +1,40 @@
-<p>add-about-us works!</p>
-<h1>hrrhrhehr</h1>
+<mat-toolbar color="primary" class="justify-content-between">
+    <span>Create About Us</span>
+    <span class="example-spacer"></span>
+    <button class="btn btn-light float-right" [routerLink]="['aboutUs']">Cancel</button>
+</mat-toolbar>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="card-text">
+                    <form [formGroup]="addAboutUsForm">
+
+                        <!-- about us title -->
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="aboutUsTitle">Title<span class="p-error">*</span></label>
+                                <input type="text" id="aboutUsTitle" class="form-control" formControlName="aboutUsTitle" placeholder="About us title">
+                            </div>
+                        </div>
+
+                        <!-- editor -->
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <ckeditor formControlName="aboutUsContent" debounce="500"></ckeditor>
+                            </div>
+                        </div>
+
+
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <button type="submit" [disabled]="!addAboutUsForm.valid" class="btn btn-primary float-right" (click)="submitAboutUs()">Submit</button>
+                                <button type="button" class="btn btn-light float-right m-r-10">Preview</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

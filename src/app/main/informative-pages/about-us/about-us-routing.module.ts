@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'add',
     component: AddAboutUsComponent
+  },
+  {
+    path: 'edit',
+    component: AddAboutUsComponent
   }
 ];
 

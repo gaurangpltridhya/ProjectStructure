@@ -1,3 +1,4 @@
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddAboutUsComponent implements OnInit {
 
-  constructor() { }
+  addAboutUsForm!: FormGroup;
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.initForm();
+  }
+
+  // init form
+  private initForm(){
+    this.addAboutUsForm = this.fb.group({
+      aboutUsTitle: ['', Validators.required],
+      aboutUsContent: ['',Validators.required]
+    })
+  }
+
+  // submit button
+  submitAboutUs(){
+    console.log(this.addAboutUsForm.value)
   }
 
 }

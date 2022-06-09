@@ -1,3 +1,4 @@
+import { CKEditorModule } from 'ckeditor4-angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -93,7 +94,8 @@ import { AdvancedSortableDirective } from './advanced-sortable.directive';
     NgbPaginationModule,
     NgbTypeaheadModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    CKEditorModule,
   ],
   exports: [
     FormsModule,
@@ -122,7 +124,8 @@ import { AdvancedSortableDirective } from './advanced-sortable.directive';
     DndModule,
     MatToolbarModule,
     MatIconModule,
-
+    
+    CKEditorModule,
     ToastrModule,
     NgbPaginationModule,
     NgbTypeaheadModule,
