@@ -1,3 +1,6 @@
+import { UserAccessPermissionService } from './../user-access-permission.service';
+// import { UserAccessPermissionService } from './../../shared/services/user-access-permission.service';
+import { Subscription } from 'rxjs';
 import { UserPermissionComponent } from './../user-permission/user-permission.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UserComponent } from './../../user/user.component';
@@ -12,16 +15,31 @@ import { ConfirmationService, Message, PrimeNGConfig } from "primeng/api";
 })
 export class UserAccessListComponent implements OnInit {
 
+  permission: any[] =[];
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private UserAccessPermissionService: UserAccessPermissionService
     ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
 
+    console.log('27');
+    this.UserAccessPermissionService.permissionChanged.subscribe(
+      (permission: any) => {
+        console.log('111111111');
+
+        
+        this.permission.push(...permission);
+        console.log(123,this.permission);
+      }
+    );
+    this.UserAccessPermissionService.getPermission();
   }
 
   addNew(){
+
     this.router.navigate(['add'],{relativeTo: this.activatedRoute})
   }
 

@@ -92,6 +92,11 @@ const routes: Routes = [
     loadChildren: () => import('./product-category/product-category.module').then(m => m.ProductCategoryModule),
     // canActivate: [RoleAccessControl],
   },
+  // {
+  //   path: 'user-access',
+  //   loadChildren: () => import('./user-access/user-access.module').then(m => m.UserAccessModule),
+  //   // canActivate: [RoleAccessControl],
+  // },
   {
     path: 'user',
     resolve: {

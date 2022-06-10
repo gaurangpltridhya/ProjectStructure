@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc';
 import { LoginComponent } from './auth/login/login.component';
+import Swal from 'sweetalert2'
 
 
 @Component({

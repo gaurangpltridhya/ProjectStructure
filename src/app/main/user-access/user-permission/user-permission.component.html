@@ -1,46 +1,46 @@
-
-<form [formGroup]= "userPermissionForm">
+<!-- Title of the page -->
+<mat-toolbar color="primary" class="justify-content-between">
+  <span> User Permission</span>
+  <span class="example-spacer"></span>
+</mat-toolbar>
+<form [formGroup]="addUserPermissionForm">
   <div class="card">
     <div class="card-body"><br>
-    <h1>Type</h1>
-    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-      <option selected>Role of User</option>
-      <option value="1">Admin</option>
-      <option value="2">User</option>
-      <option value="3">Manager</option>
-    </select>
-  </div>
-  </div>
-  <div class="card">
-    <div class="card-body"><br>
+<label>Type</label><br>
 
-      <h1>Access</h1>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (change)="bulk($event)">
-        <label class="form-check-label" for="flexCheckDefault">
-          Select All
-        </label>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [checked] = "checks">
-          <label class="form-check-label" for="flexCheckDefault">
-            Create
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [checked] = "checks">
-          <label class="form-check-label" for="flexCheckDefault">
-            Edit
-          </label>
-        </div>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [checked] = "checks">
-          <label class="form-check-label" for="flexCheckDefault">
-           Delete
-          </label>
-        </div>
-      </div>
-<button class="button1" mat-raised-button color="primary" [routerLink]="['/user-access']">Cancel</button>
-  <button   mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+<!-- Type of the user -->
+<div class="col-md-6">
+  <select class="form-select " aria-label=".form-select-lg example" formControlName="role">
+    <option selected disabled value="">Role of User</option>
+    <option value="Admin">Admin</option>
+    <option value="User">User</option>
+    <option value="Manager">Manager</option>
+  </select><br>
+
+<!-- checkbox  -->
+</div>
+<div formArrayName="checkArray">
+  <label>User Access Permission</label>
+  <!-- <div>
+    <input type="checkbox" name="selectAll" value="selectAll" >Select All
+  </div> -->
+  <div *ngFor="let data of Data; let i=index" class="form-group">
+    <input type="checkbox" [value]="data.value" (change)="onCheckboxChange($event)" />
+    {{data.name}}
+  </div>
+  <div *ngIf="f['checkArray'].errors?.['required']" class="text-danger">
+    Checkbox is required, select atleast one value.
+  </div>
+</div>
+
+
+<!-- Buttons for save or cancel -->
+    <div class="float-right">
+  <button class="btn btn-primary m-r-5" [routerLink]="['/user-access']">Cancel</button>
+  <button type="button" class="btn btn-primary" (click)="opensweetalert()" (click)="onSubmit()"  [disabled]="addUserPermissionForm.invalid"  >Save</button>
+
+</div>
+
       </div>
       </div>
 </form>
