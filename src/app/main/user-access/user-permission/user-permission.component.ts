@@ -36,11 +36,36 @@ get f(){
 }
 
 
-storeName() {
-  localStorage.setItem(this.key, 'Angular');
-  this.myItem = localStorage.getItem(this.key);
-}
+// storeName() {
+//   localStorage.setItem(this.key, 'Angular');
+//   this.myItem = localStorage.getItem(this.key);
+// }
+name = 'Angular';
 
+  ischecked: boolean = false
+  checkAllTrades: boolean = false
+  checkboxes = [
+    { label: 'Create', value: 'Create', selected: false },
+    { label: 'Edit', value: 'Edit', selected: false },
+    { label: 'Delete', value: 'Delete', selected: false },
+  ];
+
+  toggleCheckboxAll(event: any) {
+
+    this.onCheckboxChange(event);
+    const checked = event.target.checked;
+    this.checkboxes.forEach(item => {item.selected = checked});
+  }
+
+  singleCheckbox(event: any) {
+    if (event.target.checked == true) {
+      this.ischecked = true
+    }
+
+    if (this.ischecked && this.checkAllTrades) {
+      event.target.checked = true
+    }
+  }
   constructor(
     private fb: FormBuilder,
      private activatedRoute: ActivatedRoute,
@@ -85,6 +110,7 @@ storeName() {
       }
     })
   }
+
   onCheckboxChange(e: any) {
     const checkArray: FormArray = this.addUserPermissionForm.get(
       'checkArray'
