@@ -1,6 +1,6 @@
 <div style="width: 600px">
 <mat-toolbar color="primary" class="justify-content-between">
-  <span>Upload Images</span>
+  <span>Upload Image Slider</span>
   <span class="example-spacer"></span>
   <svg class="ic_close " (click)="onClose()" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40">
     <g id="close" transform="translate(-1265 -197)">
@@ -11,47 +11,34 @@
 
 <div class="card mb-0">
   <div class="card-body">
+    <div mat-dialog-content class="p-24 pb-0 m-0">
+      <form id="addImageSliderForm" for="addImageSliderForm" class="row g-3 needs-validation" name="addImageSliderForm"
+          [formGroup]="addImageSliderForm" (ngSubmit)="submitAddImageSliderForm()" novalidate>
 <div class="row">
-    <!-- <div class="col-7">
-      <label class="btn btn-default p-0 fa fa-cloud-upload mb-3">
-        <input type="file" accept="image/*" multiple (change)="selectFiles($event)" />
-            </label>
-    </div> -->
+  <div class="col-md-12 mb-3">
+    <label for="imageName" class="form-label">Image Title</label>
+    <input type="text" name="imageName" placeholder="Image Title" formControlName="title"
+        class="form-control">
+</div>
     <div class="col-md-8">
       <div class="upload-btn-wrapper ">
           <button class="btn btn-primary btn-lg">
               Select Image
           </button>
-          <input type="file" #file multiple (change)="selectFiles($event)" name="upload"
+          <input type="file" #file  (change)="onFileSelect($event)" name="upload" id="uploadFile" formControlName="uploadFile"
               accept="'.csv'" maxFileSize="10000000" />
-          <!-- <label class="m-l-20">{{addProductCategoryForm?.value?.fileSource?.fileName}}</label> -->
       </div>
   </div>
-    <div class="col-4">
-  
-    <button
-      class="btn btn-purple btn-lg fa-solid fa-arrow-up-to-line"
-      [disabled]="!selectedFiles"
-      (click)="uploadFiles()"
-    >
-      <i class="fa-arrow-alt-circle-up fas "></i> Upload
-     
-    </button>
-
-    </div>
     
-    <div class="mb-2 col-12">
-      <div class="c-upload-img">
-           <button
-    class="btn btn-purple btn-sm "
-    [disabled]="!selectedFiles"
-    (click)="deleteFiles()"
-  >
-          <i class="fa fa-trash" aria-hidden="true" ></i>
-        </button>
-        <img *ngFor='let preview of previews' [src]="preview" class="preview shadow m-l-10">
-
+  
+    <div class="mb-4 col-12">
+        <img *ngFor='let preview of selectedFiles' [src]="preview.fileData" class="preview shadow m-l-10">
       </div>
+
+      <div class="form-group mb-0 w-100 mb-4">
+        <textarea rows="5" class="form-control" id="shortDescription" formControlName="shortDescription" placeholder="short-description">
+        </textarea>
+    </div>
     </div>
 
 <div *ngFor="let progressInfo of progressInfos" class="mb-2">
@@ -68,15 +55,16 @@
       </div>
     </div>
   </div>
-
   
+      </form>
+    </div>
+  </div>
 </div>
-  <!-- <div *ngIf="message.length" class="alert alert-secondary my-3" role="alert">
-    <ul *ngFor="let msg of message; let i = index">
-      <li>{{ msg }}</li>
-    </ul>
-  </div> -->
-  <!-- </div>
-  </div> -->
-
+<div mat-dialog-actions class="m-0 p-16 justify-content-end">
+    <a mat-button class="m-r-5 btn btn-light float-right" (click)="onClose()"
+            aria-label="Cancel">Close</a>
+  <button class="btn btn-primary float-right" type="submit" form="addImageSliderForm"   [disabled]="!selectedFiles">
+      Upload
+  </button>
+</div>
   </div>

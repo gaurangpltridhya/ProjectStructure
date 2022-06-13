@@ -50,12 +50,9 @@ export class BaseApiService {
     }
 
     
-  upload(file: File): Observable<HttpEvent<any>> {
-    const formData: FormData = new FormData();
+  uploadImageSlider(file: any): Observable<HttpEvent<any>> {
 
-    formData.append('image', file);
-
-    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
+    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, file, {
       reportProgress: true,
       responseType: 'json'
     });
@@ -63,7 +60,7 @@ export class BaseApiService {
     return this.http.request(req);
   }
 
-  getFiles() {
+  getFilesOfImageSlider() {
     return this.http.get(`${this.baseUrl}/`, {}).pipe(
       map((res: any) => {
         return res;

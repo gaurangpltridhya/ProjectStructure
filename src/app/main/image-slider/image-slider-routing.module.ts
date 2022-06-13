@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { ImagesComponent } from './images/images.component';
-import { UploadImagesComponent } from './upload-images/upload-images.component';
+import { ListImageSliderComponent } from './list-image-slider/list-image-slider.component';
+import { AddImageSliderComponent } from './add-image-slider/add-image-slider.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ImagesComponent,
+    component: ListImageSliderComponent,
     data: {
       module: 'image-slider'
     },
@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'images',
-    component: ImagesComponent,
+    component: ListImageSliderComponent,
     data: {
       module: 'images'
     },
@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'upload-image',
-    component: UploadImagesComponent,
+    component: AddImageSliderComponent,
     data: {
       module: 'upload-image'
     },

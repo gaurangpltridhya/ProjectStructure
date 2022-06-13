@@ -16,8 +16,6 @@ import { Globals } from './globals';
 import { RoleAccessControl } from './common/role-access-control/role-access-control.service';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { FlatpickrModule } from 'angularx-flatpickr';
-import { ImagesComponent } from './main/image-slider/images/images.component';
-import { UploadImagesComponent } from './main/image-slider/upload-images/upload-images.component';
 import { ToastrModule } from 'ngx-toastr';
 import { UtilityService } from './common/utility.service';
 import { MatCardModule } from '@angular/material/card';

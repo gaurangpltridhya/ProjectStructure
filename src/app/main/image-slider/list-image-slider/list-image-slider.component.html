@@ -1,0 +1,82 @@
+<mat-toolbar color="primary" class="justify-content-between">
+  <span>Image Slider List</span>
+  <span class="example-spacer"></span>
+  <button class="btn btn-light float-right" (click)="OpenImagePopup()"><i class="fas fa-plus m-r-5"></i>Add</button>
+</mat-toolbar>
+  <div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body table-responsive">
+                <ng-template #NA>-</ng-template>
+                <table id="basic-datatable" class="table datatables custom-table nowrap">
+                    <thead>
+                        <tr>
+                            <th sortable="name.first" (sort)="onSort($event)">
+                                Images
+                            </th>
+                            <th sortable="role" (sort)="onSort($event)">
+                                Title
+                            </th>
+                            <th class="nosort action-th" width="190">
+                                short-description
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr tr *ngFor="let image of imageInfos">
+                            <td>
+                              <img  mat-card-xl-image src="{{IMAGE_PATH}}/{{ image?.imagePath }}" alt="{{ image?.imagePath }}" height="80px" width="80px" />
+                            </td>
+                            <td>
+                                {{ image?.title }}
+                            </td>
+                            <td>
+                              {{ image?.description}}
+                            </td>
+
+                        </tr>
+                    </tbody>
+                    <tfoot *ngIf="imageInfos?.length == 0">
+                        <tr>
+                            <td colspan="3" class="no-data-available b-0 text-center">
+                                <p class="text-center text-muted mt-4 mb-4">
+                                    No Slider Images found.
+                                </p>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="row justify-content-md-between align-items-md-center mt-2">
+                    <div class="col-sm-12 col-md-auto col-xl-4">
+                        <div class="dataTables_info mb-2" id="tickets-table_info" role="status" aria-live="polite">
+                            Showing
+                            {{startIndex}} to {{endIndex}} of {{totalRecord}}
+                            entries
+                        </div>
+                    </div>
+                    <!-- Pagination -->
+                    
+                    <!-- <div class="col-sm-12 col-md-auto col-xl-7">
+                        <div class="paginate-length">
+                            <select class="form-control form-select pg-len-select m-r-20 w-80" name="pgLen"
+                                #pgLen="ngModel" [(ngModel)]="selectedPageLength"
+                                (change)="datatableParams.length = selectedPageLength; datatableParams.start = 0">
+                                <option *ngFor="let length of datatableParams?.pageLengths" [ngValue]="length">{{ length
+                                    }}
+                                </option>
+                            </select>
+                            <div class="text-md-right float-md-right pagination-rounded">
+                                <ngb-pagination [maxSize]="4" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"
+                                    [collectionSize]="recordsFiltered" (pageChange)="onpageChange($event)"
+                                    [(page)]="datatableParams.start" [pageSize]="datatableParams.length">
+                                </ngb-pagination>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- End Pagination -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  

@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable, EventEmitter } from "@angular/core";
 import { catchError, map, throwError } from "rxjs";
 import { environment } from "src/environments/environment";
+import { staging } from "./API-Url-Config";
 
 // import { SocketIoConfig } from 'ngx-socket-io';
 
@@ -20,7 +21,9 @@ export const OTP_VERIFY_RESET_PASSWORD = API_LINK_URL + '/' + API_VERSION + '/ot
 // product category
 export const GET_PRODUCT_CATEGORY_LIST = API_LINK_URL + '/' + API_VERSION + '/categories'; //email verify
 
-
+//image slider
+export const IMAGE_PATH = staging.IMAGE_PATH; // image load url
+ 
 @Injectable()
 export class Constants {
   constructor(
