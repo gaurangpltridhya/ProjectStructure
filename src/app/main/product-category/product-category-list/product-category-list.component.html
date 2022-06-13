@@ -1,7 +1,8 @@
 <mat-toolbar color="primary" class="justify-content-between">
-    <span>New User Access</span>
+    <span>Product Categories</span>
     <span class="example-spacer"></span>
-    <button class="btn btn-light float-right"><i class="fas fa-plus m-r-5"></i>Add</button>
+    <button class="btn btn-light float-right" (click)="showAddProductCategoryDialog(undefined)"><i
+            class="fas fa-plus m-r-5"></i>Add</button>
 </mat-toolbar>
 
 <div class="row">
@@ -22,7 +23,7 @@
                             <th sortable="role" (sort)="onSort($event)">
                                 Type
                             </th>
-                            <th class="nosort text-center action-th" width="190">
+                            <th class="nosort action-th" width="190">
                                 Action
                             </th>
                         </tr>
@@ -38,7 +39,19 @@
                             <td>
                                 <label class="action-ico m-r-20">
                                     <i class="fas fa-eye fa-lg cursor-pointer" title="Product Category Detail"></i>
-                                    <!-- <label class="action-label">Category Detail</label> -->
+                                </label>
+                                <label class="action-ico m-r-20" [attr.disabled]="category?.isDisabled"
+                                    [ngClass]="{'ele-disabled':category?.isDisabled}"
+                                    (click)="showAddProductCategoryDialog(category)">
+                                    <i class="fas fa-edit cursor-pointer" title="Edit Product Category"></i>
+                                </label>
+                                <label class="action-ico m-r-20" *ngIf="!category?.isDisabled"
+                                    (click)="manageProductCategoryStatus(true)">
+                                    <i class="fas fa-ban cursor-pointer" title="Disable Product Category"></i>
+                                </label>
+                                <label class="action-ico m-r-20" *ngIf="category?.isDisabled"
+                                    (click)="manageProductCategoryStatus(false)">
+                                    <i class="fas fa-check cursor-pointer" title="Enable Product Category"></i>
                                 </label>
                             </td>
 

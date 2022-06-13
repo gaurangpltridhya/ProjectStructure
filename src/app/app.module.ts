@@ -23,6 +23,7 @@ import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { ToastrModule } from 'ngx-toastr';
 import { UtilityService } from './common/utility.service';
+import { CustomConfirmationPopupComponent } from './common/custom-confirmation-popup/custom-confirmation-popup.component';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
@@ -34,6 +35,7 @@ import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
+    CustomConfirmationPopupComponent
   ],
   imports: [
     BrowserModule,

@@ -81,6 +81,7 @@ export class AngularFormsComponent implements OnInit {
     this.loginFormSubmitted = true;
     if (!this.loginFormReactive.invalid) {
       console.log('Reactive form submitted successfully');
+      
     }
   }
 

@@ -2,7 +2,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 // import { UserAccessPermissionService } from './../../shared/services/user-access-permission.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, FormControl, FormArray, FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray, FormsModule, ValidatorFn } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import {ThemePalette} from '@angular/material/core';
 import { UserAccessPermissionService } from './../user-access-permission.service';
@@ -16,10 +16,12 @@ import Swal from 'sweetalert2'
   // providers: [UserAccessPermissionService],
 })
 export class UserPermissionComponent implements OnInit {
+  
 
 title = 'useraccesspermissionservice';
 selectAllCheck=false;
 addUserPermissionForm: FormGroup;
+isFormSubmitted: Boolean = false;
 users: {name: string; status: string }[] = [];
 permission: any[]=[];
 key: string = 'Name';
@@ -31,15 +33,16 @@ Data: Array<any> = [
 
 ];
 
-get f(){
-  return this.addUserPermissionForm.controls;
-}
+
 
 
 // storeName() {
 //   localStorage.setItem(this.key, 'Angular');
 //   this.myItem = localStorage.getItem(this.key);
 // }
+
+  // CheckBox 
+
 name = 'Angular';
 
   ischecked: boolean = false
@@ -49,6 +52,7 @@ name = 'Angular';
     { label: 'Edit', value: 'Edit', selected: false },
     { label: 'Delete', value: 'Delete', selected: false },
   ];
+
 
   toggleCheckboxAll(event: any) {
 
@@ -70,8 +74,15 @@ name = 'Angular';
     private fb: FormBuilder,
      private activatedRoute: ActivatedRoute,
       private router: Router,
-       private UserAccessPermissionService: UserAccessPermissionService) { }
-
+       private UserAccessPermissionService: UserAccessPermissionService) {
+         this.addUserPermissionForm = this.fb.group({
+          checkArray: ['', [Validators.required]]
+         })
+        }
+        get f(){
+          return this.addUserPermissionForm.controls
+        }
+        
   ngOnInit(): void {
 
      this.UserAccessPermissionService.permissionChanged
@@ -84,6 +95,8 @@ name = 'Angular';
      );
      this.UserAccessPermissionService.getPermission();
 
+       // Validation  
+
     this.addUserPermissionForm = this.fb.group({
       role: ['', [Validators.required]],
       checkArray: this.fb.array([], [Validators.required]),
@@ -93,23 +106,23 @@ name = 'Angular';
     })
   }
 
-  opensweetalert(){
-    Swal.fire({
-      title: 'Do you want to save the changes?',
-      showDenyButton: true,
-      showCancelButton: true,
-      confirmButtonText: 'Yes',
-      denyButtonText: `No`,
-      confirmButtonColor: '#007FFF',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire('Saved!', '', 'success')
+  // opensweetalert(){
+  //   Swal.fire({
+  //     title: 'Do you want to save the changes?',
+  //     showDenyButton: true,
+  //     showCancelButton: true,
+  //     confirmButtonText: 'Yes',
+  //     denyButtonText: `No`,
+  //     confirmButtonColor: '#007FFF',
+  //   }).then((result) => {
+  //     if (result.isConfirmed) {
+  //       Swal.fire('Saved!', '', 'success')
 
-      } else if (result.isDenied) {
-        Swal.fire('Changes are not saved', '', 'info')
-      }
-    })
-  }
+  //     } else if (result.isDenied) {
+  //       Swal.fire('Changes are not saved', '', 'info')
+  //     }
+  //   })
+  // }
 
   onCheckboxChange(e: any) {
     const checkArray: FormArray = this.addUserPermissionForm.get(
@@ -144,11 +157,18 @@ name = 'Angular';
 // }
 //   }
 
-  onSubmit(){
+  // FUnction on Save button 
 
-   this.UserAccessPermissionService.addPermission(this.addUserPermissionForm.value);
-    console.log('hi', this.addUserPermissionForm.value);
-    this.router.navigate(['/user-access'])
+  onSubmit(){
+    this.isFormSubmitted = true
+    if(this.addUserPermissionForm.invalid){
+      return;
+    }
+    else{
+      this.UserAccessPermissionService.addPermission(this.addUserPermissionForm.value);
+      console.log('hi', this.addUserPermissionForm.value);
+      this.router.navigate(['/user-access'])
+    }
   }
 
 }

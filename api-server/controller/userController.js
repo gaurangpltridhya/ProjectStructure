@@ -35,6 +35,21 @@ module.exports.updateUser = async (req, res) => {
   }
 };
 
+module.exports.updateUserById = async (req, res) => {
+  try {
+    const updateUser = await User.findByIdAndUpdate(
+      req.params.id,
+      {
+        $set: req.body,
+      },
+      { new: true }
+    );
+    res.status(200).send({ message: "User Updated", user: updateUser });
+  } catch (err) {
+    res.status(401).send({ Error: err.message });
+  }
+};
+
 module.exports.deleteUser = async (req, res) => {
   try {
     await User.findByIdAndDelete(req.params.id);

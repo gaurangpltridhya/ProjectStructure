@@ -7,6 +7,7 @@
 /bazel-out
 
 # Node
+/node_modules
 /api-server/node_modules
 api-server/package-lock.json
 npm-debug.log

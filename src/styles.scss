@@ -7,6 +7,8 @@
 * License: https://bootstrapmade.com/license/
 */
 
+@import '~bootstrap/scss/bootstrap-utilities';
+
 /** angularx-flatpickr **/
 @import 'flatpickr/dist/flatpickr.css';
 
@@ -1294,6 +1296,25 @@ h6 {
 }
 
 
+.p-24 {
+    padding: 24px !important;
+}
+
+.p-16 {
+    padding: 16px !important;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+// for show any span div disabled
+.ele-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    color: #b1b1b1 !important;
+}
+
 /******************************************************************* below are custom css start  ******************************************************************/
 .invalid-feedback {
     display: block;
@@ -1427,3 +1448,30 @@ table.custom-table {
 }
 
 /*********************************************  angular material components css css end  *********************************************/
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+    height: 50px;
+}
+
+/*********************************************  angular material components css css end  *********************************************/
+
+
+/*********************************   font size class start    **************************************/
+.font-weight-bold {
+    font-weight: bold;
+}
+
+.f-18 {
+    font-size: 18px;
+}
+
+.f-50 {
+    font-size: 50px;
+}
+
+
+.f-80 {
+    font-size: 80px;
+}
+
+/*********************************   font size class end    **************************************/

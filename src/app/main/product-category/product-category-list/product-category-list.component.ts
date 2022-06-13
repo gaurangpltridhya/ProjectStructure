@@ -1,8 +1,12 @@
-import { Component, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, OnInit, QueryList, ViewChildren, ViewEncapsulation } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Constants } from 'src/app/API-URL/contants';
+import { CustomConfirmationPopupComponent } from 'src/app/common/custom-confirmation-popup/custom-confirmation-popup.component';
 import { UtilityService } from 'src/app/common/utility.service';
 import { AdvancedSortableDirective, SortEvent } from 'src/app/shared/advanced-sortable.directive';
+import { AddProductCategoryComponent } from '../add-product-category/add-product-category.component';
 import { ProductCategoryService } from '../product-category.service';
 
 @Component({
@@ -14,11 +18,11 @@ export class ProductCategoryListComponent implements OnInit {
   @ViewChildren(AdvancedSortableDirective) headers!: QueryList<AdvancedSortableDirective>;
 
   productCategoryList: Array<any> = [
-    { name: 'watch', type: 'watch', _id: 'qq232ewe3e' },
-    { name: 'goggles', type: 'goggles', _id: 'qq232dewe3e' },
-    { name: 'bags', type: 'bags', _id: 'qq232ewex3e' },
-    { name: 'bags', type: 'bags', _id: 'qq232ewex3e' },
-    { name: 'AC', type: 'ac', _id: 'qq232xaewe3e' },
+    { name: 'watch', type: 'watch', _id: 'qq232ewe3e', isDisabled: false },
+    { name: 'goggles', type: 'goggles', _id: 'qq232dewe3e', isDisabled: false },
+    { name: 'bags', type: 'bags', _id: 'qq232ewex3e', isDisabled: true },
+    { name: 'bags', type: 'bags', _id: 'qq232ewex3e', isDisabled: false },
+    { name: 'AC', type: 'ac', _id: 'qq232xaewe3e', isDisabled: false },
 
   ]
   dtSearch: any = {};
@@ -34,9 +38,10 @@ export class ProductCategoryListComponent implements OnInit {
     public _util: UtilityService,
     private router: Router,
     public _productCategoryService: ProductCategoryService,
-    public constant: Constants
+    public constant: Constants,
+    public dialog: MatDialog,
+    private toasterService: ToastrService
   ) {
-
     this.datatableParams = this.constant.datatableParam;
     this.selectedPageLength = this.datatableParams.length;
   }
@@ -45,6 +50,7 @@ export class ProductCategoryListComponent implements OnInit {
     this.totalRecord = 100; //TODO: remove it
     this.recordsFiltered = 20; //TODO: remove it
     this.datatableParams.start = 0; // for call API from page evet func
+
   }
 
   /**
@@ -90,5 +96,53 @@ export class ProductCategoryListComponent implements OnInit {
       }
     });
     this.getProductCategoryList();
+  }
+
+
+  /**
+   * show material dialog for add product category
+   */
+  showAddProductCategoryDialog(data: any) {
+
+    this.dialog.open(AddProductCategoryComponent, {
+      panelClass: 'add-product-category',
+      disableClose: true,
+      data: data
+    }).afterClosed()
+      .subscribe((response: any) => {
+
+      });
+  }
+
+  /**
+   * manage category status
+   * @param isDisabled 
+   */
+  manageProductCategoryStatus(isDisabled: Boolean) {
+    let data = {
+      okButtonText: 'Yes',
+      cancelButtonText: 'No',
+      titleText: 'Are you sure',
+      message: isDisabled === true ? 'Do you want to disable Product Category?' : 'Do you want to enable Product Category?'
+    }
+    this.dialog.open(CustomConfirmationPopupComponent, {
+      panelClass: 'custom-confirmation',
+      disableClose: true,
+      data: data
+    }).afterClosed()
+      .subscribe((response: any) => {
+        if (!response) {
+          return;
+        }
+        this._productCategoryService.manageProductCategoryStatus(isDisabled).subscribe((res: any) => {
+          if (res.status == 200) {
+            this.toasterService.success(res?.message);
+            this.getProductCategoryList();
+          }
+        }, (error: any) => {
+
+        });
+
+      });
   }
 }
