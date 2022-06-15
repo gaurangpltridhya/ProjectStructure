@@ -32,6 +32,7 @@ Data: Array<any> = [
   { name: 'Delete', value: 'Delete' },
 
 ];
+checkArray:Array<any> = []
 
 
 
@@ -161,7 +162,7 @@ name = 'Angular';
 
   onSubmit(){
     this.isFormSubmitted = true
-    if(this.addUserPermissionForm.invalid){
+    if(this.addUserPermissionForm.invalid || this.checkArray.push.length==0){
       return;
     }
     else{

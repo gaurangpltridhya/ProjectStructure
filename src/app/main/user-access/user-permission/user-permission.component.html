@@ -6,7 +6,7 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="addUserPermissionForm">
   <div class="card">
     <div class="card-body"><br>
-<label>Type</label><br>
+<label><strong>Type</strong></label>
 
 <!-- Type of the user -->
 <div class="col-md-6">
@@ -17,8 +17,13 @@
     <option value="User">User</option>
     <option value="Manager">Manager</option>
   </select><br>
+  <div class="invalid-feedback" style="margin-top: -15px;" *ngIf="isFormSubmitted">
+    <div *ngIf="addUserPermissionForm?.get('role')?.hasError('required')">
+        Role is required!
+    </div>
   
 </div>
+</div><br>
 
 <!-- checkbox  -->
 <!-- <div formArrayName="checkArray">
@@ -35,27 +40,28 @@
   </div>
 </div> -->
 
-<label > User Access Permission</label> <br>
+<label > <strong>User Access Permission</strong></label> <br>
 <label class="btn btn-filter">
-  <input type="checkbox" name="checkboxes"  (change)="toggleCheckboxAll($event)"> Select All
+  <input class="m-r-5" type="checkbox" name="checkboxes"  (change)="toggleCheckboxAll($event)"> Select All
 </label>
 
 <div formArrayName="checkArray">
   <div *ngFor="let checkbox of checkboxes">
     <label class="btn btn-filter">
-      <input type="checkbox" class="form-group" [value]="checkbox.value"  [checked]="checkbox.selected" (click)="onCheckboxChange($event)" (change)="singleCheckbox($event)">{{ checkbox.label }}
+      <input  type="checkbox" class="form-group" class="m-r-5" [value]="checkbox.value"  [checked]="checkbox.selected" (click)="onCheckboxChange($event)" (change)="singleCheckbox($event)">{{ checkbox.label }}
     </label>
-      <div class="err" *ngIf="f['checkArray'].get('checkArray')?.hasError('required')" formControlName="checkArray">
-        Checkbox is required, select atleast one value.
-      </div>
+  </div>
+  <div class="err" *ngIf="isFormSubmitted && checkArray.length==0" style="color: rgb(219, 1, 1);">
+    Checkbox is required, select atleast one value.
   </div>
 </div>
 
 
 <!-- Buttons for save or cancel -->
     <div class="float-right">
-  <button class="btn btn-primary m-r-5" [routerLink]="['/user-access']">Cancel</button>
-  <button type="button" class="btn btn-primary"  (click)="onSubmit()"  [disabled]="addUserPermissionForm.invalid" >Save</button>
+      
+  <button type="button" class="btn btn-light" [routerLink]="['/user-access']" style="margin:5px;">Cancel</button>
+  <button type="button" class="btn btn-primary"  (click)="onSubmit()" style="margin:5px;" >Save</button>
 
 </div>
 
