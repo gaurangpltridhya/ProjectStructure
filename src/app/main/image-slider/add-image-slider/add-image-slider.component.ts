@@ -57,8 +57,8 @@ onFileSelect(event :any){
     var reader = new FileReader();
     reader.onload = (event: any) => {
       this.selectedFiles.push({
-        fileName: file.title,
-        file: file.uploadFile,
+        fileName: file.name,
+        file: file,
         fileData: event.target.result,
         attachmentFor: '',
         comment: ''
@@ -98,6 +98,7 @@ onFileSelect(event :any){
    */
      submitAddImageSliderForm() {
       this.addImageSliderFormSubmitted = true;
+      console.log(101)
       if (!this.addImageSliderForm?.invalid) {
         let data = {
           title: this.addImageSliderForm.value.title,
