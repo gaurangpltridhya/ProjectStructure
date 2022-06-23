@@ -1,0 +1,240 @@
+<mat-toolbar color="primary" class="justify-content-between">
+    <span>New Product</span>
+    <span class="example-spacer"></span>
+</mat-toolbar>
+<!-- <section>
+    <div class="container"> -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <form id="addProductForm" class="needs-validation" name="addProductForm" [formGroup]="addProductForm"
+                    (ngSubmit)="submitAddProductForm()" novalidate>
+                    <div class="row mt-4">
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-3">
+                            <label for="proName" class="form-label">Category</label>
+                            <select class="form-select" formControlName="category"
+                                [ngClass]="{ 'is-invalid':addProductFormSubmitted && form['category']?.errors }">
+                                <option selected>Select Category</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="addProductFormSubmitted">
+                                <div *ngIf="addProductForm?.get('category')?.hasError('required')">
+                                    Category is required!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-3">
+                            <label for="proNamecat" class="form-label">Product Name</label>
+                            <input type="text" name="proNamecat" placeholder="Product Name" formControlName="name"
+                                class="form-control"
+                                [ngClass]="{ 'is-invalid':addProductFormSubmitted && form['name']?.errors }">
+                            <div class="invalid-feedback" *ngIf="addProductFormSubmitted">
+                                <div *ngIf="addProductForm?.get('name')?.hasError('required')">
+                                    Name is required!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-6 col-xl-6 mb-3">
+                            <label for="desc" class="form-label">Description</label>
+                            <!-- <input type="text" name="desc" placeholder="Description"
+                                formControlName="productDescription" class="form-control"
+                                [ngClass]="{ 'is-invalid':addProductFormSubmitted && form['productDescription']?.errors }"> -->
+                            <textarea name="desc" class="form-control" style="min-height: 50px"
+                                placeholder="Description" formControlName="productDescription" class="form-control"
+                                [ngClass]="{ 'is-invalid':addProductFormSubmitted && form['productDescription']?.errors }"></textarea>
+                            <div class="invalid-feedback" *ngIf="addProductFormSubmitted">
+                                <div *ngIf="addProductForm?.get('productDescription')?.hasError('required')">
+                                    Description is required!
+                                </div>
+                                <div
+                                    *ngIf="!addProductForm?.get('productDescription')?.hasError('required') && addProductForm?.get('productDescription')?.hasError('minlength')">
+                                    Add atleast 50 character.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-3">
+                            <label for="price" class="form-label">Price</label>
+                            <input type="text" name="price" placeholder="Price" formControlName="price"
+                                class="form-control"
+                                [ngClass]="{ 'is-invalid':addProductFormSubmitted && form['price']?.errors }">
+                            <div class="invalid-feedback" *ngIf="addProductFormSubmitted">
+                                <div *ngIf="addProductForm?.get('price')?.hasError('required')">
+                                    Price is required!
+                                </div>
+                                <div
+                                    *ngIf="!addProductForm?.get('price')?.hasError('required') && addProductForm?.get('price')?.hasError('pattern')">
+                                    Please enter valid price.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-3 mb-3">
+                            <label for="warranty" class="form-label">Warranty Detail</label>
+                            <input type="text" name="warranty" placeholder="Warranty Detail" formControlName="warranty"
+                                class="form-control"
+                                [ngClass]="{ 'is-invalid':addProductFormSubmitted && form['warranty']?.errors }">
+                            <div class="invalid-feedback" *ngIf="addProductFormSubmitted">
+                                <div *ngIf="addProductForm?.get('warranty')?.hasError('required')">
+                                    Warranty Detail is required!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                            <label for="zipcodes" class="form-label">Shipping Zipcodes</label>
+                            <!-- <input type="text" name="zipcodes" placeholder="Shipping Zipcodes"
+                                formControlName="allowedZipcodes" class="form-control"
+                                [ngClass]="{ 'is-invalid':addProductFormSubmitted && form['allowedZipcodes']?.errors }"> -->
+                            <p-chips name="zipcodes" placeholder="Shipping Zipcodes" class="form-control"
+                                formControlName="allowedZipcodes"
+                                [ngClass]="{ 'is-invalid':addProductFormSubmitted && form['allowedZipcodes']?.errors }">
+                            </p-chips>
+                            <div class="invalid-feedback" *ngIf="addProductFormSubmitted">
+                                <div *ngIf="addProductForm?.get('allowedZipcodes')?.hasError('required')">
+                                    Shipping Zipcode is required!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                            <label for="tag" class="form-label">Tags</label>
+                            <p-chips name="tag" placeholder="Tags" class="form-control" formControlName="tags"
+                                [ngClass]="{ 'is-invalid':addProductFormSubmitted && form['tags']?.errors }">
+                            </p-chips>
+                            <div class="invalid-feedback" *ngIf="addProductFormSubmitted">
+                                <div *ngIf="addProductForm?.get('tags')?.hasError('required')">
+                                    Tags is required!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" formArrayName="productDetail">
+                        <div class="col-12 mt-4">
+                            <label class="f-18">Product Details</label>
+                            <button class="btn btn-primary btn-sm m-l-10" type="button"
+                                (click)="addNewProductDetailGroup()">
+                                <i class="fas fa-plus m-r-5"></i>Add
+                            </button>
+                        </div>
+                        <div class="col-6" *ngFor="let detailGroup of productDetailFormArray.controls;let i = index"
+                            [formGroupName]="i">
+                            <div class="row">
+                                <div
+                                    class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 mb-3 d-flex justify-content-end">
+                                    <div>
+                                        <i class="fas fa-minus-circle fa-lg m-r-10 cursor-pointer"
+                                            style="margin-top: 38px;" (click)="deleteKeyValueProductDetail(i)"></i>
+                                    </div>
+                                    <div>
+                                        <label for="ky" class="form-label">Key</label>
+                                        <input type="text" name="ky" placeholder="Key" formControlName="key"
+                                            class="form-control"
+                                            [ngClass]="{ 'is-invalid':addProductFormSubmitted && productDetailFormArray.controls[i]?.get('key')?.errors }">
+                                        <div class="invalid-feedback" *ngIf="addProductFormSubmitted">
+                                            <div
+                                                *ngIf="productDetailFormArray.controls[i]?.get('key')?.hasError('required')">
+                                                Key is required!
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                    <label for="val" class="form-label">Value</label>
+                                    <input type="text" name="val" placeholder="Value" formControlName="value"
+                                        class="form-control"
+                                        [ngClass]="{ 'is-invalid':addProductFormSubmitted && productDetailFormArray.controls[i]?.get('value')?.errors }">
+                                    <div class="invalid-feedback" *ngIf="addProductFormSubmitted">
+                                        <div
+                                            *ngIf="productDetailFormArray.controls[i]?.get('value')?.hasError('required')">
+                                            Value is required!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 mt-5 d-flex">
+                            <label class="f-18 m-r-10">Product Images</label>
+                            <div class="upload-btn-wrapper">
+                                <button class="btn btn-primary btn-sm">
+                                    Select Images
+                                </button>
+                                <input type="file" #file formControlName="images" multiple
+                                    (change)="fileChangeEvent($event)" name="upload" accept="'.csv'"
+                                    maxFileSize="10000000" />
+                                <label class="m-l-20"></label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+
+                            <div class="dz-preview" *ngFor="let attachment of productImgArray">
+                                <div class="bill-img-box">
+                                    <ng-container>
+                                        <img title="{{attachment?.fileName}}" *ngIf="attachment?.isNew == undefined"
+                                            src="{{IMAGE_PATH}}{{attachment?.thumbPath}}" height="inherit" width="120"
+                                            style="height: inherit;">
+                                        <img title="{{attachment?.fileName}}" *ngIf="attachment?.isNew"
+                                            src="{{attachment.path}}" height="inherit" width="120"
+                                            style="height: inherit;">
+                                    </ng-container>
+
+                                    <div class="bill-img-action">
+                                        <i class="fas fa-search-plus fa-2x m-r-20 cursor-pointer"
+                                            (click)="showImageFullScreen(attachment?.path,attachment?.isNew)"></i>
+                                        <!-- <ng-container *ngIf="this.action != 'new'">
+                                            <i *ngIf="attachment?.isNew==undefined && imgExtenstions.indexOf(attachment?.extension)==-1"
+                                                class="fas fa-file-download fa-2x m-r-20 cursor-pointer"
+                                                (click)="_util.downloadFile(IMAGE_PATH+attachment?.path, attachment?.filename)"></i>
+                                        </ng-container> -->
+
+                                        <i class="fas fa-times-circle fa-2x cursor-pointer"
+                                            (click)="removeFileFromBill(attachment)"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <!-- <div *ngFor="let productImg of productImgArray" class="container-set"
+                                [class]="'product-image'" fxLayoutAlign="center center">
+                                <ng-container>
+                                    <img *ngIf="productImg?.isNew == undefined" src="{{IMAGE_PATH}}{{productImg?.path}}"
+                                        onerror="this.src='assets/img/avatar-blank.jpg';">
+                                    <img *ngIf="productImg?.isNew" height="120" width="120"
+                                        src="{{productImg?.fileData}}"
+                                        onerror="this.src='assets/img/avatar-blank.jpg';">
+                                </ng-container>
+                                <div class="overlay-set">
+                                    <button mat-mini-fab color="accent" class="pointer">
+                                        <i class="fas fa-search-plus fa-lg"></i>
+                                    </button>
+                                    <button mat-mini-fab color="accent" class="pointer">
+                                        <i class="fas fa-download fa-lg"></i>
+                                    </button>
+                                </div>
+                                <div class="close-btn-attch">
+                                    <a class="pointer">
+                                        <i class="fas fa-times fa-lg"></i>
+                                    </a>
+                                </div>
+                            </div> -->
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="btn btn-primary float-right" type="submit" form="addProductForm">
+                                <ng-container *ngIf="productId == undefined">Add</ng-container>
+                                <ng-container *ngIf="productId !== undefined">Update</ng-container>
+                            </button>
+                            <a mat-button class="m-r-5 btn btn-light float-right m-r-10" aria-label="Cancel">Close</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

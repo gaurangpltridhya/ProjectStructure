@@ -26,6 +26,9 @@ export const OTP_VERIFY_RESET_PASSWORD = API_LINK_URL + '/' + API_VERSION + '/ot
 export const GET_PRODUCT_CATEGORY_LIST = API_LINK_URL + '/' + API_VERSION + '/categories'; //email verify
 export const CHANGE_PRODUCT_CATEGORY_STATUS = API_LINK_URL + '/' + API_VERSION + '/categories/status'; //email verify
 
+// product
+export const ADD_PRODUCT = API_LINK_URL + '/' + API_VERSION + '/product';
+
 @Injectable()
 export class Constants {
   constructor(

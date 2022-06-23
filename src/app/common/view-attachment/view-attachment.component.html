@@ -1,0 +1,15 @@
+<!-- <div class="modal-header">
+    <h4 class="modal-title header-title" id="modal-basic-title">{{dialogTitle}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.close()">
+        <i class="fas fa-times"></i>
+    </button>
+</div> -->
+<div class="modal-body">
+    <ng-container *ngIf="zoomImgSrc!='' && isImageOpenedInFullScreen">
+        <img width="480px" height="480px" class="modal-content" id="img01"
+            src="{{(!isNewImage) ? IMAGE_PATH + zoomImgSrc : zoomImgSrc}}">
+    </ng-container>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-reset" (click)="activeModal.close()">Close</button>
+</div>

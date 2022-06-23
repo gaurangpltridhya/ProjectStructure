@@ -106,7 +106,7 @@ export class AddProductCategoryComponent implements OnInit {
   /**
    * submit add product category form
    */
-  submitAddProductForm() {
+  submitAddProductCategoryForm() {
     this.addProductCategoryFormSubmitted = true;
     if (this.addProductCategoryForm?.invalid) {
       return;

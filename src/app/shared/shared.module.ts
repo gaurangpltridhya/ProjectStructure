@@ -34,6 +34,7 @@ import { HeaderComponent } from './header/header.component';
 import { LayoutComponent } from './layout/layout.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { AddEditSidebarComponent } from '../common/add-edit-sidebar/add-edit-sidebar.component';
+import { ViewAttachmentComponent } from '../common/view-attachment/view-attachment.component';
 
 // pipes
 import { AddressFormatPipe } from '../common/pipes/address-format.pipe';
@@ -46,14 +47,18 @@ import { AdvancedSortableDirective } from './advanced-sortable.directive';
 
 @NgModule({
   declarations: [
-    AdvancedSortableDirective,
     FooterComponent,
     HeaderComponent,
     LayoutComponent,
     SidebarComponent,
     AddEditSidebarComponent,
+    ViewAttachmentComponent,
+
     AddressFormatPipe,
     MinutesToHoursPipe,
+
+
+    AdvancedSortableDirective,
     CustomTooltipDirective
   ],
   imports: [
@@ -122,6 +127,7 @@ import { AdvancedSortableDirective } from './advanced-sortable.directive';
     SidebarComponent,
     AddEditSidebarComponent,
     CustomTooltipDirective,
+    ViewAttachmentComponent,
 
     AddressFormatPipe,
     MinutesToHoursPipe
